@@ -1,0 +1,3 @@
+include ':iyzi-co-sdk'
+include ':app'
+rootProject.name = "iyzico"

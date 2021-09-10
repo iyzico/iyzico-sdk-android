@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="312dp"
+    android:layout_height="wrap_content"   android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:cardCornerRadius="6dp"
+        android:background="@color/iyzico_white">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingEnd="@dimen/iyzico_primary_margin"
+            android:paddingStart="@dimen/iyzico_primary_margin"
+            android:paddingBottom="@dimen/iyzico_secondary_margin"
+            android:paddingTop="@dimen/iyzico_secondary_margin"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iyzico_custom_popup_imageview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/iyzico_ic_logout" />
+
+            <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+                android:id="@+id/iyzico_custom_popup_warning_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/markpromedium"
+                android:lineSpacingExtra="8sp"
+                android:textColor="@color/iyzico_light_black"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+            <com.android.iyzicosdk.ui.components.buttons.IyziCoCustomButton
+                android:id="@+id/iyzico_custom_popup_close_page_button"
+                android:layout_width="218dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:text="@string/iyzico_custom_popup_close_page_button_text"
+                android:visibility="visible"
+                app:iyzico_buttonType="EMPTY_GRAY_BORDER"
+                app:iyzico_sticky="1" />
+
+            <com.android.iyzicosdk.ui.components.buttons.IyziCoCustomButton
+                android:id="@+id/iyzico_custom_popup_continue_button"
+                android:layout_width="218dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="24dp"
+                android:text="@string/iyzico_custom_popup_close_continue_button"
+                app:iyzico_buttonType="BLUE_FILL"
+                app:iyzico_sticky="1" />
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/iyzico_custom_button_exit_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        app:fontFamily="@font/markpro"
+        android:gravity="center"
+        android:lineSpacingExtra="8sp"
+        android:text="@string/iyzico_custom_popup_close"
+        android:textColor="@color/iyzico_white"
+        android:textSize="16sp"
+        android:textStyle="normal" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iyzico_custom_popup_close_popup"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/iyzico_ic_close"
+        android:backgroundTint="@color/iyzico_white" />
+
+
+</LinearLayout>

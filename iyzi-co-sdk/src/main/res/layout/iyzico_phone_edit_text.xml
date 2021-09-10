@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.iyzicosdk.ui.components.IyziCoCustomBorder xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/iyzico_phone_edittext_root_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:iyzico_borderText="@string/iyzico_input_phone_number"
+    app:iyzico_type="phone">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+            android:id="@+id/iyzico_phone_country_code_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/iyzico_edit_text_primary_font"
+            android:text="@string/iyzico_turkey_phone_code"
+            android:visibility="gone"
+            android:textColor="@color/iyzico_primary_text_color"
+            android:textSize="@dimen/iyzico_input_text_primary_size" />
+
+
+        <com.android.iyzicosdk.ui.components.edit_text.IyziCoCustomEditText
+            android:id="@+id/iyzico_phone_edit_text"
+            style="@style/IyzicoCustomSingleLineEditText"
+            android:layout_marginStart="5dp"
+            android:digits="1234567890 "
+            android:inputType="number"
+            android:maxLength="13" />
+
+
+    </LinearLayout>
+
+
+</com.android.iyzicosdk.ui.components.IyziCoCustomBorder>

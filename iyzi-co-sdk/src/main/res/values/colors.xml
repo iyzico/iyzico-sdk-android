@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="iyzico_black">#000000</color>
+    <color name="iyzico_white">#FFFFFF</color>
+    <color name="iyzico_light_blue">#D0E4FF</color>
+    <color name="iyzico_light_red">#FFE3E3</color>
+    <color name="iyzico_secondary_light_red">#ffc9c9</color>
+    <color name="iyzico_dark_red">#F03E3E</color>
+    <color name="iyzico_dark_blue">#0F5ABF</color>
+    <color name="iyzico_secondary_dark_blue">#1E64FF</color>
+    <color name="iyzico_secondary_light_blue">#4393ff</color>
+    <color name="iyzico_primary_text_color">#212529</color>
+    <color name="iyzico_secondary_text_color">#495057</color>
+    <color name="iyzico_grey">#CED4DA</color>
+    <color name="iyzico_secondary_grey">#868e96</color>
+    <color name="iyzico_transparent">#80FFFFFF</color>
+    <color name="iyzico_red">#F03E3E</color>
+    <color name="iyzico_light_grey">#F8F9FA</color>
+    <color name="iyzico_hint_color">#CED4DA</color>
+    <color name="iyzico_pink">#fff5f5</color>
+    <color name="iyzico_green_romance">#d3f9d8</color>
+    <color name="iyzico_secondary_dark_green">#2f9e44</color>
+    <color name="iyzico_gray30">#e9ecef</color>
+    <color name="iyzico_dark_grey">#ADB5BD</color>
+    <color name="iyzico_line_grey">#d1cfcf</color>
+    <color name="iyzico_f7_grey">#f7f7f7</color>
+    <color name="iyzico_blur_blue">#1d63fd</color>
+    <color name="iyzico_hight_light_blue">#4dabf7</color>
+    <color name="iyzico_orange">#ffb900</color>
+    <color name="iyzico_bfbf_grey">#bfbfbf</color>
+    <color name="iyzico_f5_color">#f5f5f5</color>
+    <color name="iyzico_light_black">#343a40</color>
+    <color name="iyzico_f1_grey_color">#f1f3f5</color>
+    <color name="iyzico_high_light_black">#11272d</color>
+    <color name="iyzico_blur_color">#8f212529</color>
+    <color name="iyzico_arrow_blue">#1c7ed6</color>
+    <color name="iyzico_secondary_white">#dee2e6</color>
+    <color name="iyzico_dark_green">#2f9e44</color>
+    <color name="iyzico_light_green">#8ce99a</color>
+    <color name="iyzico_cursor_blue">#1971c2</color>
+    <color name="iyzico_transparant_dark">#cc212529</color>
+
+</resources>

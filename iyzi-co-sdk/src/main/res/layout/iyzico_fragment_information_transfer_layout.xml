@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+   >
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/iyzico_fragment_info_title_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/markpromedium"
+        android:lineHeight="30sp"
+        android:lineSpacingExtra="6sp"
+        android:text="@string/iyzico_fragment_infto_transfer_assurance_of_iyzico"
+        android:textColor="@color/iyzico_secondary_grey"
+        android:textSize="24sp" />
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/iyzico_fragment_information_transfer_layout_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:fontFamily="@font/markprobold"
+        android:lineSpacingExtra="6sp"
+        android:text="@string/iyzico_payment_successfully_achieved"
+        android:textColor="@color/iyzico_primary_text_color"
+        android:textSize="24sp" />
+
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/iyzico_fragment_information_transfer_layout_second_title"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/markpromedium"
+        android:textSize="16sp"
+        android:lineSpacingExtra="8sp"
+        android:gravity="center"
+        android:lineHeight="24sp"
+        android:layout_marginTop="24.5dp"
+        android:text="@string/iyzico_redirected_to_application"
+        android:textColor="@color/iyzico_secondary_grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

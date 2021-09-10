@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/iyzico_activity_iyzico_sticky"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/iyzico_white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/iyzico_Activity_top_linear_layout"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_marginStart="11dp"
+            android:layout_gravity="center"
+            android:id="@+id/iyzico_activity_back_frameLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iyzico_activity_iyzico_header_icon_imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/iyzico_ic_back" />
+
+        </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/iyzico_secondary_margin"
+            android:src="@drawable/iyzico_ic_logo" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/iyzico_gray30" />
+
+    <include
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:id="@+id/iyzico_payw_sticky_layout"
+        layout="@layout/iyzico_payw_sticky"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/iyzico_white"/>
+
+    <include
+        android:visibility="gone"
+        android:id="@+id/iyzico_wallet_sticky_layout"
+        layout="@layout/iyzico_wallet_sticky"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/iyzico_white"/>
+
+    <FrameLayout
+        android:id="@+id/activity_iyzico_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/iyzico_light_grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iyzico_activity_iyzico_bottom_line" />
+</LinearLayout>

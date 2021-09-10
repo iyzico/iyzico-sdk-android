@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:background="@color/iyzico_white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/iyzico_ic_support_Contact_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/markprobold"
+        android:text="@string/iyzico_get_support_title"
+        android:textColor="@color/iyzico_primary_text_color"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:id="@+id/iyzico_bottom_support_screen_phone_layout"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/iyzico_ic_calendar" />
+
+        <TextView
+            android:id="@+id/contact_detail_phone_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/markpromedium"
+            android:lineSpacingExtra="10sp"
+            android:text="@string/iyzico_phone_number_text"
+            android:textColor="@color/iyzico_secondary_dark_blue"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/iyzico_bottom_support_screen_mail_layout"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/iyzico_ic_mail" />
+
+        <TextView
+            android:id="@+id/contact_detail_mail_textvew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/markpromedium"
+            android:lineSpacingExtra="10sp"
+            android:text="@string/iyzico_mail"
+            android:textColor="@color/iyzico_secondary_dark_blue"
+            android:textSize="14sp"
+            android:layout_marginBottom="24dp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

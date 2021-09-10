@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.iyzicosdk.ui.components.IyziCoExpandable xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/iyzico_fragment_account_my_account"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/iyzico_white"
+    android:paddingTop="8dp"
+    android:src="@drawable/iyzico_ic_wallet"
+    android:text="@string/iyzico_my_account"
+    android:visibility="visible">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="8dp"
+        android:animateLayoutChanges="true"
+        android:background="@color/iyzico_light_grey"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/iyzico_my_current_balance_green_info_cardview"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            app:cardBackgroundColor="@color/iyzico_green_romance"
+            app:cardCornerRadius="6dp"
+            tools:visibility="visible">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/iyzico_success_icn" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/iyzico_my_current_balance_card_textview"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center"
+                android:layout_marginStart="44dp"
+                android:fontFamily="@font/markpromedium"
+                android:text="@string/iyzico_topup_balance_loaded"
+                android:textColor="@color/iyzico_secondary_dark_green"
+                android:textSize="14sp" />
+        </androidx.cardview.widget.CardView>
+
+        <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+            android:layout_width="match_parent"
+            android:id="@+id/iyzico_my_current_balance_normal_info_textview"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="40dp"
+            android:text="@string/iyzico_account_fragment_wallet_description"
+            android:textColor="@color/iyzico_primary_text_color"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            app:fontFamily="@font/markpro" />
+
+        <include layout="@layout/iyzico_my_account_sub_layout" />
+    </LinearLayout>
+
+</com.android.iyzicosdk.ui.components.IyziCoExpandable>

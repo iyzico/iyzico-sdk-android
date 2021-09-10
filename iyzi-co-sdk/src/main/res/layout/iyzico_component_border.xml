@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:id="@+id/component_iyzico_border_root"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/iyzico_border_height"
+    android:background="@drawable/iyzico_border_corner_radius_un_focus_fill_color"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:padding="3dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/component_iyzico_border_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/iyzico_border_corner_un_focus_radius"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <View
+            android:id="@+id/component_iyzico_border_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="14dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/component_iyzico_border_country_image_side"
+            android:layout_width="55dp"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:background="@drawable/iyzico_phone_country_container"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/iyzico_ic_flag_tr" />
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/component_iyzico_border_error_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/iyzico_ic_error"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/component_iyzico_border_title_text"
+            app:layout_constraintStart_toEndOf="@+id/component_iyzico_border_country_image_side"
+            app:layout_constraintTop_toTopOf="@+id/component_iyzico_border_title_text" />
+
+        <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+            android:id="@+id/component_iyzico_border_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7.1dp"
+            android:layout_marginEnd="12dp"
+            android:fontFamily="@font/iyzico_edit_text_primary_font"
+            android:textColor="@color/iyzico_secondary_text_color"
+            android:textSize="@dimen/iyzico_input_text_secondary_size"
+            app:layout_constraintBottom_toTopOf="@+id/iyzico_component_border_text_contraint_bottom_view"
+            app:layout_constraintStart_toEndOf="@+id/component_iyzico_border_error_img"
+            app:layout_constraintTop_toBottomOf="@+id/component_iyzico_border_view"
+            app:layout_goneMarginStart="17.1dp"
+            app:layout_goneMarginBottom="34dp"
+            tool:text="Account Holder" />
+
+
+        <FrameLayout
+            android:id="@+id/component_iyzico_border_edit_text_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/iyzico_primary_margin"
+            android:layout_marginBottom="12.6dp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintBottom_toTopOf="@+id/iyzico_component_border_bottom_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/component_iyzico_border_title_text"
+            app:layout_constraintTop_toBottomOf="@+id/component_iyzico_border_title_text"
+            app:layout_goneMarginBottom="17.6dp" />
+
+        <View
+            android:id="@+id/iyzico_component_border_text_contraint_bottom_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <View
+            android:id="@+id/iyzico_component_border_bottom_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+
+    <stroke
+        android:width="@dimen/iyzico_border_width"
+        android:color="@color/iyzico_dark_blue"/>
+
+    <solid android:color="@color/iyzico_white"/>
+
+<!--    <padding
+        android:bottom="@dimen/iyzico_iyzico_border_padding"
+        android:left="@dimen/iyzico_iyzico_border_padding"
+        android:right="@dimen/iyzico_iyzico_border_padding"
+        android:top="@dimen/iyzico_iyzico_border_padding"/>-->
+
+    <corners android:radius="@dimen/iyzico_input_corner_radius"/>
+
+</shape>

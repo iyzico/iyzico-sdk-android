@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/iyzico_remittance_custom_view_title_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="IBAN"
+        android:textColor="@color/iyzico_primary_text_color"
+        android:textSize="14sp"
+        app:fontFamily="@font/markpro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/iyzico_remittance_custom_view_textView"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:background="@null"
+        android:backgroundTint="@null"
+        android:fontFamily="@font/markpromedium"
+        android:gravity="center_vertical"
+        android:lineHeight="24sp"
+        android:text="Deneme Metni"
+        android:textColor="@color/iyzico_primary_text_color"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/iyzico_remittance_custom_view_copy_imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iyzico_remittance_custom_view_title_textView" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/iyzico_remittance_custom_view_copy_imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="false"
+        android:src="@drawable/iyzico_ic_copy_paste"
+        app:layout_constraintBottom_toBottomOf="@+id/iyzico_remittance_custom_view_textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iyzico_remittance_custom_view_textView" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/iyzico_primary_margin"
+        android:background="@color/iyzico_f1_grey_color"
+        app:layout_constraintTop_toBottomOf="@+id/iyzico_remittance_custom_view_textView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

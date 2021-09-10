@@ -1,0 +1,76 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="IyzicoTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/iyzico_white</item>
+        <item name="colorPrimaryDark">@color/iyzico_white</item>
+        <item name="colorAccent">@color/iyzico_secondary_dark_blue</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:statusBarColor">@color/iyzico_white</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:textCursorDrawable">@drawable/cursor_style_large</item>
+        <item name="android:autofilledHighlight" tools:targetApi="o">@android:color/transparent</item>
+    </style>
+
+    <style name="IyziCoCustomDialogTheme">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+    </style>
+
+    <style name="IyzicoCustomSingleLineEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/iyzico_input_height</item>
+        <item name="fontFamily">@font/markpromedium</item>
+        <item name="android:textSize">@dimen/iyzico_input_text_primary_size</item>
+        <item name="android:textColor">@color/iyzico_primary_text_color</item>
+        <item name="android:background">@null</item>
+        <item name="android:backgroundTint">@null</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="IyziCoSwitch" parent="Theme.AppCompat.Light">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">@color/iyzico_dark_green</item>
+        <!-- inactive thumb color -->
+        <item name="colorSwitchThumbNormal">@color/iyzico_white
+        </item>
+    </style>
+
+
+    <style name="IyzicoFocusTitle" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/markpro</item>
+        <item name="android:fontFamily">@font/markpro</item>
+        <item name="android:textSize">@dimen/iyzico_input_text_secondary_size</item>
+    </style>
+
+    <style name="IyzicoUnFocusTitle" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/markpromedium</item>
+        <item name="android:fontFamily">@font/markpromedium</item>
+        <item name="android:textSize">@dimen/iyzico_primary_textsize</item>
+    </style>
+
+
+    <style name="IyziCoCustomBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/IyziCoCustomBottomSheetStyle</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.3</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
+    <style name="IyziCoCustomBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+</resources>

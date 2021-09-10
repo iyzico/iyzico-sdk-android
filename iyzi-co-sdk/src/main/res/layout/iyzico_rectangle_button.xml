@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:id="@+id/iyzico_rectange_button_root"
+    android:background="@drawable/iyzico_selector_rectangle_button">
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/iyzico_rectange_button_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/markprobold"
+        android:textColor="@color/iyzico_white"
+        android:textSize="16sp"
+        tool:text="Continue" />
+
+</FrameLayout>

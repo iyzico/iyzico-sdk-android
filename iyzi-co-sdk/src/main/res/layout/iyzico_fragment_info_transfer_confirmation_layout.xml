@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:paddingStart="@dimen/iyzico_primary_margin">
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/iyzico_fragment_info_title_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/markpromedium"
+        android:lineHeight="30sp"
+        android:lineSpacingExtra="6sp"
+        android:text="@string/iyzico_fragment_infto_transfer_assurance_of_iyzico"
+
+        android:textColor="@color/iyzico_secondary_grey"
+        android:textSize="24sp" />
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:fontFamily="@font/markpro"
+        android:textStyle="bold"
+        android:layout_marginTop="4dp"
+        android:textSize="24sp"
+        android:textColor="@color/iyzico_primary_text_color"
+        android:gravity="center_horizontal"
+        android:text="@string/iyzico_fragment_info_transfer_success"
+        />
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fontFamily="@font/markpro"
+        android:textStyle="normal"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/iyzico_secondary_grey"
+        android:lineSpacingExtra="9sp"
+        android:gravity="center_horizontal"
+        tools:text="Talebin onaylandığı anda iyzico hesabına aktarılacak."
+        />
+
+</LinearLayout>

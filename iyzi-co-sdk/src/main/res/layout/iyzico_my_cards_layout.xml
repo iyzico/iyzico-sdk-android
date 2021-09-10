@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.iyzicosdk.ui.components.IyziCoExpandable xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/iyzico_fragment_account_my_cards_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="1dp"
+    android:paddingTop="8dp"
+    android:background="@color/iyzico_white"
+    android:src="@drawable/iyzico_ic_cards"
+    android:text="@string/iyzico_my_credit_cards">
+
+    <LinearLayout
+        android:id="@+id/iyzico_fragment_Account_my_Cards_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/iyzico_f1_grey_color"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/iyzico_fragment_account_reyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/iyzico_primary_margin"
+            android:layout_marginEnd="16dp"
+            android:overScrollMode="never" />
+
+        <include layout="@layout/iyzico_add_card_layout" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/iyzico_fragment_Account_my_installment_options_layout"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/iyzico_fragment_Account_my_installment_options_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textColor="@color/iyzico_secondary_text_color"
+                android:fontFamily="@font/markpro"
+                android:textSize="16sp"
+                android:text="@string/iyzico_installment_chose"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/iyzico_border_new_card_cardview_radius"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iyzico_fragment_Account_my_installment_options_title">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/iyzico_fragment_Account_my_installment_options_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/iyzico_fragment_Account_my_installment_information_layout"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/iyzico_border_new_card_cardview_radius">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:id="@+id/installemen_options_info"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="center"
+                android:textColor="@color/iyzico_secondary_grey"
+                android:fontFamily="@font/markpro"
+                android:textSize="14sp"
+                android:text="@string/iyzico_payment_options_shows_after_you_filled_a"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+
+            <com.android.iyzicosdk.ui.components.IyziCoDoubleBorder
+                android:id="@+id/iyzico_add_card_use_my_balance_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal">
+
+                    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="54dp"
+                        android:fontFamily="@font/markpromedium"
+                        android:gravity="center_vertical"
+                        android:text="@string/iyzico_use_my_balance"
+                        android:textColor="@color/iyzico_primary_text_color"
+                        android:textSize="14sp" />
+
+                    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+                        android:id="@+id/iyzico_add_card_my_balance_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="@font/markpromedium"
+                        android:gravity="end"
+                        android:layout_marginEnd="16dp"
+                        android:text=" ₺44,70"
+                        android:textColor="@color/iyzico_primary_text_color"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </com.android.iyzicosdk.ui.components.IyziCoDoubleBorder>
+
+            <LinearLayout
+                android:id="@+id/iyzico_add_card_spend_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/iyzico_f1_grey_color"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iyzico_add_card_use_my_balance_button">
+
+                <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/iyzico_my_cards_amount_to_withdrawn_credit_card"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/markpromedium"
+                    android:gravity="center"
+                    android:text="KARTINIZDAN ₺68.70 ÇEKİLECEKTİR."
+                    android:textColor="@color/iyzico_secondary_grey"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</com.android.iyzicosdk.ui.components.IyziCoExpandable>

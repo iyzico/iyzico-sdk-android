@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/iyzico_expandable_left_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/iyzico_expandable_right_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/iyzico_expandable_header_constraint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/iyzico_expandable_right_guideline"
+        app:layout_constraintStart_toStartOf="@+id/iyzico_expandable_left_guideline"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iyzico_expandable_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+            android:id="@+id/iyzico_expandable_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/markpromedium"
+            android:paddingStart="16dp"
+            android:textColor="@color/iyzico_primary_text_color"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iyzico_expandable_icon"
+            app:layout_constraintStart_toEndOf="@+id/iyzico_expandable_icon"
+            app:layout_constraintTop_toTopOf="@+id/iyzico_expandable_icon" />
+
+
+        <ImageView
+            android:id="@+id/iyzico_expandable_arrow_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="180"
+            android:src="@drawable/iyzico_down_arrow"
+            app:layout_constraintBottom_toBottomOf="@+id/iyzico_expandable_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iyzico_expandable_icon"
+            app:tint="@color/iyzico_arrow_blue" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <FrameLayout
+        android:id="@+id/iyzico_expandable_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iyzico_expandable_header_constraint" />
+
+    <View
+        android:id="@+id/iyzico_expandable_line_view"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/iyzico_f1_grey_color"
+        app:layout_constraintTop_toTopOf="@+id/iyzico_expandable_container" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

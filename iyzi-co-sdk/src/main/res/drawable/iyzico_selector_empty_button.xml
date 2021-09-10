@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/iyzico_border_unfill_button_corner_radius" android:state_enabled="false"/>
+    <item android:drawable="@drawable/iyzico_border_unfill_un_focus_button_corner_radius" android:state_enabled="true" android:state_focused="true"/>
+    <item android:drawable="@drawable/iyzico_border_unfill_un_focus_button_corner_radius" android:state_enabled="true" android:state_pressed="true"/>
+
+</selector>

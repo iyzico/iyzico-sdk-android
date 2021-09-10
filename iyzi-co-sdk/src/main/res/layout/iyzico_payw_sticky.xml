@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/iyzico_activity_iyzico_sticky"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/iyzico_payw_sticky_brand_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/markprobold"
+        android:lineHeight="25sp"
+        android:textColor="@color/iyzico_primary_text_color"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Ozaydin" />
+
+    <LinearLayout
+        android:id="@+id/iyzico_payw_timer_linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/iyzico_payw_sticky_brand_textView"
+        app:layout_constraintTop_toBottomOf="@+id/iyzico_payw_sticky_brand_textView">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/iyzico_ic_clock" />
+
+        <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+            android:id="@+id/iyzico_payw_timer_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            app:fontFamily="@font/markpro"
+            android:textColor="@color/iyzico_secondary_grey"
+            android:textSize="14sp"
+            tools:text="Kalan Süree: 04:58" />
+
+    </LinearLayout>
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/iyzico_payw_sticky_price_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/markprobold"
+        android:lineHeight="25sp"
+        android:textColor="@color/iyzico_primary_text_color"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="133,40" />
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:fontFamily="@font/markpro"
+        android:textColor="@color/iyzico_secondary_grey"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/iyzico_payw_sticky_price_textView"
+        app:layout_constraintTop_toBottomOf="@+id/iyzico_payw_sticky_price_textView"
+        tools:text="Toplam Tutar"
+        android:text="@string/iyzico_sum_price"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="35dp"
+        android:background="@color/iyzico_gray30"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iyzico_payw_sticky_price_textView" />
+</androidx.constraintlayout.widget.ConstraintLayout>

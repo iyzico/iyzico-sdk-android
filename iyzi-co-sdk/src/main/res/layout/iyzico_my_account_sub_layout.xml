@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/iyzico_fragment_account_my_account_constraint"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="20dp"
+    android:background="@drawable/iyzico_my_account_items_background"
+    android:paddingStart="17dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="25dp">
+    <androidx.appcompat.widget.AppCompatImageView
+
+        android:id="@+id/iyzico_my_account_sub_wallet_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="16dp"
+        android:src="@drawable/iyzico_ic_wallet_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/iyzico_fragment_account_current_balance_label_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/markpromedium"
+        android:text="@string/iyzico_my_current_balance"
+        android:textColor="@color/iyzico_primary_text_color"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/iyzico_my_account_sub_wallet_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:id="@+id/iyzico_my_account_sub_layout_reset_icn"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:src="@drawable/iyzico_ic_refresh_gray"
+        app:layout_constraintStart_toEndOf="@+id/iyzico_fragment_account_current_balance_label_textView"
+        app:layout_constraintTop_toTopOf="@+id/iyzico_fragment_account_current_balance_label_textView" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/fragment_account_my_account_check_imageView"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="2dp"
+        android:paddingEnd="9dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/iyzico_ic_empty_radio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/iyzico_fragment_account_current_balance_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/markpromedium"
+        android:text="₺113,40"
+        android:textColor="@color/iyzico_secondary_text_color"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/iyzico_fragment_account_current_balance_label_textView"
+        app:layout_constraintTop_toBottomOf="@+id/iyzico_fragment_account_current_balance_label_textView" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/iyzico_gray30"
+        app:layout_constraintStart_toStartOf="@+id/iyzico_fragment_account_current_balance_label_textView"
+        app:layout_constraintTop_toBottomOf="@id/iyzico_fragment_account_current_balance_textView" />
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/iyzico_my_account_sub_layout_info_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="30dp"
+        app:fontFamily="@font/markpro"
+        android:text="@string/iyzico_my_current_balance_description"
+        android:textColor="@color/iyzico_primary_text_color"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iyzico_fragment_account_current_balance_textView" />
+</androidx.constraintlayout.widget.ConstraintLayout>

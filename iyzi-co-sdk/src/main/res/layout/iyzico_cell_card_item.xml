@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="12dp"
+    android:paddingTop="12dp"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/iyzico_my_account_items_background">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iyzico_cell_card_bank_imageView"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="20dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/iyzico_cell_card_bank_name_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/markprobold"
+        android:text="GARANTI BANKASI"
+        android:textColor="@color/iyzico_secondary_grey"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/iyzico_cell_card_bank_imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/iyzico_cell_card_item_card_name_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:lineSpacingExtra="9sp"
+        android:fontFamily="@font/markpromedium"
+        android:text="Kredi Kartı"
+        android:textColor="@color/iyzico_primary_text_color"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/iyzico_cell_card_bank_name_textView"
+        app:layout_constraintTop_toBottomOf="@+id/iyzico_cell_card_bank_name_textView" />
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/iyzico_cell_card_item_card_number_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:lineSpacingExtra="9sp"
+        android:text="* * * 344"
+        android:textColor="@color/iyzico_primary_text_color"
+        android:textSize="16sp"
+        app:fontFamily="@font/markpro"
+        app:layout_constraintStart_toStartOf="@+id/iyzico_cell_card_bank_name_textView"
+        app:layout_constraintTop_toBottomOf="@+id/iyzico_cell_card_item_card_name_textview" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iyzico_cell_card_item_selected_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/iyzico_ic_empty_radio"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

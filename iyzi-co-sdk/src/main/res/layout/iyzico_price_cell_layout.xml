@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/iyzico_price_cell_layout_icon_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/markprobold"
+        android:gravity="center"
+        android:text="₺"
+        android:textColor="@color/iyzico_primary_text_color"
+        android:textSize="32sp" />
+
+    <com.android.iyzicosdk.ui.components.edit_text.IyziCoCustomEditText
+        android:id="@+id/iyzico_price_cell_first_layout_edittext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:digits="0123456789.,"
+        android:fontFamily="@font/markprobold"
+        android:gravity="center"
+        android:hint="0"
+        android:imeOptions="actionNext"
+        android:inputType="numberDecimal"
+        android:nextFocusRight="@+id/iyzico_price_cell_layout_edittext"
+        android:textColor="@color/iyzico_primary_text_color"
+        android:textColorHint="@color/iyzico_grey"
+        android:textSize="32sp" />
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/iyzico_price_cell_layout_dot_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text=","
+        android:textColor="@color/iyzico_grey"
+        android:textSize="25dp"
+        app:fontFamily="@font/markpro" />
+
+    <com.android.iyzicosdk.ui.components.edit_text.IyziCoCustomEditText
+        android:id="@+id/iyzico_price_cell_layout_edittext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@null"
+        android:gravity="center"
+        android:hint="00"
+        android:digits="0123456789"
+        android:inputType="numberDecimal"
+        android:maxLength="2"
+        android:textColor="@color/iyzico_black"
+        android:textColorHint="@color/iyzico_grey"
+        android:textSize="25dp"
+        app:fontFamily="@font/markpro" />
+
+
+</LinearLayout>

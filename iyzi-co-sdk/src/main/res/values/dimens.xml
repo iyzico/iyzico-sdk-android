@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="iyzico_input_corner_radius">8dp</dimen>
+    <dimen name="iyzico_input_corner_secondary_radius">11dp</dimen>
+    <dimen name="iyzico_input_height">40dp</dimen>
+    <dimen name="iyzico_button_corner_radius">28dp</dimen>
+    <dimen name="iyzico_border_height">64dp</dimen>
+
+
+    <!--TextSize-->
+    <dimen name="iyzico_input_text_primary_size">16sp</dimen>
+    <dimen name="iyzico_input_text_secondary_size">12sp</dimen>
+    <dimen name="iyzico_secondary_text_size">15sp</dimen>
+    <dimen name="iyzico_primary_textsize">28sp</dimen>
+    <dimen name="iyzico_small_textsize">12sp</dimen>
+
+    <dimen name="iyzico_border_width">1dp</dimen>
+    <dimen name="iyzico_border_padding">5dp</dimen>
+
+
+    <!--Margin-->
+    <dimen name="iyzico_primary_margin">16dp</dimen>
+    <dimen name="iyzico_secondary_margin">24dp</dimen>
+
+    <dimen name="iyzico_primary_margin_negative">-16dp</dimen>
+    <dimen name="iyzico_expandable_margin">21dp</dimen>
+
+
+    <!-- LineHeight-->
+    <dimen name="iyzico_secondary_line_height_size">23sp</dimen>
+    <dimen name="iyzico_primary_line_height_size">40sp</dimen>
+    <dimen name="iyzico_small_line_height_size">18sp</dimen>
+
+    <!-- ButtonHeight -->
+    <dimen name="iyzico_button_height">47dp</dimen>
+    <dimen name="iyzico_button_widht">366dp</dimen>
+
+    <!-- Common -->
+    <dimen name="iyzico_common_margin_top">52.7dp</dimen>
+</resources>

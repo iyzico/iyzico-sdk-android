@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.settlement.IyziCoSettlementFragment"
+    android:background="@color/iyzico_light_grey">
+
+    <View
+        android:id="@+id/iyzico_fragment_settlement_first_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/iyzico_secondary_margin"
+        android:layout_marginEnd="@dimen/iyzico_secondary_margin"
+        android:layout_marginTop="@dimen/iyzico_secondary_margin"
+        android:background="@color/iyzico_f1_grey_color"/>
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/iyzico_fragment_settlement_transferred_balance_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/iyzico_transferred_balance"
+        android:textStyle="normal"
+        app:fontFamily="@font/markpro"
+        android:textSize="14sp"
+        android:textColor="@color/iyzico_primary_text_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iyzico_fragment_settlement_first_view"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginStart="@dimen/iyzico_secondary_margin"
+        android:layout_marginTop="@dimen/iyzico_secondary_margin"/>
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/iyzico_fragment_settlement_balance_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="₺ 61,61"
+        android:textStyle="bold"
+        app:fontFamily="@font/markpro"
+        android:lineSpacingExtra="6sp"
+        android:textSize="14sp"
+        android:textColor="@color/iyzico_primary_text_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iyzico_fragment_settlement_first_view"
+        app:layout_constraintHorizontal_bias="1"
+        android:layout_marginEnd="@dimen/iyzico_secondary_margin"
+        android:layout_marginTop="@dimen/iyzico_secondary_margin"/>
+
+    <View
+        android:id="@+id/iyzico_fragment_settlement_second_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iyzico_fragment_settlement_balance_textView"
+        android:layout_marginStart="@dimen/iyzico_secondary_margin"
+        android:layout_marginEnd="@dimen/iyzico_secondary_margin"
+        android:layout_marginTop="@dimen/iyzico_secondary_margin"
+        android:background="@color/iyzico_f1_grey_color"/>
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/iyzico_fragment_settlement_common_transfer_information_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/iyzico_common_transfer_information_textView"
+        android:textStyle="normal"
+        android:fontFamily="@font/markpromedium"
+        android:textSize="14sp"
+        android:textColor="@color/iyzico_primary_text_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iyzico_fragment_settlement_second_view"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginStart="@dimen/iyzico_secondary_margin"
+        android:layout_marginTop="@dimen/iyzico_secondary_margin"/>
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/iyzico_fragment_settlement_transfer_setting_information_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="normal"
+        app:fontFamily="@font/markpro"
+        android:textSize="12sp"
+        android:text="@string/iyzico_fragment_settlement_setting_explanation"
+        android:textColor="@color/iyzico_secondary_grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iyzico_fragment_settlement_common_transfer_information_textView"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginStart="@dimen/iyzico_secondary_margin"
+        android:layout_marginTop="5dp"/>
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:theme="@style/IyziCoSwitch"
+        app:layout_constraintTop_toBottomOf="@id/iyzico_fragment_settlement_second_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        android:layout_marginTop="@dimen/iyzico_secondary_margin"
+        android:layout_marginRight="@dimen/iyzico_secondary_margin"/>
+
+
+    <com.android.iyzicosdk.ui.components.buttons.IyziCoCustomButton
+        android:id="@+id/iyzico_fragment_settlement_transfer_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iyzico_button_height"
+        android:layout_marginStart="@dimen/iyzico_secondary_margin"
+        android:layout_marginEnd="@dimen/iyzico_secondary_margin"
+        android:text="@string/iyzico_transfer_my_acount"
+        android:visibility="visible"
+        app:iyzico_buttonType="BLUE_FILL"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

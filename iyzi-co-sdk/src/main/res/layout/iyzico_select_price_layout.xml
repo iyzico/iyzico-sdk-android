@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/iyzico_select_price_contain"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="32dp"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:visibility="gone"
+    tools:visibility="visible">
+
+    <com.android.iyzicosdk.ui.components.buttons.IyziCoCustomButton
+        android:id="@+id/iyzico_select_price_button_one"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/iyzico_20_tl"
+        app:iyzico_buttonType="EMPTY_GRAY_BORDER" />
+
+    <com.android.iyzicosdk.ui.components.buttons.IyziCoCustomButton
+        android:id="@+id/iyzico_select_price_button_two"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/iyzico_50_tl"
+        app:iyzico_buttonType="EMPTY_GRAY_BORDER" />
+
+    <com.android.iyzicosdk.ui.components.buttons.IyziCoCustomButton
+        android:id="@+id/iyzico_select_price_button_three"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/iyzico_100_tl"
+        app:iyzico_buttonType="EMPTY_GRAY_BORDER" />
+
+    <com.android.iyzicosdk.ui.components.buttons.IyziCoCustomButton
+        android:id="@+id/iyzico_select_price_button_four"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:text="@string/iyzico_200_tl"
+        app:iyzico_buttonType="EMPTY_GRAY_BORDER" />
+
+</LinearLayout>

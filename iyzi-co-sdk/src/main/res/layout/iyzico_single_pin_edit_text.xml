@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.iyzicosdk.ui.components.IyziCoCustomBorder xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/iyzico_pin_edittext_root_view"
+    android:layout_width="50dp"
+    app:iyzico_clear_padding="1"
+    android:layout_height="wrap_content"
+    app:iyzico_type="pin">
+
+    <com.android.iyzicosdk.ui.components.edit_text.IyziCoCustomEditText
+        android:id="@+id/iyzico_pin_edit_text"
+        style="@style/IyzicoCustomSingleLineEditText"
+        android:layout_height="@dimen/iyzico_border_height"
+        android:digits="1234567890"
+        android:inputType="number"
+        android:padding="0dp"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:textAlignment="center" />
+
+</com.android.iyzicosdk.ui.components.IyziCoCustomBorder>

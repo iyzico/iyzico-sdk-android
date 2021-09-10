@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/iyzico_fragment_remittance_eft_banks_linearLayout"
+    app:layout_constraintTop_toTopOf="parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/markprobold"
+        android:lineHeight="32sp"
+        android:text="@string/iyzico__pay_with_havale_eft"
+        android:textColor="@color/iyzico_light_black"
+        android:textSize="25sp" />
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/markpromedium"
+        android:lineHeight="20sp"
+        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+        android:textColor="@color/iyzico_light_black"
+        android:textSize="14sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/iyzico_fragment_remittance_eft_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingTop="33dp"
+        android:paddingBottom="74dp" />
+
+</LinearLayout>

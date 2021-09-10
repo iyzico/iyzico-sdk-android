@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.iyzicosdk.ui.components.IyziCoCustomBorder xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/iyzico_card_date_root_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:iyzico_border_size="small"
+    app:iyzico_borderText="@string/iyzico_input_card_date">
+
+    <com.android.iyzicosdk.ui.components.edit_text.IyziCoCustomEditText
+        android:id="@+id/iyzico_card_date_edit_text"
+        style="@style/IyzicoCustomSingleLineEditText"
+        android:digits="1234567890/"
+        android:hint="@string/iyzico_input_card_date_example"
+        android:inputType="date"
+        android:maxLength="5" />
+
+</com.android.iyzicosdk.ui.components.IyziCoCustomBorder>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/iyzico_fragment_login_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:fillViewport="true"
+    android:visibility="visible">
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomNestedScroolView
+        android:id="@+id/iyzicoNestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="ifContentScrolls">
+
+        <LinearLayout
+            android:id="@+id/iyzicoLinearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/iyzico_secondary_margin"
+            android:layout_marginTop="@dimen/iyzico_primary_margin"
+            android:layout_marginEnd="@dimen/iyzico_secondary_margin"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/markprobold"
+                android:gravity="center_horizontal"
+                android:text="@string/iyzico_fragment_login_title"
+                android:textColor="@color/iyzico_primary_text_color"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/markprobold" />
+
+            <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center_horizontal"
+                android:text="@string/iyzico_fragment_login_second_title"
+                android:textColor="@color/iyzico_primary_text_color"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                app:fontFamily="@font/markpro" />
+
+            <com.android.iyzicosdk.ui.components.edit_text.IyziCoPrimaryEditText
+                android:id="@+id/iyzico_fragment_login_email_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:inputType="textEmailAddress"
+                app:iyzico_headText="@string/iyzico_fragment_email_email"
+                app:iyzico_hintText="@string/iyzico_fragment_email_write_email" />
+
+
+            <com.android.iyzicosdk.ui.components.edit_text.IyziCoPhoneEditText
+                android:id="@+id/iyzico_fragment_login_phone_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:iyzico_headText="@string/iyzico_fragment_email_email"
+                app:iyzico_hintText="@string/iyzico_fragment_email_write_email" />
+
+
+            <LinearLayout
+                android:id="@+id/iyzico_fragment_login_cashout_information"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:src="@drawable/iyzico_ic_basic_info" />
+
+                <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+                    android:id="@+id/iyzico_fragment_login_cashout_information_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/markpromedium"
+                    android:letterSpacing="0"
+                    android:lineHeight="18sp"
+                    android:lineSpacingExtra="8dp"
+                    android:text="@string/iyzico_cashout_login_information"
+                    android:textColor="@color/iyzico_secondary_grey"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="42dp"
+                android:layout_weight="1"></FrameLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/iyzico_gray30" />
+
+            <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+                android:id="@+id/iyzico_fragment_login_term_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="18dp"
+                android:gravity="center"
+                android:lineHeight="22sp"
+                android:lineSpacingExtra="8sp"
+                android:text="@string/iyzico_fragment_email_term"
+                android:textColor="@color/iyzico_secondary_grey"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                app:fontFamily="@font/markpro" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="102dp"
+                android:background="@color/iyzico_gray30" />
+
+        </LinearLayout>
+    </com.android.iyzicosdk.ui.components.IyziCoCustomNestedScroolView>
+
+
+    <com.android.iyzicosdk.ui.components.buttons.IyziCoCustomButton
+        android:id="@+id/iyzico_login_fragment_contunie_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iyzico_button_height"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="54dp"
+        android:text="@string/iyzico_common_contunie"
+        android:visibility="visible"
+        app:iyzico_buttonType="BLUE_FILL"
+        app:iyzico_sticky="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iyzicoNestedScrollView"
+        app:layout_constraintVertical_bias="1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
