@@ -221,7 +221,7 @@ internal class IyziCoActivity : AppCompatActivity() {
                     IyziCoConfig.MERCHANT_API_KEY = ""
                     IyziCoConfig.MERCHANT_SECRET_KEY = ""
                     if (isSuccess) {
-                        callback?.error(ResultCode.OK, TextMessages.SUCCESS)
+                        callback?.message(TextMessages.SUCCESS)
                     } else {
                         callback?.error(
                             ResultCode.CLOSED_TRANSACTION,
