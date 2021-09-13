@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             "127.0.0.1",
             "qumpara",
             "qumparaSecret",
-            "https://sandbox-consumerapigw.iyzipay.com/",
+            "https://consumerapigw.iyzipay.com/",
             Languages.TURKISH
         )
 
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                 "127.0.0.1",
                 "qumpara",
                 "qumparaSecret",
-                "https://sandbox-consumerapigw.iyzipay.com/",
+                "https://consumerapigw.iyzipay.com/",
                 Languages.TURKISH,
                 "sandbox-DR5z07SXKVWyzwOHR6c85tccPb5ogOE9",
                 "sandbox-fEzf4Lbbzw5yGOVjGGl6UF2sM3CZ2nPl"
