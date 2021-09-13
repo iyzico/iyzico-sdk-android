@@ -134,7 +134,7 @@ internal class MainIyziCo : IyziCo() {
                 IyziCoConfig.CLIENT_SECRET_ID.isEmpty() -> {
                     callback.error(
                         ResultCode.MISSING_CLIENT_SECRET_KEY,
-                        TextMessages.CLİENT_SECRET_KEY_ERROR_TEXT
+                        TextMessages.CLIENT_SECRET_KEY_ERROR_TEXT
                     )
                 }
                 IyziCoConfig.MERCHANT_SECRET_KEY.isEmpty() -> {
@@ -362,7 +362,7 @@ internal class MainIyziCo : IyziCo() {
             IyziCoConfig.CLIENT_SECRET_ID.isEmpty() -> {
                 callback.error(
                     ResultCode.MISSING_CLIENT_SECRET_KEY,
-                    TextMessages.CLİENT_SECRET_KEY_ERROR_TEXT
+                    TextMessages.CLIENT_SECRET_KEY_ERROR_TEXT
                 )
             }
             IyziCoConfig.CLIENT_ID.isEmpty() -> {
@@ -415,7 +415,7 @@ internal class MainIyziCo : IyziCo() {
             IyziCoConfig.CLIENT_SECRET_ID.isEmpty() -> {
                 callback.error(
                     ResultCode.MISSING_CLIENT_SECRET_KEY,
-                    TextMessages.CLİENT_SECRET_KEY_ERROR_TEXT
+                    TextMessages.CLIENT_SECRET_KEY_ERROR_TEXT
                 )
             }
             IyziCoConfig.CLIENT_ID.isEmpty() -> {
@@ -468,7 +468,7 @@ internal class MainIyziCo : IyziCo() {
             IyziCoConfig.CLIENT_SECRET_ID.isEmpty() -> {
                 callback.error(
                     ResultCode.MISSING_CLIENT_SECRET_KEY,
-                    TextMessages.CLİENT_SECRET_KEY_ERROR_TEXT
+                    TextMessages.CLIENT_SECRET_KEY_ERROR_TEXT
                 )
             }
             IyziCoConfig.CLIENT_ID.isEmpty() -> {
@@ -521,7 +521,7 @@ internal class MainIyziCo : IyziCo() {
             IyziCoConfig.CLIENT_SECRET_ID.isEmpty() -> {
                 callback.error(
                     ResultCode.MISSING_CLIENT_SECRET_KEY,
-                    TextMessages.CLİENT_SECRET_KEY_ERROR_TEXT
+                    TextMessages.CLIENT_SECRET_KEY_ERROR_TEXT
                 )
             }
             IyziCoConfig.CLIENT_ID.isEmpty() -> {

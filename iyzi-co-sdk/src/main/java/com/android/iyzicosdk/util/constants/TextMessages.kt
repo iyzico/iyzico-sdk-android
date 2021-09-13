@@ -11,7 +11,7 @@ internal object TextMessages {
     const val INVALID_API_KEY = "Invalid api key"
     const val INVALID_PRODUCT_ID = "Invalid product id."
     const val INVALID_CLIENT_IP="Invalid client ip"
-    const val CLİENT_SECRET_KEY_ERROR_TEXT="Invalid client secret key"
+    const val CLIENT_SECRET_KEY_ERROR_TEXT="Invalid client secret key"
     const val INVALID_LANGUAGE="Invalid language"
     const val CLOSED_TRANSACTION="User closed transaction"
     const val INVALID_MERCHANT_SECRET_KEY="Invalid merchant secret key."
