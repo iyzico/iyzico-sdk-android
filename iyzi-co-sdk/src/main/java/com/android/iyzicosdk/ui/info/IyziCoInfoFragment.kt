@@ -118,7 +118,7 @@ internal class IyziCoInfoFragment : IyziCoBaseFragment() {
                     )
                 }
                 else -> {
-                    callbackError(ResultCode.OK, TextMessages.SUCCESS)
+                    callbackMessage(TextMessages.SUCCESS)
                     finish()
                 }
             }

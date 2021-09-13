@@ -44,6 +44,8 @@ internal object TextMessages {
     const val INVALID_PRODUCT_NAME = "Invalid product name."
     const val INVALID_PRODUCT_CATEGORY = "Invalid product category."
     const val INVALID_BASE_URL="Invalid base url"
+    const val  INVALID_PRODUCT_PRICE_ERROR = "Invalid basket product price"
+    const val INVALID_PRODUCT_TYPE="Invalid product_type"
 
 
 

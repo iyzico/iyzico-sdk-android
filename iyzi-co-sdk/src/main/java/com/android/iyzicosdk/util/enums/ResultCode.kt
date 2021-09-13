@@ -9,7 +9,6 @@ enum class ResultCode(var code: Int) {
     MISSING_BRAND(6),
     MISSING_PRICE(7),
     MISSING_PRODUCT(8),
-
     INVALID_WALLET_PRICE(9),//settlementte aldığımız walletPice kontrolü cashoutda da var
     MISSING_CLIENT_IP(10),
     MISSING_CLIENT_ID(11),
@@ -48,6 +47,9 @@ enum class ResultCode(var code: Int) {
     MISSING_SHIPPING_CITY(44),
     MISSING_BILLING_COUNTRY(45),
     MISSING_LANGUAGE(46),
-    CLOSED_TRANSACTION(47)
+    CLOSED_TRANSACTION(47),
+    BASKET_PRODUCT_PRICE_ERROR(48),
+    BASKET_PRUDUCT_ITEM_TYPE_ERROR(49)
+
 
 }
