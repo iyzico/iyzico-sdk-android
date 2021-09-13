@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                 "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1",
                 BasketItemType.PHYSICAL.type,
                 "Binocular",
-                "Collectibles", null,
+                "Collectibles",
                 "BI101",
                 "5352121212",
                 listOf(

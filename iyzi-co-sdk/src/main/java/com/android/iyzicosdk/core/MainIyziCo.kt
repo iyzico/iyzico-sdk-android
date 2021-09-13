@@ -1,7 +1,6 @@
 package com.android.iyzicosdk.core
 
 import android.app.Activity
-import android.graphics.Bitmap
 import com.android.iyzicosdk.callback.IyziCoCallback
 import com.android.iyzicosdk.data.model.request.IyziCoBasketItem
 import com.android.iyzicosdk.util.config.IyziCoConfig
@@ -71,7 +70,6 @@ internal class MainIyziCo : IyziCo() {
         itemType: String,
         itemName: String,
         itemCategory: String,
-        productImage: Bitmap?,
         productId: String?,
         addressDescription: String?,
         basketItems: List<IyziCoBasketItem>,
@@ -84,48 +82,48 @@ internal class MainIyziCo : IyziCo() {
                 item.id.isEmpty() -> {
                     bool = false
                     callback.error(
-                        ResultCode.MISSING_PRODUCTID,
-                        TextMessages.INVALID_PRODUCTID
+                        ResultCode.MISSING_PRODUCT_ID,
+                        TextMessages.INVALID_PRODUCT_ID
                     )
                 }
                 item.name.isEmpty() -> {
                     bool = false
                     callback.error(
-                        ResultCode.MISSING_PRODUCTNAME,
-                        TextMessages.INVALID_PRODUCTNAME
+                        ResultCode.MISSING_PRODUCT_NAME,
+                        TextMessages.INVALID_PRODUCT_NAME
                     )
                 }
                 item.category1.isEmpty() -> {
                     bool = false
                     callback.error(
-                        ResultCode.MISSING_PRODUCTCATEGORY,
-                        TextMessages.INVALID_PRODUCTCATEGORY
+                        ResultCode.MISSING_PRODUCT_CATEGORY,
+                        TextMessages.INVALID_PRODUCT_CATEGORY
                     )
                 }
                 item.itemType.type.equals(BasketItemType.PHYSICAL.type) -> {
                     if (shippingContactName.isEmpty()) {
                         bool = false
                         callback.error(
-                            ResultCode.MISSING_SHIPPINGCONTACTNAME,
-                            TextMessages.INVALID_SHIPPINGCONTACTNAME
+                            ResultCode.MISSING_SHIPPING_CONTACT_NAME,
+                            TextMessages.INVALID_SHIPPING_CONTACT_NAME
                         )
                     } else if (shippingCity.isEmpty()) {
                         bool = false
                         callback.error(
-                            ResultCode.MISSING_SHIPPINGCITY,
-                            TextMessages.INVALID_SHIPPINGCITY
+                            ResultCode.MISSING_SHIPPING_CITY,
+                            TextMessages.INVALID_SHIPPING_CITY
                         )
                     } else if (shippingCountry.isEmpty()) {
                         bool = false
                         callback.error(
-                            ResultCode.MISSING_SHIPPINGCOUNTRY,
-                            TextMessages.INVALID_SHIPPINGCOUNTRY
+                            ResultCode.MISSING_SHIPPING_COUNTRY,
+                            TextMessages.INVALID_SHIPPING_COUNTRY
                         )
                     } else if (shippingAddress.isEmpty()) {
                         bool = false
                         callback.error(
-                            ResultCode.MISSING_SHIPPINGADDRESS,
-                            TextMessages.INVALID_SHIPPINGADDRESS
+                            ResultCode.MISSING_SHIPPING_ADDRESS,
+                            TextMessages.INVALID_SHIPPING_ADDRESS
                         )
                     }
                 }
@@ -155,7 +153,10 @@ internal class MainIyziCo : IyziCo() {
                     callback.error(ResultCode.MISSING_CLIENT_ID, TextMessages.INVALID_API_KEY)
                 }
                 IyziCoConfig.CLIENT_IP.isEmpty() -> {
-                    callback.error(ResultCode.MISSING_CLIENTIP, TextMessages.INVALID_CLIENT_IP)
+                    callback.error(ResultCode.MISSING_CLIENT_IP, TextMessages.INVALID_CLIENT_IP)
+                }
+                IyziCoConfig.BASE_PATH.isEmpty() -> {
+                    callback.error(ResultCode.MISSING_BASE_URL, TextMessages.INVALID_BASE_URL)
                 }
                 IyziCoConfig.LANGUAGE.type.isInvalidLanguage() -> {
                     callback.error(ResultCode.MISSING_LANGUAGE, TextMessages.INVALID_LANGUAGE)
@@ -164,121 +165,136 @@ internal class MainIyziCo : IyziCo() {
                     callback.error(ResultCode.MISSING_BRAND, TextMessages.INVALID_BRAND)
                 }
                 buyerEmail.isEmpty() -> {
-                    callback.error(ResultCode.MISSING_BUYEREMAIL, TextMessages.INVALID_EMAIL_NUMBER)
+                    callback.error(
+                        ResultCode.MISSING_BUYER_EMAIL,
+                        TextMessages.INVALID_EMAIL_NUMBER
+                    )
                 }
                 buyerPhone.length != 10 -> {
-                    callback.error(ResultCode.MISSING_BUYERPHONE, TextMessages.INVALID_PHONE_NUMBER)
+                    callback.error(
+                        ResultCode.MISSING_BUYER_PHONE,
+                        TextMessages.INVALID_PHONE_NUMBER
+                    )
                 }
                 price == null -> {
                     callback.error(ResultCode.MISSING_PRICE, TextMessages.INVALID_PRICE)
                 }
                 paidPrice == null -> {
-                    callback.error(ResultCode.MISSING_PAIDPRICE, TextMessages.INVALID_PAIDPRICE)
+                    callback.error(ResultCode.MISSING_PAID_PRICE, TextMessages.INVALID_PAID_PRICE)
                 }
                 currency.type.isInvalidCurrency() -> {
                     currency.type = Currency.TL.type
                 }
                 enabledInstallments.isEmpty() -> {
                     callback.error(
-                        ResultCode.MISSING_ENABLEDINSTALLMENTS,
-                        TextMessages.INVALID_ENABLEDINSTALLMENTS
+                        ResultCode.MISSING_ENABLED_INSTALLMENTS,
+                        TextMessages.INVALID_ENABLED_INSTALLMENTS
                     )
                 }
                 basketId.isEmpty() -> {
-                    callback.error(ResultCode.MISSING_BASKETID, TextMessages.INVALID_BASKETID)
+                    callback.error(ResultCode.MISSING_BASKET_ID, TextMessages.INVALID_BASKET_ID)
                 }
                 paymentGroup.type.isInvalidPaymentGroup() -> {
                     paymentGroup.type = PaymentGroup.PRODUCT.type
                 }
                 urlCallback.isEmpty() -> {
-                    callback.error(ResultCode.MISSING_URLCALLBACK, TextMessages.INVALID_URLCALLBACK)
+                    callback.error(
+                        ResultCode.MISSING_URL_CALLBACK,
+                        TextMessages.INVALID_URL_CALLBACK
+                    )
                 }
                 buyerId.isEmpty() -> {
-                    callback.error(ResultCode.MISSING_BUYERID, TextMessages.INVALID_BUYERID)
+                    callback.error(ResultCode.MISSING_BUYER_ID, TextMessages.INVALID_BUYER_ID)
                 }
                 buyerName.isEmpty() -> {
-                    callback.error(ResultCode.MISSING_BUYERNAME, TextMessages.INVALID_BUYERNAME)
+                    callback.error(ResultCode.MISSING_BUYER_NAME, TextMessages.INVALID_BUYER_NAME)
                 }
                 buyerSurname.isEmpty() -> {
                     callback.error(
-                        ResultCode.MISSING_BUYERSURNAME,
-                        TextMessages.INVALID_BUYERSURNAME
+                        ResultCode.MISSING_BUYER_SURNAME,
+                        TextMessages.INVALID_BUYER_SURNAME
                     )
                 }
                 buyerIdentityNumber.isEmpty() -> {
                     callback.error(
-                        ResultCode.MISSING_BUYERIDENTITYNUMBER,
-                        TextMessages.INVALID_BUYERIDENTITYNUMBER
+                        ResultCode.MISSING_BUYER_IDENTITY_NUMBER,
+                        TextMessages.INVALID_BUYER_IDENTITY_NUMBER
                     )
                 }
                 buyerIdentityNumber.length != 11 -> {
                     callback.error(
-                        ResultCode.MISSING_BUYERIDENTITYNUMBER,
-                        TextMessages.INVALID_BUYERIDENTITYNUMBER
+                        ResultCode.MISSING_BUYER_IDENTITY_NUMBER,
+                        TextMessages.INVALID_BUYER_IDENTITY_NUMBER
                     )
                 }
                 buyerCity.isEmpty() -> {
-                    callback.error(ResultCode.MISSING_BUYERCITY, TextMessages.INVALID_BUYERCITY)
+                    callback.error(ResultCode.MISSING_BUYER_CITY, TextMessages.INVALID_BUYER_CITY)
                 }
                 buyerCountry.isEmpty() -> {
                     callback.error(
-                        ResultCode.MISSING_BUYERCOUNTRY,
-                        TextMessages.INVALID_BUYERCOUNTRY
+                        ResultCode.MISSING_BUYER_COUNTRY,
+                        TextMessages.INVALID_BUYER_COUNTRY
                     )
                 }
                 buyerIp.isEmpty() -> {
-                    callback.error(ResultCode.MISSING_BUYERIP, TextMessages.INVALID_BUYERIP)
+                    callback.error(ResultCode.MISSING_BUYER_IP, TextMessages.INVALID_BUYER_IP)
                 }
                 buyerRegistrationAddress.isEmpty() -> {
                     callback.error(
-                        ResultCode.MISSING_BUYERREGISTRATIONADDRESS,
-                        TextMessages.INVALID_BUYERREGISTRATIONADDRESS
+                        ResultCode.MISSING_BUYER_REGISTRATION_ADDRESS,
+                        TextMessages.INVALID_BUYER_REGISTRATION_ADDRESS
                     )
                 }
                 buyerZipCode.isEmpty() -> {
                     callback.error(
-                        ResultCode.MISSING_BUYERZIPCODE,
-                        TextMessages.INVALID_BUYERZIPCODE
+                        ResultCode.MISSING_BUYER_ZIP_CODE,
+                        TextMessages.INVALID_BUYER_ZIP_CODE
                     )
                 }
                 buyerRegistrationDate.isInvalidDate() -> {
                     callback.error(
-                        ResultCode.MISSING_BUYERREGISTRATIONDATE,
-                        TextMessages.INVALID_BUYERREGISTRATIONDATE
+                        ResultCode.MISSING_BUYER_REGISTRATION_DATE,
+                        TextMessages.INVALID_BUYER_REGISTRATION_DATE
                     )
                 }
                 buyerLastLoginDate.isInvalidDate() -> {
                     callback.error(
-                        ResultCode.MISSING_BUYERLASTLOGINDATE,
-                        TextMessages.INVALID_BUYERLASTLOGINDATE
+                        ResultCode.MISSING_BUYER_LAST_LOGIN_DATE,
+                        TextMessages.INVALID_BUYER_LAST_LOGIN_DATE
                     )
                 }
                 billingContactName.isEmpty() -> {
                     callback.error(
-                        ResultCode.MISSING_BILLINGCONTACTNAME,
-                        TextMessages.INVALID_BILLINGCONTACTNAME
+                        ResultCode.MISSING_BILLING_CONTACT_NAME,
+                        TextMessages.INVALID_BILLING_CONTACT_NAME
                     )
                 }
                 billingCity.isEmpty() -> {
-                    callback.error(ResultCode.MISSING_BILLINGCITY, TextMessages.INVALID_BILLINGCITY)
+                    callback.error(
+                        ResultCode.MISSING_BILLING_CITY,
+                        TextMessages.INVALID_BILLING_CITY
+                    )
                 }
                 billingCountry.isEmpty() -> {
                     callback.error(
-                        ResultCode.MISSING_BILLINGCOUNTRY,
-                        TextMessages.INVALID_BILLINGCOUNTRY
+                        ResultCode.MISSING_BILLING_COUNTRY,
+                        TextMessages.INVALID_BILLING_COUNTRY
                     )
                 }
                 billingAddress.isEmpty() -> {
                     callback.error(
-                        ResultCode.MISSING_BILLINGADDRESS,
-                        TextMessages.INVALID_BILLINGADDRESS
+                        ResultCode.MISSING_BILLING_ADDRESS,
+                        TextMessages.INVALID_BILLING_ADDRESS
                     )
                 }
                 basketItems.isEmpty() -> {
-                    callback.error(ResultCode.MISSING_EMPTYBASKET, TextMessages.INVALID_EMPTYBASKET)
+                    callback.error(
+                        ResultCode.MISSING_EMPTY_BASKET,
+                        TextMessages.INVALID_EMPTY_BASKET
+                    )
                 }
                 basketItems.size > 500 -> {
-                    callback.error(ResultCode.MISSING_FULLBASKET, TextMessages.INVALID_FULLBASKET)
+                    callback.error(ResultCode.MISSING_FULL_BASKET, TextMessages.INVALID_FULL_BASKET)
                 }
 
                 else -> {
@@ -353,7 +369,7 @@ internal class MainIyziCo : IyziCo() {
                 callback.error(ResultCode.MISSING_CLIENT_ID, TextMessages.INVALID_API_KEY)
             }
             IyziCoConfig.CLIENT_IP.isEmpty() -> {
-                callback.error(ResultCode.MISSING_CLIENTIP, TextMessages.INVALID_CLIENT_IP)
+                callback.error(ResultCode.MISSING_CLIENT_IP, TextMessages.INVALID_CLIENT_IP)
             }
             IyziCoConfig.LANGUAGE.type.isInvalidLanguage() -> {
                 callback.error(ResultCode.MISSING_LANGUAGE, TextMessages.INVALID_LANGUAGE)
@@ -368,7 +384,7 @@ internal class MainIyziCo : IyziCo() {
                 callback.error(ResultCode.MISSING_PHONE, TextMessages.INVALID_PHONE_NUMBER)
             }
             walletPrice == null -> {
-                callback.error(ResultCode.MISSING_PRICE, TextMessages.INVALID_PRICE)
+                callback.error(ResultCode.INVALID_WALLET_PRICE, TextMessages.INVALID_PRICE)
             }
             else -> {
                 /**
@@ -406,7 +422,7 @@ internal class MainIyziCo : IyziCo() {
                 callback.error(ResultCode.MISSING_CLIENT_ID, TextMessages.INVALID_API_KEY)
             }
             IyziCoConfig.CLIENT_IP.isEmpty() -> {
-                callback.error(ResultCode.MISSING_CLIENTIP, TextMessages.INVALID_CLIENT_IP)
+                callback.error(ResultCode.MISSING_CLIENT_IP, TextMessages.INVALID_CLIENT_IP)
             }
             IyziCoConfig.LANGUAGE.type.isInvalidLanguage() -> {
                 callback.error(ResultCode.MISSING_LANGUAGE, TextMessages.INVALID_LANGUAGE)
@@ -459,7 +475,7 @@ internal class MainIyziCo : IyziCo() {
                 callback.error(ResultCode.MISSING_CLIENT_ID, TextMessages.INVALID_API_KEY)
             }
             IyziCoConfig.CLIENT_IP.isEmpty() -> {
-                callback.error(ResultCode.MISSING_CLIENTIP, TextMessages.INVALID_CLIENT_IP)
+                callback.error(ResultCode.MISSING_CLIENT_IP, TextMessages.INVALID_CLIENT_IP)
             }
             IyziCoConfig.LANGUAGE.type.isInvalidLanguage() -> {
                 callback.error(ResultCode.MISSING_LANGUAGE, TextMessages.INVALID_LANGUAGE)
@@ -474,7 +490,7 @@ internal class MainIyziCo : IyziCo() {
                 callback.error(ResultCode.MISSING_PHONE, TextMessages.INVALID_PHONE_NUMBER)
             }
             walletPrice == null -> {
-                callback.error(ResultCode.MISSING_PRICE, TextMessages.INVALID_PRICE)
+                callback.error(ResultCode.INVALID_WALLET_PRICE, TextMessages.INVALID_PRICE)
             }
             else -> {
                 /**
@@ -512,7 +528,7 @@ internal class MainIyziCo : IyziCo() {
                 callback.error(ResultCode.MISSING_CLIENT_ID, TextMessages.INVALID_API_KEY)
             }
             IyziCoConfig.CLIENT_IP.isEmpty() -> {
-                callback.error(ResultCode.MISSING_CLIENTIP, TextMessages.INVALID_CLIENT_IP)
+                callback.error(ResultCode.MISSING_CLIENT_IP, TextMessages.INVALID_CLIENT_IP)
             }
             IyziCoConfig.LANGUAGE.type.isInvalidLanguage() -> {
                 callback.error(ResultCode.MISSING_LANGUAGE, TextMessages.INVALID_LANGUAGE)
