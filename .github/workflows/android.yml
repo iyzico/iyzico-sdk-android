@@ -24,4 +24,5 @@ jobs:
       run: chmod +x gradlew
 
     - name: Build with Gradle
-      run: ./gradlew iyzi-co-sdk:assemble
+      run: ./gradlew clean build iyzi-co-sdk:publishReleasePublicationToMavenLocal
+

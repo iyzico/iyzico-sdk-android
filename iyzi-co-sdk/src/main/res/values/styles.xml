@@ -11,7 +11,7 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:statusBarColor">@color/iyzico_white</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
-        <item name="android:textCursorDrawable">@drawable/cursor_style_large</item>
+        <item name="android:textCursorDrawable">@drawable/iyzico_cursor_style_large</item>
         <item name="android:autofilledHighlight" tools:targetApi="o">@android:color/transparent</item>
     </style>
 

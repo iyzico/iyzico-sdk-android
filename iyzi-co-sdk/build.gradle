@@ -1,7 +1,8 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven-publish'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'maven-publish'
+
 group = 'com.android.iyzico'
 version = '1.0.0'
 android {
@@ -65,16 +66,28 @@ dependencies {
 
 }
 
+
 afterEvaluate {
     publishing {
         publications {
-            // Creates a Maven publication called "release".
             release(MavenPublication) {
                 from components.release
                 groupId = 'com.android.iyzico'
                 artifactId = 'sdk'
                 version = '1.0.0'
             }
+
         }
+
+        /*repositories {
+            maven {
+                url 'your_maven_url'
+                credentials {
+                    username your_user_name
+                    password your_password
+                }
+            }
+        }*/
     }
+
 }
