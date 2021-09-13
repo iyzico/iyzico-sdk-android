@@ -100,7 +100,21 @@ internal class MainIyziCo : IyziCo() {
                         TextMessages.INVALID_PRODUCT_CATEGORY
                     )
                 }
-                item.itemType.type.equals(BasketItemType.PHYSICAL.type) -> {
+                item.price.isEmpty() -> {
+                    bool = false
+                    callback.error(
+                        ResultCode.BASKET_PRODUCT_PRICE_ERROR,
+                        TextMessages.INVALID_PRODUCT_PRICE_ERROR
+                    )
+                }
+                item.itemType.type.isEmpty() -> {
+                    bool = false
+                    callback.error(
+                        ResultCode.BASKET_PRUDUCT_ITEM_TYPE_ERROR,
+                        TextMessages.INVALID_PRODUCT_TYPE
+                    )
+                }
+                item.itemType.type == BasketItemType.PHYSICAL.type -> {
                     if (shippingContactName.isEmpty()) {
                         bool = false
                         callback.error(
