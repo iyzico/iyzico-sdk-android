@@ -57,7 +57,6 @@ abstract class IyziCo {
         itemType: String,
         itemName: String,
         itemCategory: String,
-        productImage: Bitmap?,
         productId: String?,
         addressDescription: String?,
         basketItemList: List<IyziCoBasketItem>,
