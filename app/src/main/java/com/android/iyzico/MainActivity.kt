@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                 "Lidyana.com",
                 60.0,
                 60.0,
-                Currency.TL,
+                Currency.TRY,
                 arrayOf(2, 3, 6, 9),
                 "B67832",//zorunlu
                 PaymentGroup.SUBSCRIPTION,//zorunlu değil

@@ -9,7 +9,6 @@ import com.android.iyzicosdk.util.constants.TextMessages
 import com.android.iyzicosdk.util.enums.*
 import com.android.iyzicosdk.util.enums.IyziCoSDKType
 import com.android.iyzicosdk.util.extensions.isInvalidCurrency
-import com.android.iyzicosdk.util.extensions.isInvalidDate
 import com.android.iyzicosdk.util.extensions.isInvalidLanguage
 import com.android.iyzicosdk.util.extensions.isInvalidPaymentGroup
 
@@ -189,7 +188,7 @@ internal class MainIyziCo : IyziCo() {
                     callback.error(ResultCode.MISSING_PAID_PRICE, TextMessages.INVALID_PAID_PRICE)
                 }
                 currency.type.isInvalidCurrency() -> {
-                    currency.type = Currency.TL.type
+                    currency.type = Currency.TRY.type
                 }
                 enabledInstallments.isEmpty() -> {
                     callback.error(
