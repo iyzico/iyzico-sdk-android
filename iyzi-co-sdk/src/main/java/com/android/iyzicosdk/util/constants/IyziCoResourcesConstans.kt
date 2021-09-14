@@ -32,7 +32,7 @@ internal object IyziCoResourcesConstans {
     /**
      *Ödeme grubu, varsayılan PRODUCT. Geçerli değerler enum içinde sunulmaktadır: PRODUCT, LISTING, SUBSCRIPTION
      */
-    var IYZICO_PAYMENT_GROUP: String = ""
+    var IYZICO_PAYMENT_GROUP: String? = null
 
     /**
      * MOBILE_SDK
@@ -136,27 +136,6 @@ internal object IyziCoResourcesConstans {
     var IYZICO_PRODUCT_ID: String = ""
 
     /**
-     *Üye işyeri tarafındaki sepetteki ürüne ait tip. Geçerli enum değerler: PHYSICAL ve VIRTUAL
-     */
-    var IYZICO_PRODUCT_ITEM_TYPE: String = ""
-
-    /**
-     * Üye işyeri tarafındaki sepetteki ürüne ait ismi.
-     */
-    var IYZICO_PRODUCT_NAME: String = ""
-
-
-    /**
-     * Üye işyeri tarafındaki sepetteki ürüne ait kategori 1.
-     */
-    var IYZOCO_PRODUCT_CATEGORY: String = ""
-
-    /**
-     * Ürün görseli
-     */
-    lateinit var IyziCoProductImage: Bitmap
-
-    /**
      * Ürün değeri
      */
     var IyziCoProductPrice: String = "0.00"
@@ -179,7 +158,7 @@ internal object IyziCoResourcesConstans {
     /**
      * Telefon bilgisi
      */
-    var IyziPhoneNumber: String = ""
+    var IyziPhoneNumber: String=""
 
     /**
      * ad  bilgisi

@@ -45,22 +45,22 @@ class MainActivity : AppCompatActivity() {
                 60.0,
                 Currency.TL,
                 arrayOf(2, 3, 6, 9),
-                "B67832",
-                PaymentGroup.SUBSCRIPTION,
+                "B67832",//zorunlu
+                PaymentGroup.SUBSCRIPTION,//zorunlu değil
                 "https://www.merchant.com/callback",
-                "BY789",
-                "John",
-                "Doe",
-                "74300864791",
-                "Istanbul",
-                "Turkey",
-                "yenimail7920212424@email.com",
+                "BY789",//zorunlu
+                "John",//zorunlu
+                "Doe",//zorunlu
+                "74300864791",//zorunlu
+                "Istanbul",//zorunlu
+                "Turkey",//zorunlu
+                "yenimail7920212424@email.com",//zorunlu
                 "5558765421",
                 "Merchant Ip",
                 "Merchant Adres",
-                "34218",
-                "2015-09- 17 23:45:06 ",
-                "2018-09- 17 23:45:06 ",
+                null,
+                null,
+                null,
                 "JAne due",
                 "Bursa",
                 "Turkey",
@@ -69,11 +69,6 @@ class MainActivity : AppCompatActivity() {
                 "Istanbul",
                 "Turkey",
                 "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1",
-                BasketItemType.PHYSICAL.type,
-                "Binocular",
-                "Collectibles",
-                "BI101",
-                "5352121212",
                 listOf(
                     IyziCoBasketItem(
                         "Collectibles",
