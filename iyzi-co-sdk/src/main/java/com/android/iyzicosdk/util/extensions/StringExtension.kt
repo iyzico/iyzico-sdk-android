@@ -1,7 +1,6 @@
 package com.android.iyzicosdk.util.extensions
 
 import android.util.Base64
-import android.util.Log
 import com.android.iyzicosdk.util.config.IyziCoConfig
 import com.android.iyzicosdk.util.constants.BundleConstans
 import com.android.iyzicosdk.util.enums.Currency
@@ -61,7 +60,7 @@ internal fun String.isInvalidLanguage(): Boolean {
 //girilen para biriminin geçerli olup olmadığının kontrolünü yapar
 internal fun String.isInvalidCurrency(): Boolean {
     when (this) {
-        Currency.TL.type -> {
+        Currency.TRY.type -> {
             return false
         }
         Currency.USD.type -> {

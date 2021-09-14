@@ -7,7 +7,7 @@ internal data class IyziCoPWIİnitializeRequest(
     @SerializedName("basketId")
     val basketId: String,
     @SerializedName("basketItems")
-    val basketItems: List<IyziCoBasketItem>,
+    val basketItems: List<IyzicoBasketItem>,
     @SerializedName("billingAddress")
     val billingAddress: IyziCoBillingAddress,
     @SerializedName("buyer")
@@ -23,7 +23,7 @@ internal data class IyziCoPWIİnitializeRequest(
     @SerializedName("paidPrice")
     val paidPrice: String,
     @SerializedName("paymentGroup")
-    val paymentGroup: String,
+    val paymentGroup: String?,
     @SerializedName("paymentSource")
     val paymentSource: String,
     @SerializedName("price")

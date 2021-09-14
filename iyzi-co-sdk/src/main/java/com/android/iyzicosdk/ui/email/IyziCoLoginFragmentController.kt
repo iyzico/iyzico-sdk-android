@@ -15,7 +15,6 @@ import com.android.iyzicosdk.util.constants.IyziCoResourcesConstans
 import com.android.iyzicosdk.util.enums.IyziCoLoginScreenType
 import com.android.iyzicosdk.util.enums.IyziCoSDKType
 import com.android.iyzicosdk.util.enums.IyziCoTransactionType
-import com.android.iyzicosdk.util.extensions.editPhoneNumber
 import com.android.iyzicosdk.util.extensions.isNotPhoneNumber
 
 internal class IyziCoLoginFragmentController constructor(private var baseFragment: IyziCoLoginFragment) {
@@ -253,7 +252,7 @@ internal class IyziCoLoginFragmentController constructor(private var baseFragmen
     ) {
         var iyziCoInitializePayWithIyziCoRequest = IyziCoPWIİnitializeRequest(
             IyziCoResourcesConstans.IYZICO_BASKET_ID,
-            IyziCoResourcesConstans.IYZICO_BASKET_ITEM_LIST,
+            IyziCoResourcesConstans.iyzicoBasketItemList,
             IyziCoBillingAddress(
                 IyziCoResourcesConstans.IYZICO_BILLING_ADRESS,
                 IyziCoResourcesConstans.IYZICO_SHIPPING_CITY,

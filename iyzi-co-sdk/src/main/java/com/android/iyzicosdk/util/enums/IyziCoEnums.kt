@@ -102,7 +102,7 @@ enum class Languages(var type: String) {
 }
 
 enum class Currency(var type: String) {
-    TL("TRY"),
+    TRY("TRY"),
     USD("USD"),
     EUR("EUR"),
     GBP("GBP"),

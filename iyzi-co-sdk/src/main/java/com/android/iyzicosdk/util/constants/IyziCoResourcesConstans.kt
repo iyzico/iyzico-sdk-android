@@ -1,8 +1,6 @@
 package com.android.iyzicosdk.util.constants
 
-import android.graphics.Bitmap
-import com.android.iyzicosdk.data.model.request.IyziCoBasketItem
-import java.util.*
+import com.android.iyzicosdk.data.model.request.IyzicoBasketItem
 
 internal object IyziCoResourcesConstans {
 
@@ -22,7 +20,7 @@ internal object IyziCoResourcesConstans {
      */
     lateinit var IYZICO_ENABLED_INSTALLMENTS: Array<Int>
 
-    lateinit var IYZICO_BASKET_ITEM_LIST: List<IyziCoBasketItem>
+    lateinit var iyzicoBasketItemList: List<IyzicoBasketItem>
 
     /**
      * üye işyeri sepet id’si.
@@ -32,7 +30,7 @@ internal object IyziCoResourcesConstans {
     /**
      *Ödeme grubu, varsayılan PRODUCT. Geçerli değerler enum içinde sunulmaktadır: PRODUCT, LISTING, SUBSCRIPTION
      */
-    var IYZICO_PAYMENT_GROUP: String = ""
+    var IYZICO_PAYMENT_GROUP: String? = null
 
     /**
      * MOBILE_SDK
@@ -75,20 +73,6 @@ internal object IyziCoResourcesConstans {
      */
     var IYZICO_REGISTRATION_ADRESS: String = ""
 
-    /**
-     * Üye işyeri tarafındaki alıcıya ait posta kodu.
-     */
-    var IYZICO_BUYER_ZIP_CODE: String = ""
-
-    /**
-     * Üye işyeri tarafındaki alıcıya ait kayıt tarihi
-     */
-    var IYZICO_BUYER_REGISTRATION_DATE: String = ""
-
-    /**
-     * Üye işyeri tarafındaki alıcıya ait son giriş tarihi.
-     */
-    var IYZICI_BUYER_LAST_LOGIN_DATE: String = ""
 
     /**
      * Üye işyeri tarafındaki fatura adresi, ad, soyad bilgisi.
@@ -136,27 +120,6 @@ internal object IyziCoResourcesConstans {
     var IYZICO_PRODUCT_ID: String = ""
 
     /**
-     *Üye işyeri tarafındaki sepetteki ürüne ait tip. Geçerli enum değerler: PHYSICAL ve VIRTUAL
-     */
-    var IYZICO_PRODUCT_ITEM_TYPE: String = ""
-
-    /**
-     * Üye işyeri tarafındaki sepetteki ürüne ait ismi.
-     */
-    var IYZICO_PRODUCT_NAME: String = ""
-
-
-    /**
-     * Üye işyeri tarafındaki sepetteki ürüne ait kategori 1.
-     */
-    var IYZOCO_PRODUCT_CATEGORY: String = ""
-
-    /**
-     * Ürün görseli
-     */
-    lateinit var IyziCoProductImage: Bitmap
-
-    /**
      * Ürün değeri
      */
     var IyziCoProductPrice: String = "0.00"
@@ -179,7 +142,7 @@ internal object IyziCoResourcesConstans {
     /**
      * Telefon bilgisi
      */
-    var IyziPhoneNumber: String = ""
+    var IyziPhoneNumber: String=""
 
     /**
      * ad  bilgisi

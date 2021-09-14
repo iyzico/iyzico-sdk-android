@@ -73,7 +73,7 @@ internal class IyziCoSecondaryLoginFragmentController constructor(private var ba
     ) {
         var iyziCoInitializePayWithIyziCoRequest = IyziCoPWIİnitializeRequest(
             IyziCoResourcesConstans.IYZICO_BASKET_ID,
-            IyziCoResourcesConstans.IYZICO_BASKET_ITEM_LIST,
+            IyziCoResourcesConstans.iyzicoBasketItemList,
             IyziCoBillingAddress(
                 IyziCoResourcesConstans.IYZICO_BILLING_ADRESS,
                 IyziCoResourcesConstans.IYZICO_SHIPPING_CITY,

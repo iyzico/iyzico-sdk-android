@@ -19,17 +19,17 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
--keep public class com.android.iyzicosdk.data.model.request.IyziCoBasketItem
+-keep public class com.android.iyzicosdk.data.model.request.IyzicoBasketItem
 -keep public enum com.android.iyzicosdk.util.enums.Languages
 -keep public enum com.android.iyzicosdk.util.enums.Currency
 -keep public enum com.android.iyzicosdk.util.enums.PaymentGroup
 -keep public enum com.android.iyzicosdk.util.enums.BasketItemType
 -keep public enum com.android.iyzicosdk.util.enums.ResultCode
 -keep public class  com.android.iyzicosdk.core.IyziCoActivity
--keep public class  com.android.iyzicosdk.core.IyziCo {
-public static com.android.iyzicosdk.core.IyziCo client();
+-keep public class  com.android.iyzicosdk.core.Iyzico {
+public static com.android.iyzicosdk.core.Iyzico client();
 }
--keep public class com.android.iyzicosdk.callback.IyziCoCallback
+-keep public class com.android.iyzicosdk.callback.IyzicoCallback
 
 -dontwarn org.jetbrains.annotations.
 -keep class kotlin.Metadata { *; }

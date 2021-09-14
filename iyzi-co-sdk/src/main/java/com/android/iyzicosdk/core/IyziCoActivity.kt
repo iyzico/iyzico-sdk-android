@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.android.iyzicosdk.R
-import com.android.iyzicosdk.callback.IyziCoCallback
+import com.android.iyzicosdk.callback.IyzicoCallback
 import com.android.iyzicosdk.ui.email.IyziCoLoginFragment
 import com.android.iyzicosdk.ui.have_member_login.IyziCoMemberLoginFragment
 import com.android.iyzicosdk.util.KeyboardUtils
@@ -36,7 +36,7 @@ internal class IyziCoActivity : AppCompatActivity() {
     private val emailFragment by lazy { IyziCoLoginFragment() }
     private var timer = Timer()
     private var savedInstanceState: Bundle? = null
-    internal var callback: IyziCoCallback? = null
+    internal var callback: IyzicoCallback? = null
     internal var initialRequestId: String? = null
     private var isSuccess = false
     private var progressDialog: Dialog? = null
@@ -51,7 +51,7 @@ internal class IyziCoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.iyzico_activity_iyzico)
         this.savedInstanceState = savedInstanceState
-        IyziCo.client().callback?.let { this.callback = it }
+        Iyzico.client().callback?.let { this.callback = it }
         hideSoftKeyboard()
 
         when (IyziCoConfig.IYZI_CO_SDK_TYPE) {
@@ -385,7 +385,7 @@ internal class IyziCoActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        IyziCo.client().callback = null
+        Iyzico.client().callback = null
         callback = null
         IyziCoConfig.IYZI_CO_AUTHORIZATION_KEY = ""
         super.onDestroy()

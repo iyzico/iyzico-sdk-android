@@ -1,19 +1,18 @@
 package com.android.iyzicosdk.core
 
 import android.app.Activity
-import com.android.iyzicosdk.callback.IyziCoCallback
-import com.android.iyzicosdk.data.model.request.IyziCoBasketItem
+import com.android.iyzicosdk.callback.IyzicoCallback
+import com.android.iyzicosdk.data.model.request.IyzicoBasketItem
 import com.android.iyzicosdk.util.config.IyziCoConfig
 import com.android.iyzicosdk.util.constants.IyziCoResourcesConstans
 import com.android.iyzicosdk.util.constants.TextMessages
 import com.android.iyzicosdk.util.enums.*
 import com.android.iyzicosdk.util.enums.IyziCoSDKType
 import com.android.iyzicosdk.util.extensions.isInvalidCurrency
-import com.android.iyzicosdk.util.extensions.isInvalidDate
 import com.android.iyzicosdk.util.extensions.isInvalidLanguage
 import com.android.iyzicosdk.util.extensions.isInvalidPaymentGroup
 
-internal class MainIyziCo : IyziCo() {
+internal class MainIyzico : Iyzico() {
 
     override fun initialize(
         clientIp: String,
@@ -44,7 +43,7 @@ internal class MainIyziCo : IyziCo() {
         currency: Currency,
         enabledInstallments: Array<Int>,
         basketId: String,
-        paymentGroup: PaymentGroup,
+        paymentGroup: PaymentGroup?,
         urlCallback: String,
         buyerId: String,
         buyerName: String,
@@ -56,9 +55,6 @@ internal class MainIyziCo : IyziCo() {
         buyerPhone: String,
         buyerIp: String,
         buyerRegistrationAddress: String,
-        buyerZipCode: String,
-        buyerRegistrationDate: String,
-        buyerLastLoginDate: String,
         billingContactName: String,
         billingCity: String,
         billingCountry: String,
@@ -67,13 +63,8 @@ internal class MainIyziCo : IyziCo() {
         shippingCity: String,
         shippingCountry: String,
         shippingAddress: String,
-        itemType: String,
-        itemName: String,
-        itemCategory: String,
-        productId: String?,
-        addressDescription: String?,
-        basketItems: List<IyziCoBasketItem>,
-        callback: IyziCoCallback
+        basketItems: List<IyzicoBasketItem>,
+        callback: IyzicoCallback
     ) {
         var bool: Boolean = true
 
@@ -184,7 +175,7 @@ internal class MainIyziCo : IyziCo() {
                         TextMessages.INVALID_EMAIL_NUMBER
                     )
                 }
-                buyerPhone.length != 10 -> {
+                buyerPhone?.length != 10 -> {
                     callback.error(
                         ResultCode.MISSING_BUYER_PHONE,
                         TextMessages.INVALID_PHONE_NUMBER
@@ -197,7 +188,7 @@ internal class MainIyziCo : IyziCo() {
                     callback.error(ResultCode.MISSING_PAID_PRICE, TextMessages.INVALID_PAID_PRICE)
                 }
                 currency.type.isInvalidCurrency() -> {
-                    currency.type = Currency.TL.type
+                    currency.type = Currency.TRY.type
                 }
                 enabledInstallments.isEmpty() -> {
                     callback.error(
@@ -208,8 +199,8 @@ internal class MainIyziCo : IyziCo() {
                 basketId.isEmpty() -> {
                     callback.error(ResultCode.MISSING_BASKET_ID, TextMessages.INVALID_BASKET_ID)
                 }
-                paymentGroup.type.isInvalidPaymentGroup() -> {
-                    paymentGroup.type = PaymentGroup.PRODUCT.type
+                paymentGroup?.type?.isInvalidPaymentGroup() == true -> {
+                    paymentGroup?.type = PaymentGroup.PRODUCT.type
                 }
                 urlCallback.isEmpty() -> {
                     callback.error(
@@ -259,24 +250,7 @@ internal class MainIyziCo : IyziCo() {
                         TextMessages.INVALID_BUYER_REGISTRATION_ADDRESS
                     )
                 }
-                buyerZipCode.isEmpty() -> {
-                    callback.error(
-                        ResultCode.MISSING_BUYER_ZIP_CODE,
-                        TextMessages.INVALID_BUYER_ZIP_CODE
-                    )
-                }
-                buyerRegistrationDate.isInvalidDate() -> {
-                    callback.error(
-                        ResultCode.MISSING_BUYER_REGISTRATION_DATE,
-                        TextMessages.INVALID_BUYER_REGISTRATION_DATE
-                    )
-                }
-                buyerLastLoginDate.isInvalidDate() -> {
-                    callback.error(
-                        ResultCode.MISSING_BUYER_LAST_LOGIN_DATE,
-                        TextMessages.INVALID_BUYER_LAST_LOGIN_DATE
-                    )
-                }
+
                 billingContactName.isEmpty() -> {
                     callback.error(
                         ResultCode.MISSING_BILLING_CONTACT_NAME,
@@ -324,7 +298,7 @@ internal class MainIyziCo : IyziCo() {
                     IyziCoResourcesConstans.IYZICO_ENABLED_INSTALLMENTS =
                         enabledInstallments
                     IyziCoResourcesConstans.IYZICO_BASKET_ID = basketId
-                    IyziCoResourcesConstans.IYZICO_PAYMENT_GROUP = paymentGroup.type
+                    IyziCoResourcesConstans.IYZICO_PAYMENT_GROUP = paymentGroup?.type
                     IyziCoResourcesConstans.IYZICO_CALLBACK_URL = urlCallback
                     IyziCoResourcesConstans.IYZICO_ID = buyerId
                     IyziCoResourcesConstans.IYZICO_BUYER_IDENTITY_NUMBER =
@@ -333,10 +307,10 @@ internal class MainIyziCo : IyziCo() {
                     IyziCoResourcesConstans.IYZICO_BUYER_IP = buyerIp
                     IyziCoResourcesConstans.IYZICO_REGISTRATION_ADRESS =
                         buyerRegistrationAddress
-                    IyziCoResourcesConstans.IYZICO_BUYER_REGISTRATION_DATE =
-                        buyerRegistrationDate
-                    IyziCoResourcesConstans.IYZICI_BUYER_LAST_LOGIN_DATE =
-                        buyerLastLoginDate
+                    /*  IyziCoResourcesConstans.IYZICO_BUYER_REGISTRATION_DATE =
+                          buyerRegistrationDate
+                      IyziCoResourcesConstans.IYZICI_BUYER_LAST_LOGIN_DATE =
+                          buyerLastLoginDate*/
                     IyziCoResourcesConstans.IYZICO_BILLING_CONTACT_NAME = billingContactName
                     IyziCoResourcesConstans.IYZICO_BILLING_CITY = billingCity
                     IyziCoResourcesConstans.IYZICO_BILLING_COUNTRY = billingCountry
@@ -344,14 +318,9 @@ internal class MainIyziCo : IyziCo() {
                     IyziCoResourcesConstans.IYZICO_SHIPPING_CITY = shippingCity
                     IyziCoResourcesConstans.IYZICO_SHIPPING_COUNTRY = shippingCountry
                     IyziCoResourcesConstans.IYZICO_SHIPPING_ADDRESS = shippingAddress
-                    IyziCoResourcesConstans.IYZICO_PRODUCT_ITEM_TYPE = itemType
-                    IyziCoResourcesConstans.IYZICO_PRODUCT_NAME = itemName
-                    IyziCoResourcesConstans.IYZOCO_PRODUCT_CATEGORY = itemCategory
-                    IyziCoResourcesConstans.IYZICO_SHIPPING_CONTACT_NAME =
-                        shippingContactName
-                    IyziCoResourcesConstans.IYZICO_BUYER_ZIP_CODE = buyerZipCode
+                    IyziCoResourcesConstans.IYZICO_SHIPPING_CONTACT_NAME = shippingContactName
                     IyziCoResourcesConstans.IYZICO_BUYER_COUNTRY = buyerCountry
-                    IyziCoResourcesConstans.IYZICO_BASKET_ITEM_LIST = basketItems
+                    IyziCoResourcesConstans.iyzicoBasketItemList = basketItems
                     client().callback = callback
                     IyziCoActivity.start(activity)
                 }
@@ -370,7 +339,7 @@ internal class MainIyziCo : IyziCo() {
         walletPrice: Double,
         name: String?,
         surname: String?,
-        callback: IyziCoCallback
+        callback: IyzicoCallback
     ) {
         when {
             IyziCoConfig.CLIENT_SECRET_ID.isEmpty() -> {
@@ -423,7 +392,7 @@ internal class MainIyziCo : IyziCo() {
         productId: String,
         name: String?,
         surname: String?,
-        callback: IyziCoCallback
+        callback: IyzicoCallback
     ) {
         when {
             IyziCoConfig.CLIENT_SECRET_ID.isEmpty() -> {
@@ -476,7 +445,7 @@ internal class MainIyziCo : IyziCo() {
         walletPrice: Double,
         name: String?,
         surname: String?,
-        callback: IyziCoCallback
+        callback: IyzicoCallback
     ) {
         when {
             IyziCoConfig.CLIENT_SECRET_ID.isEmpty() -> {
@@ -529,7 +498,7 @@ internal class MainIyziCo : IyziCo() {
         brand: String,
         name: String?,
         surname: String?,
-        callback: IyziCoCallback
+        callback: IyzicoCallback
     ) {
         when {
             IyziCoConfig.CLIENT_SECRET_ID.isEmpty() -> {
