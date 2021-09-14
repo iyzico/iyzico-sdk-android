@@ -3,9 +3,9 @@ package com.android.iyzico
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.android.iyzicosdk.callback.IyziCoCallback
-import com.android.iyzicosdk.core.IyziCo
-import com.android.iyzicosdk.data.model.request.IyziCoBasketItem
+import com.android.iyzicosdk.callback.IyzicoCallback
+import com.android.iyzicosdk.core.Iyzico
+import com.android.iyzicosdk.data.model.request.IyzicoBasketItem
 import com.android.iyzicosdk.util.enums.*
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         /**
          * Builder patternmi yoksa bu şekil bir kullanımmı buna daha sonra karar verilecek
          * */
-        IyziCo.client().initialize(
+        Iyzico.client().initialize(
             "127.0.0.1",
             "qumpara",
             "qumparaSecret",
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         start.setOnClickListener {
-            IyziCo.client().initialize(
+            Iyzico.client().initialize(
                 "127.0.0.1",
                 "qumpara",
                 "qumparaSecret",
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 "sandbox-DR5z07SXKVWyzwOHR6c85tccPb5ogOE9",
                 "sandbox-fEzf4Lbbzw5yGOVjGGl6UF2sM3CZ2nPl"
             )
-            IyziCo.client().startPayWithIyziCo(
+            Iyzico.client().startPayWithIyziCo(
                 this,
                 "Lidyana.com",
                 60.0,
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
                 "Turkey",//zorunlu
                 "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1",//zorunlu
                 listOf(
-                    IyziCoBasketItem(
+                    IyzicoBasketItem(
                         "Collectibles",
                         "BI101",
                         BasketItemType.PHYSICAL,
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
             )
         }
         refund.setOnClickListener {
-            IyziCo.client().startRefund(
+            Iyzico.client().startRefund(
                 this,
                 "yenimail792021-2@email.com",
                 "5457878282",
@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         settlement.setOnClickListener {
-            IyziCo.client().startSettlement(
+            Iyzico.client().startSettlement(
                 this,
                 "yenimail792021-3@email.com",
                 "5457878202",
@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         topup.setOnClickListener {
-            IyziCo.client().startTopUp(
+            Iyzico.client().startTopUp(
                 this,
                 "yenimail792021242443@email.com",
                 "5321869654",
@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity() {
         }
 //                "vurw17829al@basefy.com",
         cashOut.setOnClickListener {
-            IyziCo.client().startCashOut(
+            Iyzico.client().startCashOut(
                 this,
                 "yenimail792021242448@gmail.com",
                 "5354817252",
@@ -125,12 +125,12 @@ class MainActivity : AppCompatActivity() {
                 iyzicoCallback
             )
         }
-        IyziCo
+        Iyzico
 
 
     }
 
-    private val iyzicoCallback = object : IyziCoCallback {
+    private val iyzicoCallback = object : IyzicoCallback {
         override fun message(message: String) {
             Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
         }

@@ -1,16 +1,15 @@
 package com.android.iyzicosdk.core
 
 import android.app.Activity
-import android.graphics.Bitmap
-import com.android.iyzicosdk.callback.IyziCoCallback
-import com.android.iyzicosdk.data.model.request.IyziCoBasketItem
+import com.android.iyzicosdk.callback.IyzicoCallback
+import com.android.iyzicosdk.data.model.request.IyzicoBasketItem
 import com.android.iyzicosdk.util.enums.Currency
 import com.android.iyzicosdk.util.enums.Languages
 import com.android.iyzicosdk.util.enums.PaymentGroup
 
-abstract class IyziCo {
+abstract class Iyzico {
 
-    internal var callback: IyziCoCallback? = null
+    internal var callback: IyzicoCallback? = null
 
     abstract fun initialize(
         clientIp: String,
@@ -51,8 +50,8 @@ abstract class IyziCo {
         shippingCity: String,
         shippingCountry: String,
         shippingAddress: String,
-        basketItemList: List<IyziCoBasketItem>,
-        callback:IyziCoCallback
+        basketItemList: List<IyzicoBasketItem>,
+        callback:IyzicoCallback
     )
 
 
@@ -63,7 +62,7 @@ abstract class IyziCo {
         walletPrice: Double,
         name: String? = "",
         surname: String? = "",
-        callback: IyziCoCallback
+        callback: IyzicoCallback
     )
 
     abstract fun startRefund(
@@ -73,7 +72,7 @@ abstract class IyziCo {
         productId: String,
         name: String? = "",
         surname: String? = "",
-        callback: IyziCoCallback
+        callback: IyzicoCallback
     )
 
     abstract fun startSettlement(
@@ -83,7 +82,7 @@ abstract class IyziCo {
         walletPrice: Double,
         name: String? = "",
         surname: String? = "",
-        callback: IyziCoCallback
+        callback: IyzicoCallback
     )
 
     abstract fun startTopUp(
@@ -93,19 +92,19 @@ abstract class IyziCo {
         brand: String,
         name: String? = "",
         surname: String? = "",
-        callback: IyziCoCallback
+        callback: IyzicoCallback
     )
 
     //TODO: Business sorulduğunda güncellenecek
 
     companion object {
-        private lateinit var iyzico: IyziCo
+        private lateinit var iyzico: Iyzico
 
         @JvmStatic
         @Synchronized
-        fun client(): IyziCo {
+        fun client(): Iyzico {
             if (!this::iyzico.isInitialized) {
-                iyzico = MainIyziCo()
+                iyzico = MainIyzico()
             }
             return iyzico
         }

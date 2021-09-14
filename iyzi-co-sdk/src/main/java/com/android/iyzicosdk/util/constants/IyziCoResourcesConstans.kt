@@ -1,8 +1,6 @@
 package com.android.iyzicosdk.util.constants
 
-import android.graphics.Bitmap
-import com.android.iyzicosdk.data.model.request.IyziCoBasketItem
-import java.util.*
+import com.android.iyzicosdk.data.model.request.IyzicoBasketItem
 
 internal object IyziCoResourcesConstans {
 
@@ -22,7 +20,7 @@ internal object IyziCoResourcesConstans {
      */
     lateinit var IYZICO_ENABLED_INSTALLMENTS: Array<Int>
 
-    lateinit var IYZICO_BASKET_ITEM_LIST: List<IyziCoBasketItem>
+    lateinit var iyzicoBasketItemList: List<IyzicoBasketItem>
 
     /**
      * üye işyeri sepet id’si.

@@ -7,7 +7,7 @@ internal data class IyziCoPWIİnitializeRequest(
     @SerializedName("basketId")
     val basketId: String,
     @SerializedName("basketItems")
-    val basketItems: List<IyziCoBasketItem>,
+    val basketItems: List<IyzicoBasketItem>,
     @SerializedName("billingAddress")
     val billingAddress: IyziCoBillingAddress,
     @SerializedName("buyer")

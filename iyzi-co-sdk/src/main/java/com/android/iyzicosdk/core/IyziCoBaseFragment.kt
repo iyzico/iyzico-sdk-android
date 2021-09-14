@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import com.android.iyzicosdk.R
-import com.android.iyzicosdk.callback.IyziCoCallback
+import com.android.iyzicosdk.callback.IyzicoCallback
 import com.android.iyzicosdk.util.config.IyziCoConfig
 import com.android.iyzicosdk.util.enums.IyziCoSDKType
 import com.android.iyzicosdk.util.enums.IyziCoPopupType
@@ -27,7 +27,7 @@ internal abstract class IyziCoBaseFragment : Fragment() {
 
     private lateinit var activity: IyziCoActivity
 
-    private val callback: IyziCoCallback? get() = activity.callback
+    private val callback: IyzicoCallback? get() = activity.callback
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
