@@ -56,9 +56,6 @@ internal class MainIyziCo : IyziCo() {
         buyerPhone: String,
         buyerIp: String,
         buyerRegistrationAddress: String,
-        buyerZipCode: String?,
-        buyerRegistrationDate: String?,
-        buyerLastLoginDate: String?,
         billingContactName: String,
         billingCity: String,
         billingCountry: String,
@@ -203,9 +200,9 @@ internal class MainIyziCo : IyziCo() {
                 basketId.isEmpty() -> {
                     callback.error(ResultCode.MISSING_BASKET_ID, TextMessages.INVALID_BASKET_ID)
                 }
-              /*  paymentGroup.type.isInvalidPaymentGroup() -> {
-                    paymentGroup.type = PaymentGroup.PRODUCT.type
-                }*/
+                paymentGroup?.type?.isInvalidPaymentGroup() == true -> {
+                    paymentGroup?.type = PaymentGroup.PRODUCT.type
+                }
                 urlCallback.isEmpty() -> {
                     callback.error(
                         ResultCode.MISSING_URL_CALLBACK,
@@ -254,24 +251,7 @@ internal class MainIyziCo : IyziCo() {
                         TextMessages.INVALID_BUYER_REGISTRATION_ADDRESS
                     )
                 }
-                /*buyerZipCode.isEmpty() -> {
-                    callback.error(
-                        ResultCode.MISSING_BUYER_ZIP_CODE,
-                        TextMessages.INVALID_BUYER_ZIP_CODE
-                    )
-                }
-                buyerRegistrationDate.isInvalidDate() -> {
-                    callback.error(
-                        ResultCode.MISSING_BUYER_REGISTRATION_DATE,
-                        TextMessages.INVALID_BUYER_REGISTRATION_DATE
-                    )
-                }
-                buyerLastLoginDate.isInvalidDate() -> {
-                    callback.error(
-                        ResultCode.MISSING_BUYER_LAST_LOGIN_DATE,
-                        TextMessages.INVALID_BUYER_LAST_LOGIN_DATE
-                    )
-                }*/
+
                 billingContactName.isEmpty() -> {
                     callback.error(
                         ResultCode.MISSING_BILLING_CONTACT_NAME,
@@ -328,10 +308,10 @@ internal class MainIyziCo : IyziCo() {
                     IyziCoResourcesConstans.IYZICO_BUYER_IP = buyerIp
                     IyziCoResourcesConstans.IYZICO_REGISTRATION_ADRESS =
                         buyerRegistrationAddress
-                  /*  IyziCoResourcesConstans.IYZICO_BUYER_REGISTRATION_DATE =
-                        buyerRegistrationDate
-                    IyziCoResourcesConstans.IYZICI_BUYER_LAST_LOGIN_DATE =
-                        buyerLastLoginDate*/
+                    /*  IyziCoResourcesConstans.IYZICO_BUYER_REGISTRATION_DATE =
+                          buyerRegistrationDate
+                      IyziCoResourcesConstans.IYZICI_BUYER_LAST_LOGIN_DATE =
+                          buyerLastLoginDate*/
                     IyziCoResourcesConstans.IYZICO_BILLING_CONTACT_NAME = billingContactName
                     IyziCoResourcesConstans.IYZICO_BILLING_CITY = billingCity
                     IyziCoResourcesConstans.IYZICO_BILLING_COUNTRY = billingCountry
@@ -339,11 +319,7 @@ internal class MainIyziCo : IyziCo() {
                     IyziCoResourcesConstans.IYZICO_SHIPPING_CITY = shippingCity
                     IyziCoResourcesConstans.IYZICO_SHIPPING_COUNTRY = shippingCountry
                     IyziCoResourcesConstans.IYZICO_SHIPPING_ADDRESS = shippingAddress
-                    IyziCoResourcesConstans.IYZICO_SHIPPING_CONTACT_NAME =
-                        shippingContactName
-/*
-                    IyziCoResourcesConstans.IYZICO_BUYER_ZIP_CODE = buyerZipCode
-*/
+                    IyziCoResourcesConstans.IYZICO_SHIPPING_CONTACT_NAME = shippingContactName
                     IyziCoResourcesConstans.IYZICO_BUYER_COUNTRY = buyerCountry
                     IyziCoResourcesConstans.IYZICO_BASKET_ITEM_LIST = basketItems
                     client().callback = callback

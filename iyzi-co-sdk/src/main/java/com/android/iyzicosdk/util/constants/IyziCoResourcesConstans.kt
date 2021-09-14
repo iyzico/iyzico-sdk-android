@@ -75,20 +75,6 @@ internal object IyziCoResourcesConstans {
      */
     var IYZICO_REGISTRATION_ADRESS: String = ""
 
-    /**
-     * Üye işyeri tarafındaki alıcıya ait posta kodu.
-     */
-    var IYZICO_BUYER_ZIP_CODE: String = ""
-
-    /**
-     * Üye işyeri tarafındaki alıcıya ait kayıt tarihi
-     */
-    var IYZICO_BUYER_REGISTRATION_DATE: String = ""
-
-    /**
-     * Üye işyeri tarafındaki alıcıya ait son giriş tarihi.
-     */
-    var IYZICI_BUYER_LAST_LOGIN_DATE: String = ""
 
     /**
      * Üye işyeri tarafındaki fatura adresi, ad, soyad bilgisi.

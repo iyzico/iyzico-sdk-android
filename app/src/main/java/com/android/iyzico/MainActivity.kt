@@ -55,20 +55,17 @@ class MainActivity : AppCompatActivity() {
                 "Istanbul",//zorunlu
                 "Turkey",//zorunlu
                 "yenimail7920212424@email.com",//zorunlu
-                "5558765421",
-                "Merchant Ip",
-                "Merchant Adres",
-                null,
-                null,
-                null,
-                "JAne due",
-                "Bursa",
-                "Turkey",
-                "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1",
-                "Jane Doe",
-                "Istanbul",
-                "Turkey",
-                "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1",
+                "5558765421",//zorunlu
+                "Merchant Ip",//ıp zorunlu
+                "Merchant Adres",//zorunlu
+                "JAne due",//zounlu
+                "Bursa",//zorunlu
+                "Turkey",//zorunlu
+                "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1",//orunlu
+                "Jane Doe",//zorunlu
+                "Istanbul",//zorunlu
+                "Turkey",//zorunlu
+                "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1",//zorunlu
                 listOf(
                     IyziCoBasketItem(
                         "Collectibles",
