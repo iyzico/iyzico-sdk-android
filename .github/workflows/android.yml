@@ -22,5 +22,5 @@ jobs:
 
     
     - name: Build with Gradle
-      run: gradlew.bat  iyzi-co-sdk:publishReleasePublicationToMavenRepository
+      run: gradle  iyzi-co-sdk:publishReleasePublicationToMavenRepository
       
