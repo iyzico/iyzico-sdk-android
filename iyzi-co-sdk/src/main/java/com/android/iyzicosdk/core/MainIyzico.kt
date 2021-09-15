@@ -35,7 +35,7 @@ internal class MainIyzico : Iyzico() {
         }
     }
 
-    override fun startPayWithIyziCo(
+    override fun startPayWithIyzico(
         activity: Activity,
         brand: String,
         price: Double,

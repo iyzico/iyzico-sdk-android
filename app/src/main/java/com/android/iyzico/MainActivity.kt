@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 "sandbox-DR5z07SXKVWyzwOHR6c85tccPb5ogOE9",
                 "sandbox-fEzf4Lbbzw5yGOVjGGl6UF2sM3CZ2nPl"
             )
-            Iyzico.client().startPayWithIyziCo(
+            Iyzico.client().startPayWithIyzico(
                 this,
                 "Lidyana.com",
                 60.0,

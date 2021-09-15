@@ -24,7 +24,7 @@ abstract class Iyzico {
 
     )
 
-    abstract fun startPayWithIyziCo(
+    abstract fun startPayWithIyzico(
         activity: Activity,
         brand: String,
         price: Double,
