@@ -72,7 +72,7 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId = 'com.android.iyzico'
+                groupId = 'com.iyzico.android'
                 artifactId = 'sdk'
                 version = '1.0.0'
             }
