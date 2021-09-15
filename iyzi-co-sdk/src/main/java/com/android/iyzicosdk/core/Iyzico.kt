@@ -1,12 +1,14 @@
 package com.android.iyzicosdk.core
 
 import android.app.Activity
+import androidx.annotation.Keep
 import com.android.iyzicosdk.callback.IyzicoCallback
 import com.android.iyzicosdk.data.model.request.IyzicoBasketItem
 import com.android.iyzicosdk.util.enums.Currency
 import com.android.iyzicosdk.util.enums.Languages
 import com.android.iyzicosdk.util.enums.PaymentGroup
 
+@Keep
 abstract class Iyzico {
 
     internal var callback: IyzicoCallback? = null
@@ -51,7 +53,7 @@ abstract class Iyzico {
         shippingCountry: String,
         shippingAddress: String,
         basketItemList: List<IyzicoBasketItem>,
-        callback:IyzicoCallback
+        callback: IyzicoCallback
     )
 
 
@@ -95,8 +97,7 @@ abstract class Iyzico {
         callback: IyzicoCallback
     )
 
-    //TODO: Business sorulduğunda güncellenecek
-
+    @Keep
     companion object {
         private lateinit var iyzico: Iyzico
 
