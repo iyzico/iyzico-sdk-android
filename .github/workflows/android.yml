@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -23,5 +23,5 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
-      run: gradlew  iyzi-co-sdk:publishReleasePublicationToMavenRepository
+      run: gradlew.bat  iyzi-co-sdk:publishReleasePublicationToMavenRepository
       
