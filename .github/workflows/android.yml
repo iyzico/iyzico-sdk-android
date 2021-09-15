@@ -23,5 +23,5 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
-      run: ./gradlew  iyzi-co-sdk:publishReleasePublicationToMavenRepository
+      run: gradlew  iyzi-co-sdk:publishReleasePublicationToMavenRepository
       
