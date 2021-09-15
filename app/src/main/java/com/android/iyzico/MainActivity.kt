@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
             )
         }
         refund.setOnClickListener {
-            Iyzico.client().startRefund(
+           /* Iyzico.client().startRefund(
                 this,
                 "yenimail792021-2@email.com",
                 "5457878282",
@@ -87,11 +87,11 @@ class MainActivity : AppCompatActivity() {
                 "fff",
                 "fff",
                 iyzicoCallback
-            )
+            )*/
         }
 
         settlement.setOnClickListener {
-            Iyzico.client().startSettlement(
+           /* Iyzico.client().startSettlement(
                 this,
                 "yenimail792021-3@email.com",
                 "5457878202",
@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity() {
                 "fff",
                 "fff",
                 iyzicoCallback
-            )
+            )*/
         }
 
         topup.setOnClickListener {

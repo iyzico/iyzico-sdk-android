@@ -385,7 +385,7 @@ internal class MainIyzico : Iyzico() {
         }
     }
 
-    override fun startRefund(
+   /* override fun startRefund(
         activity: Activity,
         email: String,
         phone: String,
@@ -423,9 +423,9 @@ internal class MainIyzico : Iyzico() {
                 callback.error(ResultCode.MISSING_PRODUCT, TextMessages.INVALID_PRODUCT_ID)
             }
             else -> {
-                /**
+                *//**
                  * SDK'yı initialize etmek için kullanılır
-                 */
+                 *//*
                 IyziCoConfig.IYZI_CO_SDK_TYPE = IyziCoSDKType.REFUND
                 IyziCoResourcesConstans.IYZICO_PRODUCT_ID = productId
                 IyziCoResourcesConstans.IyziCoEmail = email.toLowerCase()
@@ -436,9 +436,9 @@ internal class MainIyzico : Iyzico() {
                 IyziCoActivity.start(activity)
             }
         }
-    }
+    }*/
 
-    override fun startSettlement(
+   /* override fun startSettlement(
         activity: Activity,
         email: String,
         phone: String,
@@ -476,9 +476,9 @@ internal class MainIyzico : Iyzico() {
                 callback.error(ResultCode.INVALID_WALLET_PRICE, TextMessages.INVALID_PRICE)
             }
             else -> {
-                /**
+                *//**
                  * SDK'nın açılacağı tipi belirtmek amacıyla
-                 */
+                 *//*
                 IyziCoConfig.IYZI_CO_SDK_TYPE = IyziCoSDKType.SETTLEMENT
                 IyziCoResourcesConstans.IyziCoWalletPrice = walletPrice.toString()
                 IyziCoResourcesConstans.IyziCoEmail = email.toLowerCase()
@@ -489,7 +489,7 @@ internal class MainIyzico : Iyzico() {
                 IyziCoActivity.start(activity)
             }
         }
-    }
+    }*/
 
     override fun startTopUp(
         activity: Activity,
