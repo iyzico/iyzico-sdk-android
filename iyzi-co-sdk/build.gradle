@@ -79,7 +79,7 @@ afterEvaluate {
 
         }
 
-        /*repositories {
+        repositories {
             maven {
                 url 'your_maven_url'
                 credentials {
@@ -87,7 +87,7 @@ afterEvaluate {
                     password your_password
                 }
             }
-        }*/
+        }
     }
 
 }
