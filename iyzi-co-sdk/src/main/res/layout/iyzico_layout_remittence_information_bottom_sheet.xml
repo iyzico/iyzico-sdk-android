@@ -22,8 +22,7 @@
             android:id="@+id/iyzico_fragment_remittance_eft_bank_imageView"
             android:layout_width="72dp"
             android:layout_height="34dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/iyzico_ic_garanti_bank" />
+            android:scaleType="fitXY"/>
 
         <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
             android:layout_width="wrap_content"

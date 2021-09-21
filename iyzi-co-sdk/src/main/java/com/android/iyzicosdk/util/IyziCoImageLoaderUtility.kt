@@ -37,7 +37,6 @@ internal class IyziCoImageLoaderUtility {
             val requestBuilder: RequestBuilder<PictureDrawable>
             requestBuilder = Glide.with(context)
                 .`as`(PictureDrawable::class.java)
-                .error(com.android.iyzicosdk.R.drawable.iyzico_ic_garanti_bank)
                 .transition(withCrossFade())
                 .centerCrop()
                 .listener(SvgSoftwareLayerSetter())

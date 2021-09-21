@@ -28,7 +28,6 @@
         android:layout_width="72dp"
         android:scaleType="fitXY"
         android:layout_height="36dp"
-        android:src="@drawable/iyzico_ic_garanti_bank"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
