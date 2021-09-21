@@ -22,21 +22,21 @@ class MainActivity : AppCompatActivity() {
          * */
         Iyzico.client().initialize(
             "127.0.0.1",
-            "qumpara",
-            "qumparaSecret",
-            "https://sandbox-consumerapigw.iyzipay.com/",
+            "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9",
+            "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR",
+            "https://consumerapigw.iyzipay.com/",
             Languages.TURKISH
         )
 
         start.setOnClickListener {
             Iyzico.client().initialize(
                 "127.0.0.1",
-                "qumpara",
-                "qumparaSecret",
-                "https://sandbox-consumerapigw.iyzipay.com/",
+                "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9",
+                "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR",
+                "https://consumerapigw.iyzipay.com/",
                 Languages.TURKISH,
-                "sandbox-DR5z07SXKVWyzwOHR6c85tccPb5ogOE9",
-                "sandbox-fEzf4Lbbzw5yGOVjGGl6UF2sM3CZ2nPl"
+                "MU2SxEhkC3bTwSsgnUvPcBsKUzNzoW9O",
+                "aaqZZtlaUdEQY1DgK1Guw8Prj16Hv6gg"
             )
             Iyzico.client().startPayWithIyzico(
                 this,
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                 "74300864791",//zorunlu
                 "Istanbul",//zorunlu
                 "Turkey",//zorunlu
-                "yenimail7920212424@email.com",//zorunlu
+                "yenimail792021242443@email.com",
                 "5558765421",//zorunlu
                 "Merchant Ip",//ıp zorunlu
                 "Merchant Adres",//zorunlu
