@@ -21,7 +21,7 @@ jobs:
       env:
           USERNAME: ${{ secrets.MVN_REPOSITORY_USERNAME }}
           PASSWORD: ${{ secrets.MVN_REPOSITORY_PASSWORD }}
-      run: gradlew  iyzi-co-sdk:publishReleasePublicationToMavenRepository
+      run: gradle  iyzi-co-sdk:publishReleasePublicationToMavenRepository
 
       
       
