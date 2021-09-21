@@ -20,14 +20,14 @@ jobs:
 
 
     - name: Publish
-      env:
+    - env:
           USERNAME: ${{ secrets.MVN_REPOSITORY_USERNAME }}
           PASSWORD: ${{ secrets.MVN_REPOSITORY_PASSWORD }}
-      - uses: eskatos/gradle-command-action@v1
-          with:
+     -  uses: eskatos/gradle-command-action@v1
+        with:
             gradle-version: 6.3
             arguments: iyzi-co-sdk:publishReleasePublicationToMavenRepository
-      
+
 
       
       
