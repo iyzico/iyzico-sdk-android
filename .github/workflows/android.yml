@@ -15,9 +15,11 @@ jobs:
     - name: Set username
       env:
           USERNAME: ${{ secrets.MVN_REPOSITORY_USERNAME }}
+      run: echo "Set user name"    
     - name: Set Passowrd
       env:
           PASSWORD: ${{ secrets.MVN_REPOSITORY_PASSWORD }}
+      run: echo "Set password"    
     - uses: actions/checkout@v2
     - name: set up JDK 11
       uses: actions/setup-java@v2
