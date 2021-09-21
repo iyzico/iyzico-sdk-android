@@ -19,8 +19,10 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
         cache: gradle
-
-    
+    - shell: bash
+        env:
+          USERNAME: ${{ secrets.MVN_REPOSITORY_USERNAME }}
+          PASSWORD: ${{ secrets.MVN_REPOSITORY_PASSWORD }}
     - name: Build with Gradle
       run: gradle  iyzi-co-sdk:publishReleasePublicationToMavenRepository
       

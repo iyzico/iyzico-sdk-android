@@ -79,15 +79,15 @@ afterEvaluate {
 
         }
 
-        /*repositories {
+        repositories {
             maven {
-                url 'your_maven_url'
+                url 'https://oss.sonatype.org/'
                 credentials {
-                    username your_user_name
-                    password your_password
+                    username System.getenv('USERNAME')
+                    password System.getenv('PASSWORD')
                 }
             }
-        }*/
+        }
     }
 
 }
