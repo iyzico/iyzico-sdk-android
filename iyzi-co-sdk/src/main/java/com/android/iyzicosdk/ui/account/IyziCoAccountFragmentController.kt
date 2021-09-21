@@ -253,8 +253,12 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
 
             override fun onError(code: Int, message: String) {
                 setMerchantKeys()
+                baseFragment.setZeroBalance()
+                baseFragment.setBalance()
+                if (isFirstBalanceRequest) {
+                    baseFragment.checkMyAccount()
+                }
 
-                uiCallBack.onError(code, message)
             }
         })
     }
