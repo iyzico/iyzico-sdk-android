@@ -18,15 +18,13 @@ jobs:
       with:
         java-version: '1.8'
 
-    - name: Set env
+    - name: Set env & push
       env:
             USERNAME: ${{ secrets.MVN_REPOSITORY_USERNAME }}
             PASSWORD: ${{ secrets.MVN_REPOSITORY_PASSWORD }}
-      run: echo "test"     
-    - name: Publish
-
-     -  uses: eskatos/gradle-command-action@v1
-        with:
+      run: echo "test"
+      uses: eskatos/gradle-command-action@v1
+      with:
             gradle-version: 6.3
             arguments: iyzi-co-sdk:publishReleasePublicationToMavenRepository
 
