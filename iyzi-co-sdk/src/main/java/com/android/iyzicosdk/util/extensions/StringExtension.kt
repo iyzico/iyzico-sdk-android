@@ -192,9 +192,9 @@ internal fun String.encode(): String {
 //girilen değerlerdeki noktaları düzeltir
 internal fun String.setWalletPrice(): String {
     return this.replace(".", ",")
-
-
 }
+
+
 
 internal fun String.invalidCardNumber(isAmex: Boolean): Boolean {
     if (isAmex) {

@@ -56,7 +56,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
     override val layoutRes: Int = R.layout.iyzico_fragment_account
     private val cardAdapter by lazy { IyziCoCardAdapter(requireContext()) }
     private var controller = IyziCoAccountFragmentController.newInstance(this)
-    private var balance = BundleConstans.ZERO_MONEY.setWalletPrice()
+    private var balance = BundleConstans.ZERO_MONEY
     private var canTransferAmount = BundleConstans.ZERO_MONEY.setWalletPrice()
     private val bankAdapter by lazy { IyziCoBankAdapter(this, requireContext()) }
     private val installmentAdapter by lazy { IyziCoInstallmentAdapter(requireContext()) }
@@ -132,7 +132,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                 )
                 iyzico_my_current_balance_green_info_cardview.show()
                 iyzico_my_current_balance_normal_info_textview.gone()
-                iyzico_fragment_account_current_balance_textView.setText(balance.addTlIcon())
+                iyzico_fragment_account_current_balance_textView.setText(balance.setWalletPrice().addTlIcon())
                 checkVisibilityButton()
 
             }
@@ -158,7 +158,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
     fun setBalance() {
 
         if (IyziCoConfig.IYZI_CO_SDK_TYPE == IyziCoSDKType.PAY_WITH_IYZI_CO) {
-            root.iyzico_fragment_account_current_balance_textView.text = balance.addTlIcon()
+            root.iyzico_fragment_account_current_balance_textView.text = balance.setWalletPrice().addTlIcon()
             balance.toDouble().apply {
                 if (this <= 0.0) {
                     hideUseBalance()

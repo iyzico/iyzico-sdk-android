@@ -253,6 +253,7 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
 
             override fun onError(code: Int, message: String) {
                 setMerchantKeys()
+
                 uiCallBack.onError(code, message)
             }
         })
