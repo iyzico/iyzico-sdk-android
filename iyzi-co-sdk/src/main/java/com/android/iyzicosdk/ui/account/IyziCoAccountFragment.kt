@@ -121,6 +121,10 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         isFirstBalanceRequest = false
     }
 
+    fun setZeroBalance(){
+        balance = BundleConstans.ZERO_MONEY
+
+    }
     fun setBalanceToRefresh() {
 
         if ((balance.toDouble() - oldBalance.convertForDouble()) > 0.0) {
