@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                 "74300864791",//zorunlu
                 "Istanbul",//zorunlu
                 "Turkey",//zorunlu
-                "yenimail792021242443@email.com",
+                "msahincakir34+22092021@gmail.com",
                 "5558765421",//zorunlu
                 "Merchant Ip",//ıp zorunlu
                 "Merchant Adres",//zorunlu
@@ -105,7 +105,7 @@ class MainActivity : AppCompatActivity() {
         topup.setOnClickListener {
             Iyzico.client().startTopUp(
                 this,
-                "yenimail792021242443@email.com",
+                "msahincakir34+22092021@gmail.com",
                 "5321869654",
                 "Lidyana.com",
                 "fff",
@@ -117,7 +117,7 @@ class MainActivity : AppCompatActivity() {
         cashOut.setOnClickListener {
             Iyzico.client().startCashOut(
                 this,
-                "yenimail792021242448@gmail.com",
+                "msahincakir34+22092021@gmail.com",
                 "5354817252",
                 800.99,
                 "mm",
