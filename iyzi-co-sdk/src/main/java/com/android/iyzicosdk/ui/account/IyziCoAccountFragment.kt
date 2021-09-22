@@ -655,7 +655,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         totalPrice = data[0].totalPrice
         installmentAdapter.items = data
         setPwiPrice(totalPrice.toString())
-        if (iyziCoPaymentType == IyziCoPaymentType.CARD_WITHOUT_BALANCE) {
+        if (iyziCoPaymentType == IyziCoPaymentType.CARD_WITHOUT_BALANCE||iyziCoPaymentType==IyziCoPaymentType.NEW_CARD_WITHOUT_BALANCE) {
             root.iyzico_fragment_Account_my_installment_information_layout.gone()
             root.iyzico_fragment_Account_my_installment_options_layout.show()
             installmentAdapter.onItemClick { clickItem ->
