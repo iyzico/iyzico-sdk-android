@@ -105,7 +105,7 @@ class MainActivity : AppCompatActivity() {
         topup.setOnClickListener {
             Iyzico.client().startTopUp(
                 this,
-                "msahincakir34+22092021@gmail.com",
+                "yenimail792021242443@email.com",
                 "5321869654",
                 "Lidyana.com",
                 "fff",

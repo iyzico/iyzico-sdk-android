@@ -23,9 +23,10 @@ internal class IyziCoAmountFragmentController constructor(private var baseFragme
 
     private var iyziCoRepository = IyziCoRepository.getIyziCoRepository()
 
-    fun getRetrieverMemberBalance(uiCallBack: UIResponseCallBack<String>){
+    fun getRetrieverMemberBalance(uiCallBack: UIResponseCallBack<String>) {
         baseFragment.showLoadingAnimation()
-        iyziCoRepository.retrieverMemberBalance(object :IyziCoServiceCallback<IyziCoRetrieverMemberBalanceResponse>{
+        iyziCoRepository.retrieverMemberBalance(object :
+            IyziCoServiceCallback<IyziCoRetrieverMemberBalanceResponse> {
             override fun onSuccess(data: IyziCoRetrieverMemberBalanceResponse?) {
                 data?.let {
                     it.amount?.let {
@@ -35,12 +36,13 @@ internal class IyziCoAmountFragmentController constructor(private var baseFragme
             }
 
             override fun onError(code: Int, message: String) {
-                uiCallBack.onError(code,message)
+                baseFragment.hideLoadingAnimation()
+                baseFragment.showIyziCoBalance(BundleConstans.ZERO_MONEY)
             }
 
         })
     }
-    
+
     fun amountBalanceComplete(
         amount: String,
         currentType: String,

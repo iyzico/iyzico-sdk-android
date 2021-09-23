@@ -218,7 +218,7 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
             }
 
             override fun onError(code: Int, message: String) {
-                uiCallback.onError(code, message)
+                baseFragment.hideLoadingAnimation()
                 baseFragment.myCardsAutoFocus()
             }
         })
