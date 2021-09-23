@@ -4,7 +4,6 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'maven-publish'
 
 group = 'com.android.iyzico'
-version = '1.0.0'
 android {
 
     compileSdkVersion 30
@@ -70,24 +69,19 @@ dependencies {
 afterEvaluate {
     publishing {
         publications {
+            // Creates a Maven publication called "release".
             release(MavenPublication) {
+                // Applies the component for the release build variant.
                 from components.release
+
+                // You can then customize attributes of the publication as shown below.
                 groupId = 'com.iyzico.android'
                 artifactId = 'sdk'
                 version = '1.0.0'
             }
+            // Creates a Maven publication called “debug”.
 
-        }
-
-        repositories {
-            maven {
-                url 'https://oss.sonatype.org/'
-                credentials {
-                    username System.getenv('USERNAME')
-                    password System.getenv('PASSWORD')
-                }
-            }
         }
     }
-
+    
 }
