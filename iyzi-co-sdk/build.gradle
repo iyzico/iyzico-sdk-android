@@ -2,8 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'maven-publish'
-
 group = 'com.android.iyzico'
+version = '1.0.1-dev'
 android {
 
     compileSdkVersion 30
@@ -75,13 +75,13 @@ afterEvaluate {
                 from components.release
 
                 // You can then customize attributes of the publication as shown below.
-                groupId = 'com.iyzico.android'
+                groupId = 'com.android.iyzico'
                 artifactId = 'sdk'
-                version = '1.0.0'
+                version = '1.0.1-dev'
             }
             // Creates a Maven publication called “debug”.
 
         }
     }
-    
+
 }
