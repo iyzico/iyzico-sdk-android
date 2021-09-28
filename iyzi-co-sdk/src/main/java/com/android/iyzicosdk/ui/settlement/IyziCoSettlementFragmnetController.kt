@@ -5,6 +5,7 @@ import com.android.iyzicosdk.data.UIResponseCallBack
 import com.android.iyzicosdk.data.model.response.IyziCoRetrieverMemberBalanceResponse
 import com.android.iyzicosdk.data.repository.IyziCoRepository
 import com.android.iyzicosdk.ui.email.IyziCoLoginFragment
+import com.android.iyzicosdk.util.constants.BundleConstans
 
 internal class IyziCoSettlementFragmnetController constructor(private var baseFragment: IyziCoSettlementFragment) {
 
@@ -13,9 +14,9 @@ internal class IyziCoSettlementFragmnetController constructor(private var baseFr
             IyziCoSettlementFragmnetController(baseFragment)
     }
 
-    private var iyziCoRepository=IyziCoRepository.getIyziCoRepository()
+    private var iyziCoRepository = IyziCoRepository.getIyziCoRepository()
 
-    fun getRetrieverMemberBalance(uiCallBack: UIResponseCallBack<String>){
+    fun getRetrieverMemberBalance(uiCallBack: UIResponseCallBack<String>) {
         baseFragment.showLoadingAnimation()
         iyziCoRepository.retrieverMemberBalance(object :
             IyziCoServiceCallback<IyziCoRetrieverMemberBalanceResponse> {
@@ -26,8 +27,10 @@ internal class IyziCoSettlementFragmnetController constructor(private var baseFr
                     }
                 }
             }
+
             override fun onError(code: Int, message: String) {
-                uiCallBack.onError(code,message)
+                baseFragment.hideLoadingAnimation()
+                baseFragment.showIyziCoBalance(BundleConstans.ZERO_MONEY)
             }
 
         })

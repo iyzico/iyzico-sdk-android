@@ -7,6 +7,7 @@ import com.android.iyzicosdk.data.UIResponseCallBack
 import com.android.iyzicosdk.data.model.response.IyziCoRetrieverMemberBalanceResponse
 import com.android.iyzicosdk.data.repository.IyziCoRepository
 import com.android.iyzicosdk.ui.remittance_information.IyziCoRemittanceInformationBottomSheet
+import com.android.iyzicosdk.util.constants.BundleConstans
 import com.android.iyzicosdk.util.constants.IyziCoUrlConstants
 import com.android.iyzicosdk.util.constants.TextMessages
 import com.android.iyzicosdk.util.enums.IyziCoBottomSheetType
@@ -34,7 +35,8 @@ internal class IyziCoInfoFragmentController constructor(private var baseFragment
             }
 
             override fun onError(code: Int, message: String) {
-                uiCallBack.onError(code, message)
+                baseFragment.hideLoadingAnimation()
+                baseFragment.showIyziCoBalance(BundleConstans.ZERO_MONEY)
             }
 
         })
