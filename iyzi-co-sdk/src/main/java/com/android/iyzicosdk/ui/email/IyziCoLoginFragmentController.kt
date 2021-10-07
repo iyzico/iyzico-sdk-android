@@ -104,6 +104,10 @@ internal class IyziCoLoginFragmentController constructor(private var baseFragmen
                     override fun onSuccess(data: IyziCoLoginResponse?) {
                         setMerchantKeys()
                         data?.let {
+
+                            it.gsmNumber?.let {
+                                IyziCoResourcesConstans.IyziPhoneNumber = it.substring(3,it.length)
+                            }
                             if (it.gsmVerified) {
                                 baseFragment.goOtp(
                                     it.referenceCode,
@@ -274,10 +278,12 @@ internal class IyziCoLoginFragmentController constructor(private var baseFragmen
             IyziCoResourcesConstans.IYZICO_CALLBACK_URL,
             IyziCoResourcesConstans.IYZICO_CURRECY,
             IyziCoResourcesConstans.IYZICO_ENABLED_INSTALLMENTS.toList(),
-            MobileDeviceInfoDto(android.os.Build.DEVICE ,
-                android.os.Build.MODEL ,
+            MobileDeviceInfoDto(
+                android.os.Build.DEVICE,
+                android.os.Build.MODEL,
                 System.getProperty("os.version"),
-                android.os.Build.VERSION.SDK),
+                android.os.Build.VERSION.SDK
+            ),
             IyziCoResourcesConstans.IYZICO_PAID_PRICE.toString(),
             IyziCoResourcesConstans.IYZICO_PAYMENT_GROUP,
             IyziCoResourcesConstans.IYZICO_PAYMENT_SOURCE,

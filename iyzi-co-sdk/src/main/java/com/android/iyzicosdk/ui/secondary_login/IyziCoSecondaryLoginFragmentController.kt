@@ -36,6 +36,9 @@ internal class IyziCoSecondaryLoginFragmentController constructor(private var ba
                     uiCallback.onSuccess(data)
                     setMerchantKeys()
                     data?.let {
+                        it.gsmNumber?.let {
+                            IyziCoResourcesConstans.IyziPhoneNumber =  it.substring(3,it.length)
+                        }
                         if (data.gsmVerified) {
                             baseFragmentIyziCo.goOtp(
                                 it.referenceCode,
@@ -216,6 +219,7 @@ internal class IyziCoSecondaryLoginFragmentController constructor(private var ba
                     }
                     data?.let {
                         uiCallback.onSuccess(data)
+                        IyziCoResourcesConstans.IyziPhoneNumber = phoneNumber.substring(3,phoneNumber.length)
                         baseFragmentIyziCo.goOtp(
                             it.referenceCode,
                             it.memberUserId,

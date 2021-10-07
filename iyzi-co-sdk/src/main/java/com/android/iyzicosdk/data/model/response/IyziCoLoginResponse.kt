@@ -13,5 +13,8 @@ internal data class IyziCoLoginResponse(
     @SerializedName("gsmVerified")
     var gsmVerified: Boolean,
     @SerializedName("maskedGsmNumber")
-    var maskedGsmNumber: String
+    var maskedGsmNumber: String,
+    @SerializedName("gsmNumber")
+    var gsmNumber: String?
+
 )

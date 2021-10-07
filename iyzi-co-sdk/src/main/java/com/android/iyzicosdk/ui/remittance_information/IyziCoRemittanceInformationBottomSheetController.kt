@@ -19,7 +19,7 @@ internal class IyziCoRemittanceInformationBottomSheetController constructor(priv
 
     private var iyziCoRepository = IyziCoRepository.getIyziCoRepository()
 
-    fun pwBankTransferNotifty(id: Int) {
+    fun pwBankTransferNotifty(id: String) {
         IyziCoResourcesConstans.IyziCOxTokenUse = true
         iyziCoRepository.pwiBankTransferInitializeNotify(BankTransferPaymenNotifyRequest(id),
             object :

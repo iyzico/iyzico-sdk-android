@@ -53,7 +53,7 @@ internal class IyziCoInfoFragmentController constructor(private var baseFragment
             IyziCoInfoScreenType.PAYMENT -> {
                 IyziCoRemittanceInformationBottomSheet.show(
                     baseFragment.getIyziCoActivity()?.supportFragmentManager,
-                    IyziCoBottomSheetType.TRANSFER_SEE_INFO,iban,companyDetail,explain,companyName,bankTransferId
+                    IyziCoBottomSheetType.TRANSFER_SEE_INFO,iban,companyDetail,explain,companyName,bankTransferId.toString()
                 )
             }
             IyziCoInfoScreenType.SETTLEMENT_SUCCESS -> {

@@ -872,7 +872,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         title: String,
         bankName: String,
         reference: String = referenceCode,
-        bankTransferId: Int,
+        bankTransferId: String,
         bankLogo: String
     ) {
         IyziCoRemittanceInformationBottomSheet.show(

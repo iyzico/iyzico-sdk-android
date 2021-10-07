@@ -89,6 +89,9 @@ internal class IyziCoMemberLoginFragment : IyziCoBaseFragment() {
                 override fun onSuccess(response: IyziCoLoginResponse?) {
                     super.onSuccess(response)
                     response?.let {
+                        it.gsmNumber?.let {
+                            IyziCoResourcesConstans.IyziPhoneNumber = it.substring(3,it.length)
+                        }
                         goOtp(
                             it.referenceCode,
                             it.memberUserId,

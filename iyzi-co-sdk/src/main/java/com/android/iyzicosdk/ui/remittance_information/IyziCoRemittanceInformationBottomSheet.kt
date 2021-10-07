@@ -50,7 +50,7 @@ internal class IyziCoRemittanceInformationBottomSheet : BottomSheetDialogFragmen
     private var companyDetail = ""
     private var controller = IyziCoRemittanceInformationBottomSheetController.newInstance(this)
     private var companyName = ""
-    private var bankTransferPaymentId = 0
+    private var bankTransferPaymentId = "0"
     private var bankLogo: String = ""
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         setStyle(STYLE_NORMAL, R.style.IyziCoCustomBottomSheetDialogTheme)
@@ -92,7 +92,7 @@ internal class IyziCoRemittanceInformationBottomSheet : BottomSheetDialogFragmen
             companyDetail = arguments?.getString(COMPANY_DETAIL) ?: ""
             companyName = arguments?.getString(COMPANY_NAME) ?: ""
             bankTransferPaymentId =
-                arguments?.getInt(BundleConstans.BANK_TRANSFER_PAYMENT_ID, 0) ?: 0
+                arguments?.getString(BundleConstans.BANK_TRANSFER_PAYMENT_ID, "0") ?: "0"
             bankLogo = arguments?.getString(BundleConstans.BANK_LOGO_URL) ?: ""
 
         }
@@ -204,7 +204,7 @@ internal class IyziCoRemittanceInformationBottomSheet : BottomSheetDialogFragmen
             companyDetail: String,
             explain: String,
             companyName: String,
-            bankTransferaymentId: Int = 0,
+            bankTransferaymentId: String = "0",
             bankLogo: String = ""
         ) {
             fm?.let {
@@ -214,7 +214,7 @@ internal class IyziCoRemittanceInformationBottomSheet : BottomSheetDialogFragmen
                 bundle.putString(BundleConstans.EXPLAINING, explain)
                 bundle.putString(BundleConstans.IBAN, iban)
                 bundle.putString(BundleConstans.COMPANY_DETAIL, companyDetail)
-                bundle.putInt(BundleConstans.BANK_TRANSFER_PAYMENT_ID, bankTransferaymentId)
+                bundle.putString(BundleConstans.BANK_TRANSFER_PAYMENT_ID, bankTransferaymentId)
                 bundle.putString(BundleConstans.BANK_LOGO_URL, bankLogo)
                 val bottomSheetFragment = IyziCoRemittanceInformationBottomSheet()
                 bottomSheetFragment.arguments = bundle

@@ -29,14 +29,23 @@ class MainActivity : AppCompatActivity() {
         )
 
         start.setOnClickListener {
-            Iyzico.client().initialize(
+          /*  Iyzico.client().initialize(
                 "127.0.0.1",
                 "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9",
                 "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR",
-                "https://consumerapigw.iyzipay.com/",
+                "https://sandbox-consumerapigw.iyzipay.com/",
                 Languages.TURKISH,
                 "MU2SxEhkC3bTwSsgnUvPcBsKUzNzoW9O",
                 "aaqZZtlaUdEQY1DgK1Guw8Prj16Hv6gg"
+            )*/
+            Iyzico.client().initialize(
+                "127.0.0.1",
+                "qumpara",
+                "qumparaSecret",
+                "https://sandbox-consumerapigw.iyzipay.com/",
+                Languages.TURKISH,
+                "sandbox-DR5z07SXKVWyzwOHR6c85tccPb5ogOE9",
+                "sandbox-fEzf4Lbbzw5yGOVjGGl6UF2sM3CZ2nPl"
             )
             Iyzico.client().startPayWithIyzico(
                 this,
@@ -55,9 +64,9 @@ class MainActivity : AppCompatActivity() {
                 "Istanbul",//zorunlu
                 "Turkey",//zorunlu
                 "msahincakir34+22092021@gmail.com",
-                "5558765421",//zorunlu
+                "5555555555",//zorunlu
                 "Merchant Ip",//ıp zorunlu
-                "Merchant Adres",//zorunlu
+                "Merchant Adres",//zorumaskedGsmNumbernlu
                 "JAne due",//zounlu
                 "Bursa",//zorunlu
                 "Turkey",//zorunlu
