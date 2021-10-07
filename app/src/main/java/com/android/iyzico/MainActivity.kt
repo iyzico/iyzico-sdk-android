@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         start.setOnClickListener {
-          /*  Iyzico.client().initialize(
+            Iyzico.client().initialize(
                 "127.0.0.1",
                 "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9",
                 "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR",
@@ -37,16 +37,8 @@ class MainActivity : AppCompatActivity() {
                 Languages.TURKISH,
                 "MU2SxEhkC3bTwSsgnUvPcBsKUzNzoW9O",
                 "aaqZZtlaUdEQY1DgK1Guw8Prj16Hv6gg"
-            )*/
-            Iyzico.client().initialize(
-                "127.0.0.1",
-                "qumpara",
-                "qumparaSecret",
-                "https://sandbox-consumerapigw.iyzipay.com/",
-                Languages.TURKISH,
-                "sandbox-DR5z07SXKVWyzwOHR6c85tccPb5ogOE9",
-                "sandbox-fEzf4Lbbzw5yGOVjGGl6UF2sM3CZ2nPl"
             )
+
             Iyzico.client().startPayWithIyzico(
                 this,
                 "Lidyana.com",
