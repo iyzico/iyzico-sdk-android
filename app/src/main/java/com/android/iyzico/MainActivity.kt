@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                 "127.0.0.1",
                 "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9",
                 "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR",
-                "https://sandbox-consumerapigw.iyzipay.com/",
+                "https://consumerapigw.iyzipay.com/",
                 Languages.TURKISH,
                 "MU2SxEhkC3bTwSsgnUvPcBsKUzNzoW9O",
                 "aaqZZtlaUdEQY1DgK1Guw8Prj16Hv6gg"
