@@ -42,10 +42,10 @@ class MainActivity : AppCompatActivity() {
             Iyzico.client().startPayWithIyzico(
                 this,
                 "Lidyana.com",
-                60.0,
-                60.0,
+                1.0,
+                1.0,
                 Currency.TRY,
-                arrayOf(2, 3, 6, 9),
+                arrayOf(1,2, 3, 6, 9),
                 "B67832",//zorunlu
                 PaymentGroup.SUBSCRIPTION,//zorunlu değil
                 "https://www.merchant.com/callback",
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                         "BI101",
                         BasketItemType.PHYSICAL,
                         "Binocular",
-                        "60.00"
+                        "1.00"
                     )
                 ),
                 iyzicoCallback
