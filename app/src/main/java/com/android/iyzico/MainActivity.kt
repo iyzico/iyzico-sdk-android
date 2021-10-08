@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
                 "MU2SxEhkC3bTwSsgnUvPcBsKUzNzoW9O",
                 "aaqZZtlaUdEQY1DgK1Guw8Prj16Hv6gg"
             )
+
             Iyzico.client().startPayWithIyzico(
                 this,
                 "Lidyana.com",
@@ -55,9 +56,9 @@ class MainActivity : AppCompatActivity() {
                 "Istanbul",//zorunlu
                 "Turkey",//zorunlu
                 "msahincakir34+22092021@gmail.com",
-                "5558765421",//zorunlu
+                "5555555555",//zorunlu
                 "Merchant Ip",//ıp zorunlu
-                "Merchant Adres",//zorunlu
+                "Merchant Adres",//zorumaskedGsmNumbernlu
                 "JAne due",//zounlu
                 "Bursa",//zorunlu
                 "Turkey",//zorunlu

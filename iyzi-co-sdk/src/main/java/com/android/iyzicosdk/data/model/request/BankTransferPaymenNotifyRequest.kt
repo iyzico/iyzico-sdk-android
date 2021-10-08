@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 
 internal data class BankTransferPaymenNotifyRequest(
     @SerializedName("bankTransferPaymentId")
-    val bankTransferPaymentId: Int
+    val bankTransferPaymentId: String
 )

@@ -16,6 +16,7 @@ import com.android.iyzicosdk.util.enums.IyziCoInstallmentType
 import com.android.iyzicosdk.util.enums.IyziCoLoginChannelType
 import com.android.iyzicosdk.util.enums.IyziCoPaymentType
 import com.android.iyzicosdk.util.enums.IyziCoSDKType
+import com.android.iyzicosdk.util.extensions.clearSpace
 import com.android.iyzicosdk.util.extensions.convertAmount
 import com.android.iyzicosdk.util.extensions.intToBoolean
 
@@ -155,7 +156,7 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                             title,
                             bankName,
                             data?.code ?: "",
-                            data?.bankTransferPaymentId?.toInt() ?: 0,
+                            data?.bankTransferPaymentId?:"",
                             bankLogo
                         )
                     }
@@ -341,7 +342,8 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                 override fun onSuccess(data: IyziCoPWIRetriveResponse?) {
                     data?.let {
                         uiCallback.onSuccess(it)
-                        gsmNumber = data.iyziCoCheckoutDetail.gsmNumber
+                        gsmNumber = "+90"+IyziCoResourcesConstans.IyziPhoneNumber
+                        gsmNumber.clearSpace()
                         memberId = data.memberId
                         baseFragment.setCardAdapter(it.iyziCoMemberCards.map {
                             it.toCardItem()
