@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                 1.0,
                 1.0,
                 Currency.TRY,
-                arrayOf(1,2, 3, 6, 9),
+                arrayOf(1, 2, 3, 6, 9),
                 "B67832",//zorunlu
                 PaymentGroup.SUBSCRIPTION,//zorunlu değil
                 "https://www.merchant.com/callback",
@@ -73,34 +73,35 @@ class MainActivity : AppCompatActivity() {
                         "BI101",
                         BasketItemType.PHYSICAL,
                         "Binocular",
-                        "1.00"
+                        "1.00",
+                        "MU2SxEhkC3bTwSsgnUvPcBsKUzNzoW9O", "1.00"
                     )
                 ),
                 iyzicoCallback
             )
         }
         refund.setOnClickListener {
-           /* Iyzico.client().startRefund(
-                this,
-                "yenimail792021-2@email.com",
-                "5457878282",
-                "1234",
-                "fff",
-                "fff",
-                iyzicoCallback
-            )*/
+            /* Iyzico.client().startRefund(
+                 this,
+                 "yenimail792021-2@email.com",
+                 "5457878282",
+                 "1234",
+                 "fff",
+                 "fff",
+                 iyzicoCallback
+             )*/
         }
 
         settlement.setOnClickListener {
-           /* Iyzico.client().startSettlement(
-                this,
-                "yenimail792021-3@email.com",
-                "5457878202",
-                225.30,
-                "fff",
-                "fff",
-                iyzicoCallback
-            )*/
+            /* Iyzico.client().startSettlement(
+                 this,
+                 "yenimail792021-3@email.com",
+                 "5457878202",
+                 225.30,
+                 "fff",
+                 "fff",
+                 iyzicoCallback
+             )*/
         }
 
         topup.setOnClickListener {
