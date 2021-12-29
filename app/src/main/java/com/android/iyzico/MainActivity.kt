@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
                         BasketItemType.PHYSICAL,
                         "Binocular",
                         "1.00",
-                        "MU2SxEhkC3bTwSsgnUvPcBsKUzNzoW9O", "1.00"
+                        "", ""
                     )
                 ),
                 iyzicoCallback
