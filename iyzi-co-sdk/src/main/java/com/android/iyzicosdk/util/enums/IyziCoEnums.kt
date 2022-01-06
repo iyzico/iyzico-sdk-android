@@ -118,6 +118,6 @@ enum class PaymentGroup(var type: String) {
 }
 @Keep
 enum class BasketItemType(var type: String) {
-    PHYSICAL("PHYSICAL "),
+    PHYSICAL("PHYSICAL"),
     VIRTUAL("VIRTUAL")
 }
