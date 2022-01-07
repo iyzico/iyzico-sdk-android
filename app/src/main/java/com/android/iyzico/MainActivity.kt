@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         /**
          * Builder patternmi yoksa bu şekil bir kullanımmı buna daha sonra karar verilecek
          * */
+        //canli             "https://consumerapigw.iyzipay.com/",
         Iyzico.client().initialize(
             "127.0.0.1",
             "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9",
@@ -27,27 +28,30 @@ class MainActivity : AppCompatActivity() {
             "https://consumerapigw.iyzipay.com/",
             Languages.TURKISH
         )
-
+        /*  "127.0.0.1",
+          "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9",
+          "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR",
+          "https://sandbox-consumerapigw.iyzipay.com/",*/
         start.setOnClickListener {
             Iyzico.client().initialize(
                 "127.0.0.1",
-                "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9",
-                "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR",
-                "https://consumerapigw.iyzipay.com/",
+                "qumpara",
+                "qumparaSecret",
+                "https://sandbox-consumerapigw.iyzipay.com/",
                 Languages.TURKISH,
-                "MU2SxEhkC3bTwSsgnUvPcBsKUzNzoW9O",
-                "aaqZZtlaUdEQY1DgK1Guw8Prj16Hv6gg"
+                "sandbox-nwm4ooTetPJDChjBxf3WqQwKW6qr6irx",
+                "sandbox-9mf76Q4wJLZjv2GxyM8BflBfrAYSULTD"
             )
 
             Iyzico.client().startPayWithIyzico(
                 this,
                 "Lidyana.com",
-                1.0,
-                1.0,
+                50.19,
+                50.19,
                 Currency.TRY,
-                arrayOf(1,2, 3, 6, 9),
+                arrayOf(1, 2, 3, 6, 9),
                 "B67832",//zorunlu
-                PaymentGroup.SUBSCRIPTION,//zorunlu değil
+                PaymentGroup.PRODUCT,//zorunlu değil
                 "https://www.merchant.com/callback",
                 "BY789",//zorunlu
                 "John",//zorunlu
@@ -73,34 +77,36 @@ class MainActivity : AppCompatActivity() {
                         "BI101",
                         BasketItemType.PHYSICAL,
                         "Binocular",
-                        "1.00"
+                        "50.19",
+                        "Sll5o4Dd3msNHWaHmJ5h4UOv7yA=",
+                        "50.19"
                     )
                 ),
                 iyzicoCallback
             )
         }
         refund.setOnClickListener {
-           /* Iyzico.client().startRefund(
-                this,
-                "yenimail792021-2@email.com",
-                "5457878282",
-                "1234",
-                "fff",
-                "fff",
-                iyzicoCallback
-            )*/
+            /* Iyzico.client().startRefund(
+                 this,
+                 "yenimail792021-2@email.com",
+                 "5457878282",
+                 "1234",
+                 "fff",
+                 "fff",
+                 iyzicoCallback
+             )*/
         }
 
         settlement.setOnClickListener {
-           /* Iyzico.client().startSettlement(
-                this,
-                "yenimail792021-3@email.com",
-                "5457878202",
-                225.30,
-                "fff",
-                "fff",
-                iyzicoCallback
-            )*/
+            /* Iyzico.client().startSettlement(
+                 this,
+                 "yenimail792021-3@email.com",
+                 "5457878202",
+                 225.30,
+                 "fff",
+                 "fff",
+                 iyzicoCallback
+             )*/
         }
 
         topup.setOnClickListener {

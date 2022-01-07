@@ -14,5 +14,9 @@ public data class IyzicoBasketItem(
     @SerializedName("name")
     val name: String,
     @SerializedName("price")
-    val price: String
+    val price: String,
+    @SerializedName("subMerchantKey")
+    val subMerchantKey: String,
+    @SerializedName("subMerchantPrice")
+    val subMerchantPrice: String
 )
