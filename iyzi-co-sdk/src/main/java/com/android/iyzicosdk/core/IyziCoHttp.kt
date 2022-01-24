@@ -24,7 +24,7 @@ internal class IyziCoHttp {
         var certificatePinner: CertificatePinner? = null
         certificatePinner = CertificatePinner.Builder()
             .add(
-                "*.sandbox-consumerapigw.iyzipay.com",
+                "https://sandbox-consumerapigw.iyzipay.com/",
                 "sha256/9pfml4d3n7mXEa4UXu0k6jTHoVVPYLwsVWJbY1kn7kM="
             )
             .build()
