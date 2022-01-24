@@ -20,19 +20,19 @@ internal class IyziCoHttp {
         Retrofit.Builder().baseUrl(IyziCoConfig.BASE_PATH).client(getOkHttpClient())
             .addConverterFactory(GsonConverterFactory.create()).build()
 
-    private fun getCertificate(): CertificatePinner? {
+/*    private fun getCertificate(): CertificatePinner? {
         var certificatePinner: CertificatePinner? = null
         certificatePinner = CertificatePinner.Builder()
             .add(IyziCoConfig.BASE_PATH, "sha256/9pfml4d3n7mXEa4UXu0k6jTHoVVPYLwsVWJbY1kn7kM=")
             .build()
         return certificatePinner
-    }
+    }*/
     private fun getOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .connectTimeout(HttpConfig.CONNECT_TIME_OUT, TimeUnit.SECONDS)
             .readTimeout(HttpConfig.READ_TIME_OUT, TimeUnit.SECONDS)
             .writeTimeout(HttpConfig.WRITE_TIME_OUT, TimeUnit.SECONDS)
-            .certificatePinner(getCertificate()!!)
+          /*  .certificatePinner(getCertificate()!!)*/
             .addInterceptor(object : Interceptor {
                 override fun intercept(chain: Interceptor.Chain): Response {
                     var request: Request = chain.request()
