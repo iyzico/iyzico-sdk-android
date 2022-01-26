@@ -8,7 +8,7 @@ import com.android.iyzicosdk.util.enums.Currency
 import com.android.iyzicosdk.util.enums.Languages
 import com.android.iyzicosdk.util.enums.PaymentGroup
 
-
+@Keep
 abstract class Iyzico {
 
     internal var callback: IyzicoCallback? = null
@@ -96,7 +96,7 @@ abstract class Iyzico {
         surname: String? = "",
         callback: IyzicoCallback
     )
-    
+    @Keep
     companion object {
         private lateinit var iyzico: Iyzico
 

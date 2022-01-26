@@ -28,7 +28,9 @@
 
 -keep public class  com.android.iyzicosdk.core.IyziCoActivity
 
--keep public class  com.android.iyzicosdk.core.Iyzico
+-keep public class  com.android.iyzicosdk.core.Iyzico{
+public static com.android.iyzicosdk.core.Iyzico client();
+}
 
 
 -keep public class com.android.iyzicosdk.callback.IyzicoCallback
