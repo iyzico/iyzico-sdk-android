@@ -97,12 +97,12 @@ internal enum class IyziCoInstallmentType(var type: String) {
     NORMAL("NORMAL"),
     NEW_CARD("NEW_CARD")
 }
-@Keep
+
 enum class Languages(var type: String) {
     TURKISH("tr"),
     ENGLISH("en")
 }
-@Keep
+
 enum class Currency(var type: String) {
     TRY("TRY"),
     USD("USD"),
@@ -110,13 +110,13 @@ enum class Currency(var type: String) {
     GBP("GBP"),
     IRR("IRR")
 }
-@Keep
+
 enum class PaymentGroup(var type: String) {
     PRODUCT("PRODUCT"),
     LISTING("LISTING"),
     SUBSCRIPTION("SUBSCRIPTION")
 }
-@Keep
+
 enum class BasketItemType(var type: String) {
     PHYSICAL("PHYSICAL"),
     VIRTUAL("VIRTUAL")

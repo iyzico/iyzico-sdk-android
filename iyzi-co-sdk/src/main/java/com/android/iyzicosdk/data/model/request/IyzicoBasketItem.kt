@@ -4,7 +4,7 @@ package com.android.iyzicosdk.data.model.request
 import com.android.iyzicosdk.util.enums.BasketItemType
 import com.google.gson.annotations.SerializedName
 
-public data class IyzicoBasketItem(
+data class IyzicoBasketItem(
     @SerializedName("category1")
     val category1: String,
     @SerializedName("id")
@@ -16,7 +16,7 @@ public data class IyzicoBasketItem(
     @SerializedName("price")
     val price: String,
     @SerializedName("subMerchantKey")
-    val subMerchantKey: String,
+    val subMerchantKey: String?,
     @SerializedName("subMerchantPrice")
-    val subMerchantPrice: String
+    val subMerchantPrice: String?
 )
