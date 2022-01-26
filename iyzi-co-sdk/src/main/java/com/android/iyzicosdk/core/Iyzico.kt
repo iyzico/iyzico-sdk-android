@@ -96,8 +96,7 @@ abstract class Iyzico {
         surname: String? = "",
         callback: IyzicoCallback
     )
-
-    @Keep
+    
     companion object {
         private lateinit var iyzico: Iyzico
 
