@@ -110,6 +110,7 @@ enum class Currency(var type: String) {
     GBP("GBP"),
     IRR("IRR")
 }
+
 @Keep
 enum class PaymentGroup(var type: String) {
     PRODUCT("PRODUCT"),

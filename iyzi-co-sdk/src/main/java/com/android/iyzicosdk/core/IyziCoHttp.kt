@@ -23,10 +23,14 @@ internal class IyziCoHttp {
     private fun getCertificate(): CertificatePinner? {
         var certificatePinner: CertificatePinner? = null
         certificatePinner = CertificatePinner.Builder()
-            .add(IyziCoConfig.BASE_PATH, "sha256/9pfml4d3n7mXEa4UXu0k6jTHoVVPYLwsVWJbY1kn7kM=")
+            .add(
+                IyziCoConfig.BASE_PATH,
+                "sha256/9pfml4d3n7mXEa4UXu0k6jTHoVVPYLwsVWJbY1kn7kM="
+            )
             .build()
         return certificatePinner
     }
+
     private fun getOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .connectTimeout(HttpConfig.CONNECT_TIME_OUT, TimeUnit.SECONDS)

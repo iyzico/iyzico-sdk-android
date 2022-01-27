@@ -16,10 +16,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        /*   IyzicoPattern.Builder("asd").setEmail("kemaltunc191@gmail.com").build()*/
-        /**
-         * Builder patternmi yoksa bu şekil bir kullanımmı buna daha sonra karar verilecek
-         * */
         //canli             "https://consumerapigw.iyzipay.com/",
         Iyzico.client().initialize(
             "127.0.0.1",
@@ -32,6 +28,27 @@ class MainActivity : AppCompatActivity() {
           "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9",
           "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR",
           "https://sandbox-consumerapigw.iyzipay.com/",*/
+
+
+        /**
+         * Sandbox
+         *
+         * https://sandbox-consumerapigw.iyzipay.com/
+         * qumpara,
+         * qumparaSecret",
+         *
+         * */
+
+
+        /**
+         * Prod
+         *
+         * https://consumerapigw.iyzipay.com
+         * tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9,
+         * zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR",
+         * */
+
+
         start.setOnClickListener {
             Iyzico.client().initialize(
                 "127.0.0.1",
@@ -39,8 +56,8 @@ class MainActivity : AppCompatActivity() {
                 "qumparaSecret",
                 "https://sandbox-consumerapigw.iyzipay.com/",
                 Languages.TURKISH,
-                "sandbox-nwm4ooTetPJDChjBxf3WqQwKW6qr6irx",
-                "sandbox-9mf76Q4wJLZjv2GxyM8BflBfrAYSULTD"
+                "sandbox-ZvLTaQaWZtTMIhvxoqhfDG4IJA9bKNBV",
+                "sandbox-BBjF3qdtrFBVC5VC8bOTqZJw1rpLz1dK"
             )
 
             Iyzico.client().startPayWithIyzico(
@@ -59,8 +76,8 @@ class MainActivity : AppCompatActivity() {
                 "74300864791",//zorunlu
                 "Istanbul",//zorunlu
                 "Turkey",//zorunlu
-                "msahincakir34+22092021@gmail.com",
-                "5555555555",//zorunlu
+                "aktasbatuhann@gmail.com",
+                "5616100697",//zorunlu
                 "Merchant Ip",//ıp zorunlu
                 "Merchant Adres",//zorumaskedGsmNumbernlu
                 "JAne due",//zounlu
@@ -78,8 +95,7 @@ class MainActivity : AppCompatActivity() {
                         BasketItemType.PHYSICAL,
                         "Binocular",
                         "50.19",
-                        "Sll5o4Dd3msNHWaHmJ5h4UOv7yA=",
-                        "50.19"
+                        null, null
                     )
                 ),
                 iyzicoCallback
@@ -112,8 +128,8 @@ class MainActivity : AppCompatActivity() {
         topup.setOnClickListener {
             Iyzico.client().startTopUp(
                 this,
-                "msahincakir34+22092021@gmail.com",
-                "5321869654",
+                "aktasbatuhann@gmail.com",
+                "5616100697",
                 "Lidyana.com",
                 "fff",
                 "fff",
@@ -124,9 +140,9 @@ class MainActivity : AppCompatActivity() {
         cashOut.setOnClickListener {
             Iyzico.client().startCashOut(
                 this,
-                "msahincakir34+22092021@gmail.com",
-                "5354817252",
-                800.99,
+                "aktasbatuhann@gmail.com",
+                "5616100697",
+                9.99,
                 "mm",
                 "fff",
                 iyzicoCallback

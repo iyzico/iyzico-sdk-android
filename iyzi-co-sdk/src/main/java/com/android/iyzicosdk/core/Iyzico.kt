@@ -67,25 +67,25 @@ abstract class Iyzico {
         callback: IyzicoCallback
     )
 
-   /* abstract fun startRefund(
-        activity: Activity,
-        email: String,
-        phone: String,
-        productId: String,
-        name: String? = "",
-        surname: String? = "",
-        callback: IyzicoCallback
-    )*/
+    /* abstract fun startRefund(
+         activity: Activity,
+         email: String,
+         phone: String,
+         productId: String,
+         name: String? = "",
+         surname: String? = "",
+         callback: IyzicoCallback
+     )*/
 
-   /* abstract fun startSettlement(
-        activity: Activity,
-        email: String,
-        phone: String,
-        walletPrice: Double,
-        name: String? = "",
-        surname: String? = "",
-        callback: IyzicoCallback
-    )*/
+    /* abstract fun startSettlement(
+         activity: Activity,
+         email: String,
+         phone: String,
+         walletPrice: Double,
+         name: String? = "",
+         surname: String? = "",
+         callback: IyzicoCallback
+     )*/
 
     abstract fun startTopUp(
         activity: Activity,
@@ -96,7 +96,6 @@ abstract class Iyzico {
         surname: String? = "",
         callback: IyzicoCallback
     )
-
     @Keep
     companion object {
         private lateinit var iyzico: Iyzico
