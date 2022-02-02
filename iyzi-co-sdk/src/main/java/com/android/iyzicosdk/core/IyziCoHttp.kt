@@ -21,10 +21,21 @@ internal class IyziCoHttp {
             .addConverterFactory(GsonConverterFactory.create()).build()
 
     private fun getCertificate(): CertificatePinner? {
+
+        var url = IyziCoConfig.BASE_PATH
+
+        if (url.contains("//")) {
+            val s = url.split("//")
+
+            if (s.size == 2) {
+                url = "*" + s[1]
+            }
+        }
+
         var certificatePinner: CertificatePinner? = null
         certificatePinner = CertificatePinner.Builder()
             .add(
-                IyziCoConfig.BASE_PATH,
+                url,
                 "sha256/9pfml4d3n7mXEa4UXu0k6jTHoVVPYLwsVWJbY1kn7kM="
             )
             .build()
