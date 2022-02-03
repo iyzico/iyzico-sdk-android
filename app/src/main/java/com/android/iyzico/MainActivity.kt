@@ -12,6 +12,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
 
+    val URL = "https://consumerapigw.iyzipay.com/"
+    val CLIEND_ID = "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9"
+    val CLIEND_SECRET_KEY = "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR"
+    val MERCHANT_API_KEY = "XsHBosIHsiXOBjtvXXm7a1IRkHv5fRiE"
+    val MERCHANT_SECRET_KEY = "ObYSZByTulnkp6mYx1oRv29TDQRouBM7"
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -52,12 +59,12 @@ class MainActivity : AppCompatActivity() {
         start.setOnClickListener {
             Iyzico.client().initialize(
                 "127.0.0.1",
-                "qumpara",
-                "qumparaSecret",
-                "https://sandbox-consumerapigw.iyzipay.com/",
+                CLIEND_ID,
+                CLIEND_SECRET_KEY,
+                URL,
                 Languages.TURKISH,
-                "sandbox-ZvLTaQaWZtTMIhvxoqhfDG4IJA9bKNBV",
-                "sandbox-BBjF3qdtrFBVC5VC8bOTqZJw1rpLz1dK"
+                MERCHANT_SECRET_KEY,
+                MERCHANT_API_KEY
             )
 
             Iyzico.client().startPayWithIyzico(
