@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9",
             "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR",
             "https://consumerapigw.iyzipay.com/",
-            Languages.TURKISH
+            Languages.TURKISH, null, null
         )
         /*  "127.0.0.1",
           "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9",
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                 50.19,
                 50.19,
                 Currency.TRY,
-                arrayOf(1, 2, 3, 6, 9),
+                listOf(1, 2, 3, 6, 9),
                 "B67832",//zorunlu
                 PaymentGroup.PRODUCT,//zorunlu değil
                 "https://www.merchant.com/callback",
@@ -155,7 +155,6 @@ class MainActivity : AppCompatActivity() {
                 iyzicoCallback
             )
         }
-        Iyzico
 
 
     }

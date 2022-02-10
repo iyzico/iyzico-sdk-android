@@ -1,3 +1,4 @@
+/*
 package com.android.iyzicosdk.core
 
 import android.app.Activity
@@ -67,7 +68,8 @@ abstract class Iyzico {
         callback: IyzicoCallback
     )
 
-    /* abstract fun startRefund(
+    */
+/* abstract fun startRefund(
          activity: Activity,
          email: String,
          phone: String,
@@ -75,9 +77,11 @@ abstract class Iyzico {
          name: String? = "",
          surname: String? = "",
          callback: IyzicoCallback
-     )*/
+     )*//*
 
-    /* abstract fun startSettlement(
+
+    */
+/* abstract fun startSettlement(
          activity: Activity,
          email: String,
          phone: String,
@@ -85,7 +89,8 @@ abstract class Iyzico {
          name: String? = "",
          surname: String? = "",
          callback: IyzicoCallback
-     )*/
+     )*//*
+
 
     abstract fun startTopUp(
         activity: Activity,
@@ -111,3 +116,4 @@ abstract class Iyzico {
     }
 }
 
+*/
