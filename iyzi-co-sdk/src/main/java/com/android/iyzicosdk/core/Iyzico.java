@@ -10,6 +10,7 @@ import com.android.iyzicosdk.util.enums.Currency;
 import com.android.iyzicosdk.util.enums.Languages;
 import com.android.iyzicosdk.util.enums.PaymentGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import kotlin.jvm.Synchronized;
@@ -38,7 +39,7 @@ abstract public class Iyzico {
             Double price,
             Double paidPrice,
             Currency currency,
-            List<Integer> enabledInstallments,
+            Integer[] enabledInstallments,
             String basketId,
             PaymentGroup paymentGroup,
             String urlCallback,

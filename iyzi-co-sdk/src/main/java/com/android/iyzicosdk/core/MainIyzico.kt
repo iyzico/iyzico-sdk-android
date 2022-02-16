@@ -43,7 +43,7 @@ open class MainIyzico : Iyzico() {
         price: Double,
         paidPrice: Double,
         currency: Currency,
-        enabledInstallments: List<Int>,
+        enabledInstallments: Array<Int>,
         basketId: String,
         paymentGroup: PaymentGroup,
         urlCallback: String,
@@ -297,7 +297,7 @@ open class MainIyzico : Iyzico() {
                     IyziCoResourcesConstans.IyziCoUserSurName = buyerSurname
                     IyziCoResourcesConstans.IYZICO_PAID_PRICE = paidPrice
                     IyziCoResourcesConstans.IYZICO_CURRECY = currency.type
-                    IyziCoResourcesConstans.IYZICO_ENABLED_INSTALLMENTS = enabledInstallments.toTypedArray()
+                    IyziCoResourcesConstans.IYZICO_ENABLED_INSTALLMENTS = enabledInstallments
 
                     IyziCoResourcesConstans.IYZICO_BASKET_ID = basketId
                     IyziCoResourcesConstans.IYZICO_PAYMENT_GROUP = paymentGroup?.type

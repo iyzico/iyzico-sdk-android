@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                 50.19,
                 50.19,
                 Currency.TRY,
-                listOf(1, 2, 3, 6, 9),
+                arrayOf(1, 2, 3, 6, 9),
                 "B67832",//zorunlu
                 PaymentGroup.PRODUCT,//zorunlu değil
                 "https://www.merchant.com/callback",
