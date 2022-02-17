@@ -51,7 +51,7 @@ internal class IyziCoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.iyzico_activity_iyzico)
         this.savedInstanceState = savedInstanceState
-        Iyzico.client().callback?.let { this.callback = it }
+        Iyzico.iyzicoCallback.let { this.callback = it }
         hideSoftKeyboard()
 
         when (IyziCoConfig.IYZI_CO_SDK_TYPE) {
@@ -132,7 +132,7 @@ internal class IyziCoActivity : AppCompatActivity() {
         startTimer()
     }
 
-    internal fun getCurrentFragment():Fragment = currentFragment!!
+    internal fun getCurrentFragment(): Fragment = currentFragment!!
 
     private fun startTimer() {
         isTimerContinue = true
@@ -199,7 +199,7 @@ internal class IyziCoActivity : AppCompatActivity() {
     }
 
     internal fun showStickLayout() {
-        if(currentFragment !is IyziCoMemberLoginFragment && currentFragment !is IyziCoSupportFragment){
+        if (currentFragment !is IyziCoMemberLoginFragment && currentFragment !is IyziCoSupportFragment) {
             iyzico_payw_sticky_layout.show()
             if (!isTimerContinue)
                 startTimer()
@@ -385,7 +385,7 @@ internal class IyziCoActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        Iyzico.client().callback = null
+        Iyzico.iyzicoCallback = null
         callback = null
         IyziCoConfig.IYZI_CO_AUTHORIZATION_KEY = ""
         super.onDestroy()

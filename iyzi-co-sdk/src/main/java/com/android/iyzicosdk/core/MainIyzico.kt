@@ -12,7 +12,7 @@ import com.android.iyzicosdk.util.extensions.isInvalidCurrency
 import com.android.iyzicosdk.util.extensions.isInvalidLanguage
 import com.android.iyzicosdk.util.extensions.isInvalidPaymentGroup
 
-internal class MainIyzico : Iyzico() {
+open class MainIyzico : Iyzico() {
 
     override fun initialize(
         clientIp: String,
@@ -35,6 +35,8 @@ internal class MainIyzico : Iyzico() {
         }
     }
 
+
+
     override fun startPayWithIyzico(
         activity: Activity,
         brand: String,
@@ -43,7 +45,7 @@ internal class MainIyzico : Iyzico() {
         currency: Currency,
         enabledInstallments: Array<Int>,
         basketId: String,
-        paymentGroup: PaymentGroup?,
+        paymentGroup: PaymentGroup,
         urlCallback: String,
         buyerId: String,
         buyerName: String,
@@ -63,12 +65,12 @@ internal class MainIyzico : Iyzico() {
         shippingCity: String,
         shippingCountry: String,
         shippingAddress: String,
-        basketItems: List<IyzicoBasketItem>,
+        basketItemList: MutableList<IyzicoBasketItem>,
         callback: IyzicoCallback
     ) {
         var bool: Boolean = true
 
-        for (item in basketItems) {
+        for (item in basketItemList) {
             when {
                 item.id.isEmpty() -> {
                     bool = false
@@ -275,13 +277,13 @@ internal class MainIyzico : Iyzico() {
                         TextMessages.INVALID_BILLING_ADDRESS
                     )
                 }
-                basketItems.isEmpty() -> {
+                basketItemList.isEmpty() -> {
                     callback.error(
                         ResultCode.MISSING_EMPTY_BASKET,
                         TextMessages.INVALID_EMPTY_BASKET
                     )
                 }
-                basketItems.size > 500 -> {
+                basketItemList.size > 500 -> {
                     callback.error(ResultCode.MISSING_FULL_BASKET, TextMessages.INVALID_FULL_BASKET)
                 }
 
@@ -295,8 +297,8 @@ internal class MainIyzico : Iyzico() {
                     IyziCoResourcesConstans.IyziCoUserSurName = buyerSurname
                     IyziCoResourcesConstans.IYZICO_PAID_PRICE = paidPrice
                     IyziCoResourcesConstans.IYZICO_CURRECY = currency.type
-                    IyziCoResourcesConstans.IYZICO_ENABLED_INSTALLMENTS =
-                        enabledInstallments
+                    IyziCoResourcesConstans.IYZICO_ENABLED_INSTALLMENTS = enabledInstallments
+
                     IyziCoResourcesConstans.IYZICO_BASKET_ID = basketId
                     IyziCoResourcesConstans.IYZICO_PAYMENT_GROUP = paymentGroup?.type
                     IyziCoResourcesConstans.IYZICO_CALLBACK_URL = urlCallback
@@ -320,8 +322,8 @@ internal class MainIyzico : Iyzico() {
                     IyziCoResourcesConstans.IYZICO_SHIPPING_ADDRESS = shippingAddress
                     IyziCoResourcesConstans.IYZICO_SHIPPING_CONTACT_NAME = shippingContactName
                     IyziCoResourcesConstans.IYZICO_BUYER_COUNTRY = buyerCountry
-                    IyziCoResourcesConstans.iyzicoBasketItemList = basketItems
-                    client().callback = callback
+                    IyziCoResourcesConstans.iyzicoBasketItemList =  basketItemList
+                    Iyzico.iyzicoCallback = callback
                     IyziCoActivity.start(activity)
                 }
             }
@@ -379,53 +381,54 @@ internal class MainIyzico : Iyzico() {
                 IyziCoResourcesConstans.IyziPhoneNumber = phone
                 IyziCoResourcesConstans.IyziCoUserName = name ?: ""
                 IyziCoResourcesConstans.IyziCoUserSurName = surname ?: ""
-                client().callback = callback
+                Iyzico.iyzicoCallback = callback
                 IyziCoActivity.start(activity)
             }
         }
     }
 
-   /* override fun startRefund(
-        activity: Activity,
-        email: String,
-        phone: String,
-        productId: String,
-        name: String?,
-        surname: String?,
-        callback: IyzicoCallback
-    ) {
-        when {
-            IyziCoConfig.CLIENT_SECRET_ID.isEmpty() -> {
-                callback.error(
-                    ResultCode.MISSING_CLIENT_SECRET_KEY,
-                    TextMessages.CLIENT_SECRET_KEY_ERROR_TEXT
-                )
-            }
-            IyziCoConfig.CLIENT_ID.isEmpty() -> {
-                callback.error(ResultCode.MISSING_CLIENT_ID, TextMessages.INVALID_API_KEY)
-            }
-            IyziCoConfig.CLIENT_IP.isEmpty() -> {
-                callback.error(ResultCode.MISSING_CLIENT_IP, TextMessages.INVALID_CLIENT_IP)
-            }
-            IyziCoConfig.LANGUAGE.type.isInvalidLanguage() -> {
-                callback.error(ResultCode.MISSING_LANGUAGE, TextMessages.INVALID_LANGUAGE)
-            }
-            email.isEmpty() -> {
-                callback.error(ResultCode.MISSING_MAIL, TextMessages.INVALID_EMAIL_NUMBER)
-            }
-            phone.isEmpty() -> {
-                callback.error(ResultCode.MISSING_PHONE, TextMessages.INVALID_PHONE_NUMBER)
-            }
-            phone.length != 10 -> {
-                callback.error(ResultCode.MISSING_PHONE, TextMessages.INVALID_PHONE_NUMBER)
-            }
-            productId.isEmpty() -> {
-                callback.error(ResultCode.MISSING_PRODUCT, TextMessages.INVALID_PRODUCT_ID)
-            }
-            else -> {
-                *//**
-                 * SDK'yı initialize etmek için kullanılır
-                 *//*
+    /* override fun startRefund(
+         activity: Activity,
+         email: String,
+         phone: String,
+         productId: String,
+         name: String?,
+         surname: String?,
+         callback: IyzicoCallback
+     ) {
+         when {
+             IyziCoConfig.CLIENT_SECRET_ID.isEmpty() -> {
+                 callback.error(
+                     ResultCode.MISSING_CLIENT_SECRET_KEY,
+                     TextMessages.CLIENT_SECRET_KEY_ERROR_TEXT
+                 )
+             }
+             IyziCoConfig.CLIENT_ID.isEmpty() -> {
+                 callback.error(ResultCode.MISSING_CLIENT_ID, TextMessages.INVALID_API_KEY)
+             }
+             IyziCoConfig.CLIENT_IP.isEmpty() -> {
+                 callback.error(ResultCode.MISSING_CLIENT_IP, TextMessages.INVALID_CLIENT_IP)
+             }
+             IyziCoConfig.LANGUAGE.type.isInvalidLanguage() -> {
+                 callback.error(ResultCode.MISSING_LANGUAGE, TextMessages.INVALID_LANGUAGE)
+             }
+             email.isEmpty() -> {
+                 callback.error(ResultCode.MISSING_MAIL, TextMessages.INVALID_EMAIL_NUMBER)
+             }
+             phone.isEmpty() -> {
+                 callback.error(ResultCode.MISSING_PHONE, TextMessages.INVALID_PHONE_NUMBER)
+             }
+             phone.length != 10 -> {
+                 callback.error(ResultCode.MISSING_PHONE, TextMessages.INVALID_PHONE_NUMBER)
+             }
+             productId.isEmpty() -> {
+                 callback.error(ResultCode.MISSING_PRODUCT, TextMessages.INVALID_PRODUCT_ID)
+             }
+             else -> {
+                 */
+    /**
+     * SDK'yı initialize etmek için kullanılır
+     *//*
                 IyziCoConfig.IYZI_CO_SDK_TYPE = IyziCoSDKType.REFUND
                 IyziCoResourcesConstans.IYZICO_PRODUCT_ID = productId
                 IyziCoResourcesConstans.IyziCoEmail = email.toLowerCase()
@@ -438,47 +441,48 @@ internal class MainIyzico : Iyzico() {
         }
     }*/
 
-   /* override fun startSettlement(
-        activity: Activity,
-        email: String,
-        phone: String,
-        walletPrice: Double,
-        name: String?,
-        surname: String?,
-        callback: IyzicoCallback
-    ) {
-        when {
-            IyziCoConfig.CLIENT_SECRET_ID.isEmpty() -> {
-                callback.error(
-                    ResultCode.MISSING_CLIENT_SECRET_KEY,
-                    TextMessages.CLIENT_SECRET_KEY_ERROR_TEXT
-                )
-            }
-            IyziCoConfig.CLIENT_ID.isEmpty() -> {
-                callback.error(ResultCode.MISSING_CLIENT_ID, TextMessages.INVALID_API_KEY)
-            }
-            IyziCoConfig.CLIENT_IP.isEmpty() -> {
-                callback.error(ResultCode.MISSING_CLIENT_IP, TextMessages.INVALID_CLIENT_IP)
-            }
-            IyziCoConfig.LANGUAGE.type.isInvalidLanguage() -> {
-                callback.error(ResultCode.MISSING_LANGUAGE, TextMessages.INVALID_LANGUAGE)
-            }
-            email.isEmpty() -> {
-                callback.error(ResultCode.MISSING_MAIL, TextMessages.INVALID_EMAIL_NUMBER)
-            }
-            phone.isEmpty() -> {
-                callback.error(ResultCode.MISSING_PHONE, TextMessages.INVALID_PHONE_NUMBER)
-            }
-            phone.length != 10 -> {
-                callback.error(ResultCode.MISSING_PHONE, TextMessages.INVALID_PHONE_NUMBER)
-            }
-            walletPrice == null -> {
-                callback.error(ResultCode.INVALID_WALLET_PRICE, TextMessages.INVALID_PRICE)
-            }
-            else -> {
-                *//**
-                 * SDK'nın açılacağı tipi belirtmek amacıyla
-                 *//*
+    /* override fun startSettlement(
+         activity: Activity,
+         email: String,
+         phone: String,
+         walletPrice: Double,
+         name: String?,
+         surname: String?,
+         callback: IyzicoCallback
+     ) {
+         when {
+             IyziCoConfig.CLIENT_SECRET_ID.isEmpty() -> {
+                 callback.error(
+                     ResultCode.MISSING_CLIENT_SECRET_KEY,
+                     TextMessages.CLIENT_SECRET_KEY_ERROR_TEXT
+                 )
+             }
+             IyziCoConfig.CLIENT_ID.isEmpty() -> {
+                 callback.error(ResultCode.MISSING_CLIENT_ID, TextMessages.INVALID_API_KEY)
+             }
+             IyziCoConfig.CLIENT_IP.isEmpty() -> {
+                 callback.error(ResultCode.MISSING_CLIENT_IP, TextMessages.INVALID_CLIENT_IP)
+             }
+             IyziCoConfig.LANGUAGE.type.isInvalidLanguage() -> {
+                 callback.error(ResultCode.MISSING_LANGUAGE, TextMessages.INVALID_LANGUAGE)
+             }
+             email.isEmpty() -> {
+                 callback.error(ResultCode.MISSING_MAIL, TextMessages.INVALID_EMAIL_NUMBER)
+             }
+             phone.isEmpty() -> {
+                 callback.error(ResultCode.MISSING_PHONE, TextMessages.INVALID_PHONE_NUMBER)
+             }
+             phone.length != 10 -> {
+                 callback.error(ResultCode.MISSING_PHONE, TextMessages.INVALID_PHONE_NUMBER)
+             }
+             walletPrice == null -> {
+                 callback.error(ResultCode.INVALID_WALLET_PRICE, TextMessages.INVALID_PRICE)
+             }
+             else -> {
+                 */
+    /**
+     * SDK'nın açılacağı tipi belirtmek amacıyla
+     *//*
                 IyziCoConfig.IYZI_CO_SDK_TYPE = IyziCoSDKType.SETTLEMENT
                 IyziCoResourcesConstans.IyziCoWalletPrice = walletPrice.toString()
                 IyziCoResourcesConstans.IyziCoEmail = email.toLowerCase()
@@ -538,7 +542,7 @@ internal class MainIyzico : Iyzico() {
                 IyziCoResourcesConstans.IyziCoUserName = name ?: ""
                 IyziCoResourcesConstans.IyziCoUserSurName = surname ?: ""
                 IyziCoResourcesConstans.IyziCoBrand = brand
-                client().callback = callback
+                Iyzico.iyzicoCallback = callback
                 IyziCoActivity.start(activity)
             }
         }

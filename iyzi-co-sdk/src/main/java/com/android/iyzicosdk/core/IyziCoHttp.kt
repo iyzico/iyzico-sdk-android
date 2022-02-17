@@ -28,7 +28,11 @@ internal class IyziCoHttp {
             val s = url.split("//")
 
             if (s.size == 2) {
-                url = "*" + s[1]
+                url = "*." + s[1]
+
+                if (url.last() == '/') {
+                    url =url.trimEnd('/')
+                }
             }
         }
 
