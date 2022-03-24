@@ -770,6 +770,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
     fun showNewCardContainer() {
         root.iyzico_fragment_account_new_card_top_linear_layout.setBackgroundResource(R.drawable.iyzico_border_new_card_cardview_radius)
         root.iyzico_add_card_layout_linear_layout.show()
+        root.iyzico_new_card_information_text.show()
         unSelectedPaymentType()
         iyziCoPaymentType = IyziCoPaymentType.NEW_CARD
         setToMixPayment()
@@ -788,6 +789,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         clearEdittextsFocus()
         root.iyzico_fragment_account_new_card_top_linear_layout.setBackgroundResource(R.color.iyzico_f1_grey_color)
         root.iyzico_add_card_layout_linear_layout.gone()
+        root.iyzico_new_card_information_text.gone()
         iyziCoPaymentType = IyziCoPaymentType.NULL
         root.iyzico_fragment_account_new_card_double_border.unFocus()
         root.iyzico_fragment_account_new_card_double_border.setNormalBorder()

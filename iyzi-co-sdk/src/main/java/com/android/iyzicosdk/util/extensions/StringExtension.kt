@@ -176,10 +176,15 @@ internal fun String.convertForDouble(): Double {
 
 //başına tl ikonu ekler
 internal fun String.addTlIcon(): String {
-    if (this.substring(this.length - 2).contains(".")) {
-        return "₺" + this.replace(".", ",") + "0"
-    } else {
-        return "₺" + this.replace(".", ",")
+    return try {
+        if (this.substring(this.length - 2).contains(".")) {
+            "₺" + this.replace(".", ",") + "0"
+        } else {
+            "₺" + this.replace(".", ",")
+        }
+    } catch (e: Exception) {
+        e.printStackTrace()
+        "₺$this,00"
     }
 
 }
@@ -193,7 +198,6 @@ internal fun String.encode(): String {
 internal fun String.setWalletPrice(): String {
     return this.replace(".", ",")
 }
-
 
 
 internal fun String.invalidCardNumber(isAmex: Boolean): Boolean {

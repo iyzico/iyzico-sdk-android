@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:paddingBottom="12dp"
-    android:paddingTop="12dp"
     android:layout_marginTop="8dp"
-    android:background="@drawable/iyzico_my_account_items_background">
+    android:background="@drawable/iyzico_my_account_items_background"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iyzico_cell_card_bank_imageView"
@@ -15,47 +15,69 @@
         android:layout_height="36dp"
         android:layout_marginStart="20dp"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/iyzico_cell_card_item_card_name_textview"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/iyzico_cell_card_bank_name_textView" />
 
     <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
         android:id="@+id/iyzico_cell_card_bank_name_textView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:ellipsize="end"
         android:fontFamily="@font/markprobold"
-        tools:text="GARANTI BANKASI"
+        android:maxLines="1"
         android:textColor="@color/iyzico_secondary_grey"
         android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/dottextview"
         app:layout_constraintStart_toEndOf="@+id/iyzico_cell_card_bank_imageView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="GARANTI BANKASI" />
 
     <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
         android:id="@+id/iyzico_cell_card_item_card_name_textview"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:lineSpacingExtra="9sp"
+        android:ellipsize="end"
         android:fontFamily="@font/markpromedium"
-        android:text="Kredi Kartı"
+        android:lineSpacingExtra="9sp"
+        android:maxLines="1"
         android:textColor="@color/iyzico_primary_text_color"
         android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/dottextview"
         app:layout_constraintStart_toStartOf="@+id/iyzico_cell_card_bank_name_textView"
-        app:layout_constraintTop_toBottomOf="@+id/iyzico_cell_card_bank_name_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/iyzico_cell_card_bank_name_textView"
+        tools:text="Kredi Kartı" />
+
+    <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+        android:id="@+id/dottextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        android:includeFontPadding="false"
+        android:text="***"
+        android:textColor="@color/iyzico_primary_text_color"
+        android:textSize="18sp"
+        app:fontFamily="@font/markpro"
+        app:layout_constraintEnd_toStartOf="@+id/iyzico_cell_card_item_card_number_textview"
+        app:layout_constraintTop_toTopOf="@+id/iyzico_cell_card_item_card_number_textview" />
 
     <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
         android:id="@+id/iyzico_cell_card_item_card_number_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center_vertical"
         android:lineSpacingExtra="9sp"
-        android:text="* * * 344"
+        android:text="344"
         android:textColor="@color/iyzico_primary_text_color"
         android:textSize="16sp"
-        app:fontFamily="@font/markpro"
-        app:layout_constraintStart_toStartOf="@+id/iyzico_cell_card_bank_name_textView"
-        app:layout_constraintTop_toBottomOf="@+id/iyzico_cell_card_item_card_name_textview" />
+        app:fontFamily="@font/markpromedium"
+        app:layout_constraintBottom_toBottomOf="@+id/iyzico_cell_card_item_selected_button"
+        app:layout_constraintEnd_toStartOf="@+id/iyzico_cell_card_item_selected_button"
+        app:layout_constraintTop_toTopOf="@+id/iyzico_cell_card_item_selected_button" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iyzico_cell_card_item_selected_button"
@@ -63,9 +85,70 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
         android:src="@drawable/iyzico_ic_empty_radio"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/iyzico_cell_card_item_card_name_textview"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/iyzico_cell_card_bank_name_textView" />
 
+    <LinearLayout
+        android:id="@+id/iyzico_bonus_point_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/iyzico_cell_card_item_selected_button"
+        app:layout_constraintStart_toStartOf="@+id/iyzico_cell_card_item_card_name_textview"
+        app:layout_constraintTop_toBottomOf="@+id/iyzico_cell_card_item_card_name_textview">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/iyzico_f1_grey_color" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iyzico_double_border_square_check_imageview"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/iyzico_empty_radio_button_unchecked"
+                android:src="@mipmap/iyzico_ic_square_check_clear_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintCircleRadius="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/markpromedium"
+                android:gravity="end"
+                android:text="₺44,70"
+                android:textColor="@color/iyzico_primary_text_color"
+                android:textSize="14sp" />
+
+            <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="6dp"
+                android:fontFamily="@font/markpro"
+                android:gravity="center_vertical"
+                android:text="@string/iyzico_use_my_balance"
+                android:textColor="@color/iyzico_primary_text_color"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,8 +9,14 @@ import com.android.iyzicosdk.util.IyziCoImageLoaderUtility.Companion.imageLoader
 import com.android.iyzicosdk.util.IyziCoImageLoaderUtility.Companion.setImageForSvg
 import com.android.iyzicosdk.util.SvgSoftwareLayerSetter
 import com.android.iyzicosdk.util.enums.IyziCoCardsType
+import com.android.iyzicosdk.util.extensions.changeBackground
+import com.android.iyzicosdk.util.extensions.gone
+import com.android.iyzicosdk.util.extensions.setOnSafeClickListener
+import com.android.iyzicosdk.util.extensions.show
 
 import kotlinx.android.synthetic.main.iyzico_cell_card_item.view.*
+import kotlinx.android.synthetic.main.iyzico_cell_card_item.view.iyzico_double_border_square_check_imageview
+import kotlinx.android.synthetic.main.iyzico_double_border.view.*
 
 
 internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCardItem>() {
@@ -28,8 +34,10 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
         override fun bind(iyziCoCardItem: IyziCoCardItem) {
             if (iyziCoCardItem.isSelected) {
                 itemView.iyzico_cell_card_item_selected_button.setImageResource(R.drawable.iyzico_ic_check_button)
+                itemView.iyzico_bonus_point_container.show()
             } else {
                 itemView.iyzico_cell_card_item_selected_button.setImageResource(R.drawable.iyzico_ic_empty_radio)
+                itemView.iyzico_bonus_point_container.gone()
             }
             itemView.iyzico_cell_card_item_card_name_textview.apply {
                 when (iyziCoCardItem.cardType) {
@@ -42,19 +50,37 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
                 }
             }
             itemView.iyzico_cell_card_bank_name_textView.text = iyziCoCardItem.cardBankName
-            itemView.iyzico_cell_card_item_card_number_textview.text =
-                "* * * " + iyziCoCardItem.lastFourDigits
+            itemView.iyzico_cell_card_item_card_number_textview.text = iyziCoCardItem.lastFourDigits
 
 
             setImageForSvg(
                 context,
-                iyziCoCardItem.cardAssociationLogoUrl?:"",
+                iyziCoCardItem.cardAssociationLogoUrl ?: "",
                 itemView.iyzico_cell_card_bank_imageView
             )
+
+            prepareCheckBoxForPoint(iyziCoCardItem)
+
+
+            itemView.iyzico_double_border_square_check_imageview.setOnSafeClickListener {
+                iyziCoCardItem.bonusPointSelected = !iyziCoCardItem.bonusPointSelected
+                prepareCheckBoxForPoint(iyziCoCardItem)
+            }
+
 /*
 */
+        }
 
-
+        private fun prepareCheckBoxForPoint(iyziCoCardItem: IyziCoCardItem) {
+            with(itemView) {
+                if (iyziCoCardItem.bonusPointSelected) {
+                    iyzico_double_border_square_check_imageview.background = null
+                    iyzico_double_border_square_check_imageview.setImageResource(R.mipmap.iyzico_ic_square_check_button)
+                } else {
+                    iyzico_double_border_square_check_imageview.setImageResource(R.mipmap.iyzico_ic_square_check_clear_button)
+                    iyzico_double_border_square_check_imageview.changeBackground(R.drawable.iyzico_empty_radio_button_unchecked)
+                }
+            }
         }
     }
 }

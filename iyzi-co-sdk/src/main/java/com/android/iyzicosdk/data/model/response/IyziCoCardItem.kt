@@ -18,5 +18,6 @@ internal data class IyziCoCardItem(
     var cardAssociationLogoUrl: String = "",
     @SerializedName("binNumber")
     var binNumber: String = "",
-    var isSelected: Boolean = false
+    var isSelected: Boolean = false,
+    var bonusPointSelected: Boolean = false
 )
