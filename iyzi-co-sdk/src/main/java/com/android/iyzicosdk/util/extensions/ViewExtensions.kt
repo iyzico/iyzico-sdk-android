@@ -89,16 +89,10 @@ internal fun TextView.spannableExtension(
                     this@spannableExtension.context,
                     color
             )
+            ds.typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
             ds.isUnderlineText = false
         }
     }
-
-    spannableString.setSpan(
-            StyleSpan(Typeface.BOLD),
-            startIndex,
-            endIndex,
-            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-    );
     spannableString.setSpan(
             spannable,
             startIndex,

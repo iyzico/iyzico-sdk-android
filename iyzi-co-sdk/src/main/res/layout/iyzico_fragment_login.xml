@@ -19,9 +19,9 @@
             android:id="@+id/iyzicoLinearlayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/iyzico_secondary_margin"
+            android:layout_marginStart="@dimen/iyzico_primary_margin"
             android:layout_marginTop="@dimen/iyzico_primary_margin"
-            android:layout_marginEnd="@dimen/iyzico_secondary_margin"
+            android:layout_marginEnd="@dimen/iyzico_primary_margin"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:orientation="vertical"
@@ -30,13 +30,13 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/markprobold"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:text="@string/iyzico_fragment_login_title"
                 android:textColor="@color/iyzico_primary_text_color"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:fontFamily="@font/markprobold" />
 
@@ -48,6 +48,7 @@
                 android:text="@string/iyzico_fragment_login_second_title"
                 android:textColor="@color/iyzico_primary_text_color"
                 android:textSize="14sp"
+                android:lineHeight="20sp"
                 android:textStyle="normal"
                 app:fontFamily="@font/markpro" />
 
@@ -119,6 +120,8 @@
                 android:gravity="center"
                 android:lineHeight="22sp"
                 android:lineSpacingExtra="8sp"
+                android:paddingStart="34dp"
+                android:paddingEnd="34dp"
                 android:text="@string/iyzico_fragment_email_term"
                 android:textColor="@color/iyzico_secondary_grey"
                 android:textSize="14sp"

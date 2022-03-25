@@ -6,39 +6,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/iyzico_common_margin_top"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/iyzico_primary_margin"
+        android:layout_marginEnd="@dimen/iyzico_primary_margin"
+        android:layout_marginTop="@dimen/iyzico_secondary_margin"
         app:layout_constraintBottom_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/iyzico_fragment_sms_left_guideline"
-            android:layout_width="wrap_content"
+        <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+            android:id="@+id/iyzico_fragment_sms_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="@dimen/iyzico_secondary_margin" />
+            android:fontFamily="@font/markprobold"
+            android:gravity="center"
+            android:text="@string/iyzico_fragment_sms_title"
+            android:textColor="@color/iyzico_primary_text_color"
+            android:visibility="gone"
+            android:textSize="20sp"
+            app:lineHeight="28sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/markprobold" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/iyzico_fragment_sms_right_guideline"
-            android:layout_width="wrap_content"
+        <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+            android:id="@+id/iyzico_fragment_sms_description"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_end="0dp" />
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/iyzico_fragment_sms_description"
+            android:textColor="@color/iyzico_primary_text_color"
+            android:visibility="gone"
+            android:textSize="14sp"
+            android:lineHeight="28sp"
+            android:textStyle="normal"
+            app:fontFamily="@font/markpro" />
 
         <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
             android:id="@+id/iyzico_fragment_sms_textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:lineHeight="@dimen/iyzico_secondary_line_height_size"
+            android:visibility="visible"
             android:text="@string/iyzico_fragment_sms_control"
             android:textColor="@color/iyzico_primary_text_color"
             android:textSize="@dimen/iyzico_secondary_text_size"
             app:fontFamily="@font/markpro"
-            app:layout_constraintStart_toStartOf="@+id/iyzico_fragment_sms_left_guideline"
-            app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/iyzico_fragment_sms_control" />
 
         <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
@@ -47,19 +61,20 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/markprobold"
+            android:visibility="visible"
             android:lineHeight="@dimen/iyzico_primary_line_height_size"
             android:text="@string/iyzico_fragment_sms_verificate_phone"
             android:textColor="@color/iyzico_primary_text_color"
             android:textSize="@dimen/iyzico_primary_textsize"
-            app:layout_constraintStart_toStartOf="@+id/iyzico_fragment_sms_left_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/iyzico_fragment_sms_textView1"
             tools:text="@string/iyzico_fragment_sms_verificate_phone" />
+
 
         <LinearLayout
             android:id="@+id/iyzico_fragment_sms_linerLayout1"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2.3dp"
+            android:layout_marginTop="8dp"
+            android:gravity="start"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@+id/iyzico_fragment_sms_right_guideline"
             app:layout_constraintStart_toStartOf="@+id/iyzico_fragment_sms_left_guideline"
@@ -79,7 +94,7 @@
                 android:id="@+id/iyzico_fragment_sms_change_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:fontFamily="@font/markprobold"
                 android:lineHeight="24sp"
                 android:lineSpacingExtra="12sp"
@@ -105,25 +120,19 @@
 
         <com.android.iyzicosdk.ui.components.edit_text.IyziCoSmsPin
             android:id="@+id/iyzico_fragment_sms_sms_editText"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="11.7dp"
             android:layout_marginEnd="8dp"
             app:iyzico_headText="@string/iyzico_fragment_email_email"
-            app:iyzico_hintText="@string/iyzico_fragment_email_write_email"
-            app:layout_constraintEnd_toEndOf="@+id/iyzico_fragment_sms_right_guideline"
-            app:layout_constraintStart_toStartOf="@+id/iyzico_fragment_sms_left_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/iyzico_fragment_sms_linerLayout1" />
+            app:iyzico_hintText="@string/iyzico_fragment_email_write_email" />
 
         <LinearLayout
             android:id="@+id/iyzico_fragment_sms_linerLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/iyzico_fragment_sms_sms_editText">
+            android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iyzico_fragment_sms_hour_icon_image_view"
@@ -174,6 +183,6 @@
 
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
