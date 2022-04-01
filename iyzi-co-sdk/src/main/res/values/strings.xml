@@ -46,7 +46,7 @@ Email -->
     <string name="iyzico_fragment_login_second_title">E-posta adresinle hesabına giriş yapabilir ya da kaydolabilir, ödemeni kolayca tamamlayabilirsin.</string>
 
     <!-- tamam -->
-    <string name="iyzico_fragment_login_change_acount">Farklı Bir E-posta ile Devam Et</string>
+    <string name="iyzico_fragment_login_change_acount">Farklı bir E-posta ile Devam Et</string>
 
     <!-- tamam -->
     <string name="iyzico_custom_popup_close_page_button_text">"İşlemi İptal Et"</string>
@@ -227,13 +227,13 @@ TransferScreen -->
     <string name="iyzico_can_transfer_all">"Aktarılabilir Bakiyem"</string>
 
     <!-- tamam -->
-    <string name="iyzico_explanation">"Referans Numarası (Açıklama)"</string>
+    <string name="iyzico_explanation">Referans Kodu (Açıklama)</string>
 
     <!-- tamam -->
     <string name="iyzico_amount_to_install">"Yüklenecek Tutar"</string>
 
     <!-- tamam -->
-    <string name="iyzico_bottom_sheet_remittence_phone_number_warning">"Havale/EFT işlemi esnasında mobil bankacılık uygulamasındaki açıklama alanına yukarıdaki referans kodunu girin."</string>
+    <string name="iyzico_bottom_sheet_remittence_phone_number_warning">EFT/Havale işlemi esnasında mobil bankacılık uygulamasındaki açıklama alanına aşağıdaki referans kodunu girin.</string>
 
     <!-- tamam -->
     <string name="iyzico_continue_as">"olarak devam et"</string>
