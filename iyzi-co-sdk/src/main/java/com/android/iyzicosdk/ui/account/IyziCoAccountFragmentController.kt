@@ -638,14 +638,21 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
         currencyCode: String,
         locale: String,
         paidPrice: Double,
-        cardHolderName:String,
-        cardNumber:String,
-        cardCvv:String,
-        cardMonth:String,
-        cardYear:String,
-    ){
+        cardHolderName: String,
+        cardNumber: String,
+        cardCvv: String,
+        cardMonth: String,
+        cardYear: String
+    ) {
 
         /*val payment = IyziCoNewCardInquireRequest()*/
+
+        val request = IyziCoNewCardInquireRequest(
+            conversationId, currencyCode, locale, paidPrice,
+            IyziCoInquirePaymentCard(
+                cardHolderName, cardNumber, cardCvv, cardMonth, cardYear
+            ), IyziCoLoginChannelType.THIRD_PARTY_APP.type
+        )
     }
 
     fun IyziCoMemberCard.toCardItem() = IyziCoCardItem(

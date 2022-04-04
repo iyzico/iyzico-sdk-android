@@ -289,6 +289,27 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
             iyzico_add_card_cvc_number.textListener {
                 if (it.isNotEmpty())
                     detectAllItemsAreValid()
+
+                if (it.length == 3) {
+                    val name = root.iyzico_add_card_name.text
+                    val number = root.iyzico_add_card_card_number.text.replace(" ", "")
+                    val cvv = root.iyzico_add_card_cvc_number.text
+                    val month = root.iyzico_add_card_date.text.take(2)
+                    val year = root.iyzico_add_card_date.text.takeLast(2)
+
+                    controller.pwiInquireWithNewCard(
+                        "",
+                        IyziCoCurrentType.TRY.type,
+                        IyziCoConfig.LANGUAGE.type,
+                        paidPrice().toDouble(),
+                        name,
+                        number,
+                        cvv,
+                        month,
+                        year
+                    )
+                }
+
             }
             iyzico_add_card_date.textListener {
                 if (it.isNotEmpty())
@@ -306,7 +327,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         }
     }
 
-    fun allItemIsValid(withWarning: Boolean = true): Boolean {
+    private fun allItemIsValid(withWarning: Boolean = true): Boolean {
         var isvalid = true
         if (root.iyzico_add_card_name.text.isEmpty()) {
             if (withWarning)
@@ -472,7 +493,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         }
     }
 
-    fun depositsWithNewCard() {
+    private fun depositsWithNewCard() {
         controller.createDepositWithNewCard(
             canTransferAmount,
             root.iyzico_add_card_name.text,
