@@ -77,7 +77,7 @@ internal enum class IyziCoSupportScreenType {
 }
 
 internal enum class IyziCoLoginChannelType(var type: String) {
-    THIRD_PARTY_APP("THIRD_PARTY_APP")
+    THIRD_PARTY_APP("THIRD_PARTY_APP"), WEB("WEB")
 }
 
 internal enum class IyziCoCurrentType(var type: String) {
@@ -97,11 +97,13 @@ internal enum class IyziCoInstallmentType(var type: String) {
     NORMAL("NORMAL"),
     NEW_CARD("NEW_CARD")
 }
+
 @Keep
 enum class Languages(var type: String) {
     TURKISH("tr"),
     ENGLISH("en")
 }
+
 @Keep
 enum class Currency(var type: String) {
     TRY("TRY"),
@@ -117,6 +119,7 @@ enum class PaymentGroup(var type: String) {
     LISTING("LISTING"),
     SUBSCRIPTION("SUBSCRIPTION")
 }
+
 @Keep
 enum class BasketItemType(var type: String) {
     PHYSICAL("PHYSICAL"),

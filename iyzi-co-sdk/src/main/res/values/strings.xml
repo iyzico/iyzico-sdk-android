@@ -307,4 +307,5 @@ Amounts -->
     <string name="iyzico_payment_options_shows_after_you_filled_a">Taksit seçenekleri kart numaranızı girdikten sonra görünecektir.</string>
     <string name="iyzico_payment_options_shows_after_you_filled_area"></string>
     <string name="iyzico_KVKK_open_consent_text">"KVKK Açık Rıza Metni"</string>
+    <string name="iyzico_plus_installment_info_text">"kartınla yapacağın taksitli alışverişlerde vade farksız"</string>
 </resources>

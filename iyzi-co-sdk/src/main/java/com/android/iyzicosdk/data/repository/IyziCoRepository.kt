@@ -174,6 +174,14 @@ internal class IyziCoRepository : IyziCoBaseRepository() {
         )
     }
 
+
+    fun pwiInquire(
+        inquireRequest: IyziCoInquireRequest,
+        callback: IyziCoServiceCallback<IyziCoPWIResponse>
+    ) {
+        executeWithoutData(api.pwiInquire(inquireRequest), callback)
+    }
+
     companion object {
         fun getIyziCoRepository() = IyziCoRepository()
     }

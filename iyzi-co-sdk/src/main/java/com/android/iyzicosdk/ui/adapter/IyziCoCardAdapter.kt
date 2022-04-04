@@ -3,12 +3,14 @@ package com.android.iyzicosdk.ui.adapter
 import android.content.Context
 import android.graphics.drawable.PictureDrawable
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.android.iyzicosdk.R
 import com.android.iyzicosdk.data.model.response.IyziCoCardItem
 import com.android.iyzicosdk.util.IyziCoImageLoaderUtility.Companion.imageLoaderWithCacheFit
 import com.android.iyzicosdk.util.IyziCoImageLoaderUtility.Companion.setImageForSvg
 import com.android.iyzicosdk.util.SvgSoftwareLayerSetter
 import com.android.iyzicosdk.util.enums.IyziCoCardsType
+import com.android.iyzicosdk.util.extensions.*
 import com.android.iyzicosdk.util.extensions.changeBackground
 import com.android.iyzicosdk.util.extensions.gone
 import com.android.iyzicosdk.util.extensions.setOnSafeClickListener
@@ -42,10 +44,10 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
             itemView.iyzico_cell_card_item_card_name_textview.apply {
                 when (iyziCoCardItem.cardType) {
                     IyziCoCardsType.CREDIT_CARD.toString() -> {
-                        this.setText(IyziCoCardsType.CREDIT_CARD.type)
+                        this.text = IyziCoCardsType.CREDIT_CARD.type
                     }
                     IyziCoCardsType.DEBIT_CARD.toString() -> {
-                        this.setText(IyziCoCardsType.DEBIT_CARD.type)
+                        this.text = IyziCoCardsType.DEBIT_CARD.type
                     }
                 }
             }
@@ -62,9 +64,29 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
             prepareCheckBoxForPoint(iyziCoCardItem)
 
 
-            itemView.iyzico_double_border_square_check_imageview.setOnSafeClickListener {
-                iyziCoCardItem.bonusPointSelected = !iyziCoCardItem.bonusPointSelected
-                prepareCheckBoxForPoint(iyziCoCardItem)
+
+            with(itemView) {
+                iyzico_double_border_square_check_imageview.setOnSafeClickListener {
+                    iyziCoCardItem.bonusPointSelected = !iyziCoCardItem.bonusPointSelected
+                    prepareCheckBoxForPoint(iyziCoCardItem)
+                }
+
+
+                iyzico_bonus_point_amount_textview.text = iyziCoCardItem.bonusPointAmount?.toPrice()
+
+
+
+                if (iyziCoCardItem.isIyziCoCard) {
+                    with(iyzico_cell_card_bank_name_textView) {
+                        setTextColor(
+                            ContextCompat.getColor(
+                                context,
+                                R.color.iyzico_secondary_dark_blue
+                            )
+                        )
+                        textSize = 15f
+                    }
+                }
             }
 
 /*

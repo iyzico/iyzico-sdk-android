@@ -156,7 +156,7 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                             title,
                             bankName,
                             data?.code ?: "",
-                            data?.bankTransferPaymentId?:"",
+                            data?.bankTransferPaymentId ?: "",
                             bankLogo
                         )
                     }
@@ -342,12 +342,22 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                 override fun onSuccess(data: IyziCoPWIRetriveResponse?) {
                     data?.let {
                         uiCallback.onSuccess(it)
-                        gsmNumber = "+90"+IyziCoResourcesConstans.IyziPhoneNumber
+                        gsmNumber = "+90" + IyziCoResourcesConstans.IyziPhoneNumber
                         gsmNumber.clearSpace()
                         memberId = data.memberId
-                        baseFragment.setCardAdapter(it.iyziCoMemberCards.map {
+
+
+                        val tempCards = it.iyziCoMemberCards.map {
                             it.toCardItem()
-                        })
+                        }
+
+
+                        val cards = tempCards.sortedByDescending { it.isIyziCoCard }
+
+                        baseFragment.setCardAdapter(cards)
+
+
+
                         baseFragment.setForce3Ds(data.iyziCoCheckoutDetail.force3Ds)
                         baseFragment.getRetriverBalance()
                         baseFragment.setBankAdapter(
@@ -356,6 +366,9 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                         )
 
 
+                        val plusInstallmentList =
+                            it.iyziCoCheckoutDetail.plusInstallmentResponseList?.sortedBy { it.startDate }
+                        baseFragment.setPlusInstallment(plusInstallmentList ?: emptyList())
                     }
                 }
 
@@ -366,7 +379,7 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
     }
 
     //iyziCo hesabındaki para ile ödeme yapılırken kullanılacak servis
-    fun pwiPayWithBalance(
+    private fun pwiPayWithBalance(
         type: IyziCoLoginChannelType
     ) {
         baseFragment.showLoadingAnimation()
@@ -396,7 +409,7 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
 
     //card token kayıtlı kart ile ödeneceği zaman kullanılır ve diğer alanlar boş bırakılır.
     //yeni kart ile ödeme yapılacaksa card token boş bırakılır ve diğer alanlar kullanılır.
-    fun payWithMixpayment(
+    private fun payWithMixpayment(
         memberBalanceAmount: Double,
         paymentChannelType: IyziCoLoginChannelType,
         cardToken: String? = null,
@@ -498,7 +511,6 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
         isUsedbalance: Boolean
     ) {
 
-        gsmNumber
         if (iyziCoPaymentType == IyziCoPaymentType.BALANCE) {
             pwiPayWithBalance(loginChannelType)
 
@@ -593,6 +605,49 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
         }
     }
 
+    fun pwiInquire(
+        conversationId: String,
+        currency: String,
+        locale: String,
+        paidPrice: Double,
+        paymentCardToken: String,
+        paymentChannel: String,
+        uiCallback: UIResponseCallBack<IyziCoPWIResponse>
+    ) {
+
+        baseFragment.showLoadingAnimation()
+
+        val request = IyziCoInquireRequest(
+            conversationId, currency, locale, paidPrice,
+            IyziCoCardToken(paymentCardToken), paymentChannel
+        )
+
+        iyziCoRepository.pwiInquire(request, object : IyziCoServiceCallback<IyziCoPWIResponse> {
+            override fun onSuccess(data: IyziCoPWIResponse?) {
+                uiCallback.onSuccess(data)
+            }
+
+            override fun onError(code: Int, message: String) {
+                uiCallback.onError(code, message)
+            }
+        })
+    }
+
+    fun pwiInquireWithNewCard(
+        conversationId: String,
+        currencyCode: String,
+        locale: String,
+        paidPrice: Double,
+        cardHolderName:String,
+        cardNumber:String,
+        cardCvv:String,
+        cardMonth:String,
+        cardYear:String,
+    ){
+
+        /*val payment = IyziCoNewCardInquireRequest()*/
+    }
+
     fun IyziCoMemberCard.toCardItem() = IyziCoCardItem(
         cardBankName = this.cardBankName ?: "",
         cardToken = this.cardToken ?: "",
@@ -601,6 +656,9 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
         isSelected = false,
         cardAssociationLogoUrl = this.cardAssociationLogoUrl ?: "",
         cardAssociation = this.cardAssociation ?: "",
-        binNumber = this.binNumber ?: ""
+        binNumber = this.binNumber ?: "",
+        isIyziCoCard = this.cardBankName.equals(IyziCoConfig.IYZICO, ignoreCase = false)
     )
+
+
 }

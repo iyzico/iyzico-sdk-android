@@ -294,3 +294,10 @@ internal fun String.isInvalidDate(): Boolean {
     var matcher: Matcher = pattern.matcher(this)
     return matcher.matches()
 }
+
+internal fun String?.isSuccess(): Boolean {
+    if (this == null) {
+        return false
+    }
+    return this != "failure"
+}

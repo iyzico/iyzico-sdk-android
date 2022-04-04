@@ -21,14 +21,17 @@
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/iyzico_fragment_account_installment_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
+            android:visibility="gone"
             android:layout_marginTop="16dp"
             app:cardBackgroundColor="@color/iyzico_green_romance"
             app:cardCornerRadius="6dp">
 
             <TextView
+                android:id="@+id/iyzico_fragment_account_installment_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"

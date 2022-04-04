@@ -79,10 +79,13 @@ internal interface IyziCoApi {
     fun pwiPayWithCard(@Body paywithWithCardRequest: IyziCopayWithCardRequest): Call<IyziCoPWIResponse>
 
     @POST("api/v1/pay-with-iyzico/third-party/bank-transfer/initialize")
-    fun pwiBankTransferInitialize(@Body bankTransferInitiaalize: IyziCoBankTransferInitiaalize):Call<IyziCoPWIResponse>
+    fun pwiBankTransferInitialize(@Body bankTransferInitiaalize: IyziCoBankTransferInitiaalize): Call<IyziCoPWIResponse>
 
     @POST("api/v1/pay-with-iyzico/third-party/bank-transfer/notify")
-    fun pwiBankTransferInitializeNotify(@Body bankTransferPaymenNotifyRequest: BankTransferPaymenNotifyRequest):Call<IyziCoPWIResponse>
+    fun pwiBankTransferInitializeNotify(@Body bankTransferPaymenNotifyRequest: BankTransferPaymenNotifyRequest): Call<IyziCoPWIResponse>
+
+    @POST("api/v1/pay-with-iyzico/third-party/inquire")
+    fun pwiInquire(@Body iyziCoInquireRequest: IyziCoInquireRequest): Call<IyziCoPWIResponse>
 }
 
 

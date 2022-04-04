@@ -124,15 +124,16 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+                android:id="@+id/iyzico_bonus_point_amount_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="8dp"
                 android:fontFamily="@font/markpromedium"
                 android:gravity="end"
-                android:text="₺44,70"
                 android:textColor="@color/iyzico_primary_text_color"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                tools:text="₺44,70" />
 
             <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
                 android:layout_width="wrap_content"

@@ -30,7 +30,8 @@ internal object IyziCoConfig {
     /**
      * IYZICO_LANGUAGE
      */
-    lateinit var LANGUAGE:Languages
+    lateinit var LANGUAGE: Languages
+
     /**
      * IYZICO_CLIENT_IP
      */
@@ -45,5 +46,8 @@ internal object IyziCoConfig {
      * IYZICO_MERCHANT_SECRET_KEY
      */
     var MERCHANT_SECRET_KEY = ""
+
+
+    var IYZICO = "iyzico"
 
 }
