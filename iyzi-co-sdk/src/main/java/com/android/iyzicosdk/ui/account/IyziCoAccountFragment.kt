@@ -130,6 +130,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
 
     }
 
+    @SuppressLint("SetTextI18n")
     fun setBalanceToRefresh() {
 
         if ((balance.toDouble() - oldBalance.convertForDouble()) > 0.0) {
@@ -171,6 +172,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         if (IyziCoConfig.IYZI_CO_SDK_TYPE == IyziCoSDKType.PAY_WITH_IYZI_CO) {
             root.iyzico_fragment_account_current_balance_textView.text =
                 balance.setWalletPrice().addTlIcon()
+
             balance.toDouble().apply {
                 if (this <= 0.0) {
                     hideUseBalance()
@@ -199,6 +201,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                     }
                 }
             }
+
         }
     }
 
@@ -306,7 +309,20 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                         number,
                         cvv,
                         month,
-                        year
+                        year,
+                        object :
+                            UIResponseCallBack<IyziCoInquireResponse>(this@IyziCoAccountFragment) {
+                            override fun onSuccess(response: IyziCoInquireResponse?) {
+                                super.onSuccess(response)
+                                root.iyzico_new_card_point_container.show()
+                                root.iyzico_new_card_bonus_point_amount_textview.text =
+                                    response?.amount?.toPrice()
+                            }
+
+                            override fun onError(errorCode: Int, errorMessage: String) {
+                                root.iyzico_new_card_point_container.gone()
+                            }
+                        }
                     )
                 }
 
@@ -612,7 +628,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         root.iyzico_add_card_use_my_balance_button.setNormalBorder()
     }
 
-    fun unSelectMyBalance() {
+    private fun unSelectMyBalance() {
         root.iyzico_add_card_spend_price.gone()
         if (isNewCard() && !allItemIsValid(false)) {
             root.iyzico_fragment_Account_my_installment_options_layout.gone()
@@ -664,7 +680,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         cardAdapter.notifyDataSetChanged()
     }
 
-    fun unSelectedPaymentType() {
+    private fun unSelectedPaymentType() {
         unSelectedMyAccountPaymentType()
         unSelectedCreditCard()
         checkVisibilityButton()
@@ -766,9 +782,11 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                     override fun onSuccess(response: IyziCoInquireResponse?) {
                         super.onSuccess(response)
                         it.bonusAvailable = true
-                        it.bonusPointAmount = response?.amount
+                        it.bonusPointAmount = response?.amount ?: 0.0
                         it.bonusTotalAmount = response?.points
-
+                        it.useBalance = useBalance
+                        it.balance = balance.toDouble()
+                        it.paidPrice = paidPrice().toDouble()
                         cardAdapter.notifyDataSetChanged()
                     }
 
@@ -1075,7 +1093,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
 
                         } else if (p0.toString().length < 7) {
 
-                            if (useBalance == false) {
+                            if (!useBalance) {
                                 root.iyzico_fragment_Account_my_installment_options_layout.gone()
                                 root.iyzico_fragment_Account_my_installment_information_layout.show()
                             }
@@ -1094,11 +1112,11 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         })
     }
 
-    fun paidPrice(): String {
-        if (installmentNumber == 1) {
-            return IyziCoResourcesConstans.IYZICO_PAID_PRICE.toString()
+    private fun paidPrice(): String {
+        return if (installmentNumber == 1) {
+            IyziCoResourcesConstans.IYZICO_PAID_PRICE.toString()
         } else {
-            return totalPrice.toString()
+            totalPrice.toString()
         }
     }
 

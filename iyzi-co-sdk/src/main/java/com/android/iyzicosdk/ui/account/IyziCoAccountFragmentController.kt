@@ -653,16 +653,34 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
         cardNumber: String,
         cardCvv: String,
         cardMonth: String,
-        cardYear: String
+        cardYear: String,
+        uiCallback: UIResponseCallBack<IyziCoInquireResponse>
     ) {
 
-
+        IyziCoResourcesConstans.IyziCOxTokenUse = true
+        baseFragment.showLoadingAnimation()
         val request = IyziCoNewCardInquireRequest(
             conversationId, currencyCode, locale, paidPrice,
             IyziCoInquirePaymentCard(
                 cardHolderName, cardNumber, cardCvv, cardMonth, cardYear
             ), IyziCoLoginChannelType.THIRD_PARTY_APP.type
         )
+
+        iyziCoRepository.pwiInquireWithNewCard(request, object : IyziCoServiceCallback<IyziCoInquireResponse> {
+            override fun onSuccess(data: IyziCoInquireResponse?) {
+                baseFragment.hideLoadingAnimation()
+                if (data?.status.isSuccess()) {
+                    uiCallback.onSuccess(data)
+                } else {
+                    uiCallback.onError(101, "")
+                }
+            }
+
+            override fun onError(code: Int, message: String) {
+                baseFragment.hideLoadingAnimation()
+                uiCallback.onError(code, message)
+            }
+        })
     }
 
     fun IyziCoMemberCard.toCardItem() = IyziCoCardItem(

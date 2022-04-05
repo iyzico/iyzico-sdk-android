@@ -58,7 +58,6 @@
             </LinearLayout>
         </com.android.iyzicosdk.ui.components.IyziCoDoubleBorder>
 
-
         <LinearLayout
             android:id="@+id/iyzico_add_card_layout_linear_layout"
             android:layout_width="match_parent"
@@ -119,7 +118,57 @@
 
             </LinearLayout>
 
+
         </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone"
+            android:id="@+id/iyzico_new_card_point_container"
+            android:layout_marginHorizontal="16dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iyzico_double_border_square_check_imageview"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/iyzico_empty_radio_button_unchecked"
+                android:src="@mipmap/iyzico_ic_square_check_clear_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintCircleRadius="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+                android:id="@+id/iyzico_new_card_bonus_point_amount_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/markpromedium"
+                android:gravity="end"
+                android:textColor="@color/iyzico_primary_text_color"
+                android:textSize="14sp"
+                tools:text="₺44,70" />
+
+            <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="6dp"
+                android:fontFamily="@font/markpro"
+                android:gravity="center_vertical"
+                android:text="@string/iyzico_use_my_balance"
+                android:textColor="@color/iyzico_primary_text_color"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
@@ -129,11 +178,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="9dp"
-        android:visibility="gone"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="16dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <ImageView
             android:layout_width="wrap_content"

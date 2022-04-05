@@ -19,9 +19,12 @@ internal data class IyziCoCardItem(
     @SerializedName("binNumber")
     var binNumber: String = "",
     var isSelected: Boolean = false,
-    var bonusAvailable:Boolean=false,
+    var bonusAvailable: Boolean = false,
     var bonusPointSelected: Boolean = false,
     var bonusTotalAmount: Double? = 0.0,
-    var bonusPointAmount: Double? = 0.0,
-    var isIyziCoCard: Boolean = false
+    var bonusPointAmount: Double = 0.0,
+    var isIyziCoCard: Boolean = false,
+    var useBalance: Boolean = false,
+    var balance: Double = 0.0,
+    var paidPrice: Double = 0.0
 )

@@ -84,6 +84,7 @@ internal fun TextView.spannableExtension(
     color: Int,
     clickSpan: () -> Unit
 ) {
+
     val spannableString = SpannableString(this.text)
 
     val spannable = object : ClickableSpan() {
@@ -101,15 +102,20 @@ internal fun TextView.spannableExtension(
             ds.isUnderlineText = false
         }
     }
+    var mStartIndex = startIndex
+    if (mStartIndex==-1){
+        mStartIndex = 0
+    }
+
     spannableString.setSpan(
         StyleSpan(Typeface.BOLD),
-        startIndex,
+        mStartIndex,
         endIndex,
         Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
     );
     spannableString.setSpan(
         spannable,
-        startIndex,
+        mStartIndex,
         endIndex,
         Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
     )

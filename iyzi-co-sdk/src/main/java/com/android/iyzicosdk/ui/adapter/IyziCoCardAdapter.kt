@@ -67,12 +67,65 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
 
 
             with(itemView) {
-                iyzico_double_border_square_check_imageview.setOnSafeClickListener {
-                    iyziCoCardItem.bonusPointSelected = !iyziCoCardItem.bonusPointSelected
-                    prepareCheckBoxForPoint(iyziCoCardItem)
-                }
 
-                iyzico_bonus_point_amount_textview.text = iyziCoCardItem.bonusPointAmount?.toPrice()
+                if (iyziCoCardItem.bonusAvailable) {
+
+                    iyzico_double_border_square_check_imageview.setOnSafeClickListener {
+                        iyziCoCardItem.bonusPointSelected = !iyziCoCardItem.bonusPointSelected
+                        prepareCheckBoxForPoint(iyziCoCardItem)
+                    }
+
+
+                    if (!iyziCoCardItem.useBalance) {
+                        iyzico_bonus_point_total_amount_textview.gone()
+                    } else {
+                        iyzico_bonus_point_total_amount_textview.show()
+                        iyzico_bonus_point_total_amount_textview.apply {
+
+                            val content =
+                                "${context.getString(R.string.iyzico_total_point)}: ${iyziCoCardItem.bonusPointAmount.toPrice()} "
+                            text = content
+
+
+                            val firstIndex = content.indexOfFirst { it == ':' }
+
+                            spannableExtension(
+                                firstIndex,
+                                content.length - 1,
+                                R.color.iyzico_dark_grey,
+                                clickSpan = {}
+                            )
+                        }
+                    }
+
+
+                    iyziCoCardItem.apply {
+
+                        val mix = balance + bonusPointAmount
+                        if (!iyziCoCardItem.useBalance) {
+                            iyzico_bonus_point_amount_textview.text =
+                                iyziCoCardItem.bonusPointAmount.toPrice()
+                        } else {
+                            if (mix > paidPrice) {
+                                val newPointAmount = paidPrice - balance
+
+                                if (newPointAmount > bonusPointAmount) {
+                                    iyzico_bonus_point_amount_textview.text =
+                                        iyziCoCardItem.bonusPointAmount.toPrice()
+                                } else {
+                                    iyzico_bonus_point_amount_textview.text =
+                                        newPointAmount.toPrice()
+                                }
+                            } else {
+                                iyzico_bonus_point_amount_textview.text =
+                                    iyziCoCardItem.bonusPointAmount.toPrice()
+                            }
+                        }
+                    }
+                }
+                //
+
+
                 if (iyziCoCardItem.isIyziCoCard) {
                     with(iyzico_cell_card_bank_name_textView) {
                         setTextColor(

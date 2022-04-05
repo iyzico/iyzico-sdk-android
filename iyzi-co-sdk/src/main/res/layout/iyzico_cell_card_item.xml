@@ -106,7 +106,7 @@
             android:background="@color/iyzico_f1_grey_color" />
 
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:orientation="horizontal">
@@ -124,6 +124,22 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+                android:id="@+id/iyzico_bonus_point_total_amount_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/markpro"
+                android:gravity="end"
+                android:textColor="@color/iyzico_dark_grey"
+                android:textSize="12sp"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@+id/iyzico_double_border_square_check_imageview"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Toplam Puan:" />
+
+            <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
                 android:id="@+id/iyzico_bonus_point_amount_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -133,6 +149,10 @@
                 android:gravity="end"
                 android:textColor="@color/iyzico_primary_text_color"
                 android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/iyzico_double_border_square_check_imageview"
+                app:layout_constraintStart_toEndOf="@+id/iyzico_double_border_square_check_imageview"
+                app:layout_constraintTop_toBottomOf="@+id/iyzico_bonus_point_total_amount_textview"
+                app:layout_goneMarginTop="8dp"
                 tools:text="₺44,70" />
 
             <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
@@ -142,12 +162,14 @@
                 android:layout_marginStart="6dp"
                 android:fontFamily="@font/markpro"
                 android:gravity="center_vertical"
-                android:text="@string/iyzico_use_my_balance"
+                android:text="@string/iyzico_use_my_point"
                 android:textColor="@color/iyzico_primary_text_color"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/iyzico_bonus_point_amount_textview"
+                app:layout_constraintTop_toTopOf="@+id/iyzico_bonus_point_amount_textview" />
 
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </LinearLayout>

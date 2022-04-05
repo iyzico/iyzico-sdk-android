@@ -182,6 +182,13 @@ internal class IyziCoRepository : IyziCoBaseRepository() {
         executeWithoutData(api.pwiInquire(inquireRequest), callback)
     }
 
+    fun pwiInquireWithNewCard(
+        iyziCoNewCardInquireRequest: IyziCoNewCardInquireRequest,
+        callback: IyziCoServiceCallback<IyziCoInquireResponse>
+    ) {
+        executeWithoutData(api.pwiInquireNewCard(iyziCoNewCardInquireRequest), callback)
+    }
+
     companion object {
         fun getIyziCoRepository() = IyziCoRepository()
     }

@@ -86,6 +86,9 @@ internal interface IyziCoApi {
 
     @POST("api/v1/pay-with-iyzico/third-party/inquire")
     fun pwiInquire(@Body iyziCoInquireRequest: IyziCoInquireRequest): Call<IyziCoInquireResponse>
+
+    @POST("api/v1/pay-with-iyzico/third-party/inquire")
+    fun pwiInquireNewCard(@Body iyziCoNewCardInquireRequest: IyziCoNewCardInquireRequest): Call<IyziCoInquireResponse>
 }
 
 

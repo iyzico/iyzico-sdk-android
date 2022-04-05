@@ -37,7 +37,7 @@
                 android:layout_margin="8dp"
                 android:fontFamily="@font/markpro"
                 android:gravity="center"
-                android:text="Akbank kartınla yapacağın taksitli alışverişlerde vade farksız +3 Taksit!"
+                tools:text="Akbank kartınla yapacağın taksitli alışverişlerde vade farksız +3 Taksit!"
                 android:textColor="@color/iyzico_secondary_dark_green"
                 android:textSize="14sp" />
 
@@ -201,7 +201,7 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/markpromedium"
                     android:gravity="center"
-                    android:text="KARTINIZDAN ₺68.70 ÇEKİLECEKTİR."
+                    tools:text="KARTINIZDAN ₺68.70 ÇEKİLECEKTİR."
                     android:textColor="@color/iyzico_secondary_grey"
                     android:textSize="12sp" />
 

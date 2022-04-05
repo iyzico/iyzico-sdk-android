@@ -176,7 +176,7 @@ internal fun String.convertForDouble(): Double {
 
 //başına tl ikonu ekler
 internal fun String.addTlIcon(): String {
-    return try {
+   /* return try {
         if (this.substring(this.length - 2).contains(".")) {
             "₺" + this.replace(".", ",") + "0"
         } else {
@@ -185,8 +185,9 @@ internal fun String.addTlIcon(): String {
     } catch (e: Exception) {
         e.printStackTrace()
         "₺$this,00"
-    }
+    }*/
 
+    return this.toDouble().toPrice()
 }
 
 //Stringi encode etmek için kullanıldı

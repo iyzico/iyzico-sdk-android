@@ -103,6 +103,7 @@ Acccount -->
 
     <!-- tamam -->
     <string name="iyzico_pay_with_new_card">"Yeni kart ile öde"</string>
+    <string name="iyzico_use_my_point">Kart Puanımı Kullan</string>
     <string name="iyzico_use_my_balance">Bakiyemi Kullan</string>
 
     <!-- tamam -->
@@ -120,6 +121,7 @@ Acccount -->
 
     <!-- PayWithIyziCo -->
     <string name="iyzico_sum_price">"Toplam Tutar"</string>
+    <string name="iyzico_total_point">Toplam Puan</string>
 
     <!-- tamam
 Settlement -->
