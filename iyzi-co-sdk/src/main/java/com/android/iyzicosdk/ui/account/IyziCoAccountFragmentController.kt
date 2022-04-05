@@ -19,6 +19,7 @@ import com.android.iyzicosdk.util.enums.IyziCoSDKType
 import com.android.iyzicosdk.util.extensions.clearSpace
 import com.android.iyzicosdk.util.extensions.convertAmount
 import com.android.iyzicosdk.util.extensions.intToBoolean
+import com.android.iyzicosdk.util.extensions.isSuccess
 
 
 internal class IyziCoAccountFragmentController constructor(private var baseFragment: IyziCoAccountFragment) {
@@ -53,7 +54,8 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
         binNumber: String,
         locale: String,
         price: String,
-        type: IyziCoInstallmentType
+        type: IyziCoInstallmentType,
+        withInquire: Boolean = false
     ) {
         if (type == IyziCoInstallmentType.NORMAL) {
             baseFragment.showLoadingAnimation()
@@ -81,11 +83,14 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                         }
                         baseFragment.setInstallmentAdapter(myList)
                     }
+
+                    if (withInquire) baseFragment.getInquireService()
                 }
 
                 override fun onError(code: Int, message: String) {
                     baseFragment.hideLoadingAnimation()
                     baseFragment.showSDKError(message)
+                    if (withInquire) baseFragment.getInquireService()
                 }
 
             })
@@ -612,9 +617,9 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
         paidPrice: Double,
         paymentCardToken: String,
         paymentChannel: String,
-        uiCallback: UIResponseCallBack<IyziCoPWIResponse>
+        uiCallback: UIResponseCallBack<IyziCoInquireResponse>
     ) {
-
+        IyziCoResourcesConstans.IyziCOxTokenUse = true
         baseFragment.showLoadingAnimation()
 
         val request = IyziCoInquireRequest(
@@ -622,12 +627,18 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
             IyziCoCardToken(paymentCardToken), paymentChannel
         )
 
-        iyziCoRepository.pwiInquire(request, object : IyziCoServiceCallback<IyziCoPWIResponse> {
-            override fun onSuccess(data: IyziCoPWIResponse?) {
-                uiCallback.onSuccess(data)
+        iyziCoRepository.pwiInquire(request, object : IyziCoServiceCallback<IyziCoInquireResponse> {
+            override fun onSuccess(data: IyziCoInquireResponse?) {
+                baseFragment.hideLoadingAnimation()
+                if (data?.status.isSuccess()) {
+                    uiCallback.onSuccess(data)
+                } else {
+                    uiCallback.onError(101, "")
+                }
             }
 
             override fun onError(code: Int, message: String) {
+                baseFragment.hideLoadingAnimation()
                 uiCallback.onError(code, message)
             }
         })
@@ -645,7 +656,6 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
         cardYear: String
     ) {
 
-        /*val payment = IyziCoNewCardInquireRequest()*/
 
         val request = IyziCoNewCardInquireRequest(
             conversationId, currencyCode, locale, paidPrice,

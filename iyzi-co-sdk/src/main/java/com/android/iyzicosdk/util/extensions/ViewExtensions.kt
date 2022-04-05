@@ -44,6 +44,14 @@ internal fun View.invisible() {
     this.visibility = View.INVISIBLE
 }
 
+internal fun View.setVisible(isVisible: Boolean) {
+    if (isVisible) {
+        this.visibility = View.VISIBLE
+    } else {
+        this.visibility = View.GONE
+    }
+}
+
 internal fun View.fieldFocusListener(focus: (view: View) -> Unit, unFocus: (view: View) -> Unit) {
     this.setOnFocusChangeListener { v, hasFocus ->
         if (hasFocus) {
@@ -60,7 +68,7 @@ internal fun View.changeTintColor(@ColorRes color: Int) {
 
 internal fun View.changeBackground(@DrawableRes resId: Int) {
     this.background =
-            ContextCompat.getDrawable(context, resId)
+        ContextCompat.getDrawable(context, resId)
 }
 
 internal fun TextView.changeTextSize(@DimenRes dimenId: Int) {
@@ -71,10 +79,10 @@ internal fun TextView.changeTextSize(@DimenRes dimenId: Int) {
  * Spannable exteions
  * */
 internal fun TextView.spannableExtension(
-        startIndex: Int,
-        endIndex: Int,
-        color: Int,
-        clickSpan: () -> Unit
+    startIndex: Int,
+    endIndex: Int,
+    color: Int,
+    clickSpan: () -> Unit
 ) {
     val spannableString = SpannableString(this.text)
 
@@ -86,18 +94,24 @@ internal fun TextView.spannableExtension(
         override fun updateDrawState(ds: TextPaint) {
             super.updateDrawState(ds)
             ds.color = ContextCompat.getColor(
-                    this@spannableExtension.context,
-                    color
+                this@spannableExtension.context,
+                color
             )
             ds.typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
             ds.isUnderlineText = false
         }
     }
     spannableString.setSpan(
-            spannable,
-            startIndex,
-            endIndex,
-            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        StyleSpan(Typeface.BOLD),
+        startIndex,
+        endIndex,
+        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+    );
+    spannableString.setSpan(
+        spannable,
+        startIndex,
+        endIndex,
+        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
     )
 
     this.movementMethod = LinkMovementMethod.getInstance()
@@ -111,7 +125,7 @@ internal fun TextView.spannableExtension(
 internal fun IyziCoPrimaryEditText.autoFocus() {
     this.requestFocus()
     (context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).toggleSoftInput(
-            InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY
+        InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY
     );
 }
 
@@ -121,7 +135,7 @@ internal fun IyziCoPrimaryEditText.autoFocus() {
 internal fun IyziCoPriceEditText.autoFocus() {
     this.requestFocus()
     (context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).toggleSoftInput(
-            InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY
+        InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY
     );
 }
 
@@ -136,7 +150,7 @@ internal fun EditText.phoneSelect() {
 internal fun IyziCoPhoneEditText.autoFocus() {
     this.requestFocus()
     (context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).toggleSoftInput(
-            InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY
+        InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY
     );
 }
 
@@ -146,7 +160,7 @@ internal fun IyziCoPhoneEditText.autoFocus() {
 internal fun IyziCoSmsPin.autoFocus() {
     this.getFirstPinArea().requestFocus()
     (context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).toggleSoftInput(
-            InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY
+        InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY
     );
 }
 
@@ -154,10 +168,10 @@ internal fun IyziCoSmsPin.autoFocus() {
  * View'a margin vermek için kullanılıyor
  */
 internal fun View.setMargins(
-        leftMarginDp: Int? = null,
-        topMarginDp: Int? = null,
-        rightMarginDp: Int? = null,
-        bottomMarginDp: Int? = null
+    leftMarginDp: Int? = null,
+    topMarginDp: Int? = null,
+    rightMarginDp: Int? = null,
+    bottomMarginDp: Int? = null
 ) {
     if (layoutParams is ViewGroup.MarginLayoutParams) {
         val params = layoutParams as ViewGroup.MarginLayoutParams
@@ -169,14 +183,14 @@ internal fun View.setMargins(
     }
 }
 
-internal fun View.rotateAnimation(finishHandler:() -> Unit?,duration: Long? = 1200) {
-   var rotate = RotateAnimation(
-            0.0f,
-            -360.0f,
-            Animation.RELATIVE_TO_SELF,
-            0.5f,
-            Animation.RELATIVE_TO_SELF,
-            0.5f
+internal fun View.rotateAnimation(finishHandler: () -> Unit?, duration: Long? = 1200) {
+    var rotate = RotateAnimation(
+        0.0f,
+        -360.0f,
+        Animation.RELATIVE_TO_SELF,
+        0.5f,
+        Animation.RELATIVE_TO_SELF,
+        0.5f
     )
 
     rotate.duration = duration ?: 1500
@@ -189,7 +203,7 @@ internal fun View.rotateAnimation(finishHandler:() -> Unit?,duration: Long? = 12
                     rotate.cancel()
                     finishHandler.invoke()
                     return
-                }else{
+                } else {
                     //this@rotateAnimation.rotateAnimation(duration = duration?.plus(450),finishHandler = finishHandler)
                 }
             }
@@ -206,11 +220,11 @@ internal fun View.rotateAnimation(finishHandler:() -> Unit?,duration: Long? = 12
 
 
 internal fun View.animationFadeIn(
-        doIt: (() -> Unit?)? = null
+    doIt: (() -> Unit?)? = null
 ) {
     val animation = AnimationUtils.loadAnimation(context, R.anim.iyzico_fade_in_animation)
     this.startAnimation(animation)
-    Handler().postDelayed(  {
+    Handler().postDelayed({
         if (doIt != null) {
             doIt()
         }
@@ -219,16 +233,17 @@ internal fun View.animationFadeIn(
 }
 
 internal fun View.animationFadeOut(
-        doIt: (() -> Unit?)? = null
+    doIt: (() -> Unit?)? = null
 ) {
     val animation = AnimationUtils.loadAnimation(context, R.anim.iyzico_fade_out_animation)
     this.startAnimation(animation)
     Handler().postDelayed(
-            Runnable {
-                if (doIt != null) {
-                    doIt()
-                }
-            }, 1200)
+        Runnable {
+            if (doIt != null) {
+                doIt()
+            }
+        }, 1200
+    )
 }
 
 /**

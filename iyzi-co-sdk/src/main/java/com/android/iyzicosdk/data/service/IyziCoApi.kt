@@ -85,7 +85,7 @@ internal interface IyziCoApi {
     fun pwiBankTransferInitializeNotify(@Body bankTransferPaymenNotifyRequest: BankTransferPaymenNotifyRequest): Call<IyziCoPWIResponse>
 
     @POST("api/v1/pay-with-iyzico/third-party/inquire")
-    fun pwiInquire(@Body iyziCoInquireRequest: IyziCoInquireRequest): Call<IyziCoPWIResponse>
+    fun pwiInquire(@Body iyziCoInquireRequest: IyziCoInquireRequest): Call<IyziCoInquireResponse>
 }
 
 

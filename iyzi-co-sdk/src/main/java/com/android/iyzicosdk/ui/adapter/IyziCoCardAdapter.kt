@@ -36,7 +36,8 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
         override fun bind(iyziCoCardItem: IyziCoCardItem) {
             if (iyziCoCardItem.isSelected) {
                 itemView.iyzico_cell_card_item_selected_button.setImageResource(R.drawable.iyzico_ic_check_button)
-                itemView.iyzico_bonus_point_container.show()
+                itemView.iyzico_bonus_point_container.setVisible(iyziCoCardItem.bonusAvailable)
+
             } else {
                 itemView.iyzico_cell_card_item_selected_button.setImageResource(R.drawable.iyzico_ic_empty_radio)
                 itemView.iyzico_bonus_point_container.gone()
@@ -71,11 +72,7 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
                     prepareCheckBoxForPoint(iyziCoCardItem)
                 }
 
-
                 iyzico_bonus_point_amount_textview.text = iyziCoCardItem.bonusPointAmount?.toPrice()
-
-
-
                 if (iyziCoCardItem.isIyziCoCard) {
                     with(iyzico_cell_card_bank_name_textView) {
                         setTextColor(

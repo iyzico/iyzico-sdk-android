@@ -236,7 +236,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         }
     }
 
-    fun hideUseBalance() {
+    private fun hideUseBalance() {
         root.iyzico_fragment_Account_my_installment_information_layout.show()
         root.iyzico_add_card_use_my_balance_button.gone()
         useBalance = false
@@ -721,7 +721,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
             hideNewCardContainer()
             hideKeyboard()
 
-            getInstallments(clickItem.binNumber, IyziCoInstallmentType.NORMAL)
+            getInstallments(clickItem.binNumber, IyziCoInstallmentType.NORMAL, true)
             showInstallmentContainer()
 
             root.iyzico_fragment_Account_my_installment_options_layout.gone()
@@ -746,13 +746,12 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
             cardAdapter.notifyDataSetChanged()
             checkVisibilityButton()
 
-            getInquireService()
 
         }
     }
 
 
-    private fun getInquireService() {
+    fun getInquireService() {
         cardAdapter.items.find {
             it.isSelected
         }?.let {
@@ -763,14 +762,18 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                 paidPrice().toDouble(),
                 it.cardToken,
                 IyziCoLoginChannelType.THIRD_PARTY_APP.type,
-                object : UIResponseCallBack<IyziCoPWIResponse>(this) {
-                    override fun onSuccess(response: IyziCoPWIResponse?) {
+                object : UIResponseCallBack<IyziCoInquireResponse>(this) {
+                    override fun onSuccess(response: IyziCoInquireResponse?) {
                         super.onSuccess(response)
+                        it.bonusAvailable = true
+                        it.bonusPointAmount = response?.amount
+                        it.bonusTotalAmount = response?.points
+
+                        cardAdapter.notifyDataSetChanged()
                     }
 
                     override fun onError(errorCode: Int, errorMessage: String) {
-                        super.onError(errorCode, errorMessage)
-                        it.bonusPointAmount = 103.5
+                        it.bonusAvailable = false
                         cardAdapter.notifyDataSetChanged()
                     }
                 }
@@ -849,11 +852,10 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
             iyziCoPaymentType = IyziCoPaymentType.CARD
             setToMixPayment()
 
-            getInstallments(it.binNumber, IyziCoInstallmentType.NORMAL)
+            getInstallments(it.binNumber, IyziCoInstallmentType.NORMAL, true)
             showInstallmentContainer()
             selectedCard = it
 
-            getInquireService()
 
         } ?: run {
             showNewCardContainer()
@@ -1011,13 +1013,18 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
             })
     }
 
-    fun getInstallments(binNumber: String?, type: IyziCoInstallmentType) {
+    fun getInstallments(
+        binNumber: String?,
+        type: IyziCoInstallmentType,
+        withInquire: Boolean = false
+    ) {
         if (IyziCoConfig.IYZI_CO_SDK_TYPE == IyziCoSDKType.PAY_WITH_IYZI_CO) {
             controller.getInstallments(
                 binNumber!!,
                 IyziCoConfig.LANGUAGE.type,
                 IyziCoResourcesConstans.IYZICO_PAID_PRICE.toString(),
-                type
+                type,
+                withInquire
             )
         }
     }

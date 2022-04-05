@@ -95,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
         android:orientation="vertical"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@+id/iyzico_cell_card_item_selected_button"
         app:layout_constraintStart_toStartOf="@+id/iyzico_cell_card_item_card_name_textview"
         app:layout_constraintTop_toBottomOf="@+id/iyzico_cell_card_item_card_name_textview">
