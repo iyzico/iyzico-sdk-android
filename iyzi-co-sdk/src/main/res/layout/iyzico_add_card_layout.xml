@@ -41,6 +41,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="20dp"
                     android:gravity="center_vertical"
+                    app:tint="@color/iyzico_light_black"
                     android:src="@drawable/iyzico_ic_plus" />
 
                 <com.android.iyzicosdk.ui.components.IyziCoCustomTextView

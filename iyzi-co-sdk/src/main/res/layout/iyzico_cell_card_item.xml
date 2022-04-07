@@ -131,16 +131,16 @@
 
                 <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
                     android:id="@+id/iyzico_bonus_point_total_amount_textview"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="9dp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/markpro"
-                    android:gravity="end"
                     android:textColor="@color/iyzico_dark_grey"
                     android:textSize="12sp"
                     android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/iyzico_double_border_square_check_imageview"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Toplam Puan:" />
@@ -194,18 +194,18 @@
         android:orientation="horizontal"
         android:visibility="gone">
 
-     <!--   <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginEnd="4dp"
-            android:src="@drawable/iyzico_ic_info" />
--->
+        <!--   <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:layout_marginEnd="4dp"
+               android:src="@drawable/iyzico_ic_info" />
+   -->
         <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawablePadding="6dp"
             android:drawableStart="@drawable/iyzico_ic_info"
+            android:drawablePadding="6dp"
             android:text="@string/iyzico_not_enough_balance"
             android:textColor="@color/iyzico_secondary_grey"
             android:textSize="14sp"

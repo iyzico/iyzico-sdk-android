@@ -537,7 +537,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         root.iyzico_my_account_sub_layout_info_textview.spannableExtension(
             9,
             30,
-            R.color.iyzico_black,
+            R.color.iyzico_secondary_text_color,
             clickSpan = {
             })
 
@@ -745,6 +745,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
             cardAdapter.items.forEach { entity ->
                 if (clickItem != entity) {
                     entity.isSelected = false
+                    entity.bonusAvailable = false
                 } else {
                     selectedCard = clickItem
                     entity.isSelected = true
@@ -833,7 +834,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
 
                 iyzico_fragment_account_installment_textview.spannableExtension(
                     startIndex,
-                    text.length - 1,
+                    text.length,
                     R.color.iyzico_dark_green,
                     clickSpan = {}
                 )
@@ -867,6 +868,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
 
 
         if (cardAdapter.items.isEmpty()) {
+            root.iyzico_fragment_account_new_card_double_border.gone()
             showNewCardContainer()
             root.iyzico_fragment_account_new_card_double_border.focus()
             root.iyzico_fragment_account_new_card_double_border.clearBorderFocus()
@@ -1002,7 +1004,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
 
     }
 
-    fun showRemittanceInformationBottomSheet(
+    private fun showRemittanceInformationBottomSheet(
         iban: String,
         title: String,
         bankName: String,

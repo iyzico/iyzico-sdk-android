@@ -124,7 +124,6 @@ internal fun TextView.spannableExtension(
     this.text = spannableString
 }
 
-
 /**
  * Fragment açıldığı gibi ilgili edittexte otomatik focus olmak için yazıldı
  */

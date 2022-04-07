@@ -72,7 +72,7 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
 
             with(itemView) {
 
-                if (iyziCoCardItem.bonusAvailable) {
+                if (iyziCoCardItem.bonusAvailable && iyziCoCardItem.isSelected) {
 
                     iyzico_double_border_square_check_imageview.setOnSafeClickListener {
                         iyziCoCardItem.bonusPointSelected = !iyziCoCardItem.bonusPointSelected
@@ -107,7 +107,7 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
 
                                 spannableExtension(
                                     firstIndex,
-                                    content.length - 1,
+                                    content.length,
                                     R.color.iyzico_dark_grey,
                                     clickSpan = {}
                                 )
