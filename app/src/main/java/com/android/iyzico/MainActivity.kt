@@ -70,8 +70,8 @@ class MainActivity : AppCompatActivity() {
             Iyzico.client().startPayWithIyzico(
                 this,
                 "Lidyana.com",
-                61.00,
-                61.00,
+                15.00,
+                15.00,
                 Currency.TRY,
                 arrayOf(1, 2, 3, 6, 9),
                 "B67832",//zorunlu
@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
                         "BI101",
                         BasketItemType.PHYSICAL,
                         "Binocular",
-                        "61.00",
+                        "15.00",
                         null, null
                     )
                 ),

@@ -175,6 +175,7 @@ information -->
 
     <!-- tamam -->
     <string name="iyzico_saving_card_datas">"Kart bilgilerin iyzico tarafından saklanır."</string>
+    <string name="iyzico_not_enough_balance">Bakiyen yetersiz olduğu için iyzico Kart’ın ile ödeme yapılamıyor.</string>
 
     <!-- tamam -->
     <string name="iyzico_protected_payment_methots">"Korumalı Ödeme Yöntemleri"</string>

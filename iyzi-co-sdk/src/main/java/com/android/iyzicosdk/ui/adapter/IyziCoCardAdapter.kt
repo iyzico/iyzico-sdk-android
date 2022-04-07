@@ -34,6 +34,7 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
         IyziCoBaseViewHolder<IyziCoCardItem>(parent, R.layout.iyzico_cell_card_item) {
         var context = context
         override fun bind(iyziCoCardItem: IyziCoCardItem) {
+
             if (iyziCoCardItem.isSelected) {
                 itemView.iyzico_cell_card_item_selected_button.setImageResource(R.drawable.iyzico_ic_check_button)
                 itemView.iyzico_bonus_point_container.setVisible(iyziCoCardItem.bonusAvailable)
@@ -56,11 +57,14 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
             itemView.iyzico_cell_card_item_card_number_textview.text = iyziCoCardItem.lastFourDigits
 
 
-            setImageForSvg(
-                context,
-                iyziCoCardItem.cardAssociationLogoUrl ?: "",
-                itemView.iyzico_cell_card_bank_imageView
-            )
+            if (!iyziCoCardItem.passiveIyziCoCard) {
+                setImageForSvg(
+                    context,
+                    iyziCoCardItem.cardAssociationLogoUrl ?: "",
+                    itemView.iyzico_cell_card_bank_imageView
+                )
+            }
+
 
             prepareCheckBoxForPoint(iyziCoCardItem)
 
@@ -76,54 +80,72 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
                     }
 
 
-                    if (!iyziCoCardItem.useBalance) {
-                        iyzico_bonus_point_total_amount_textview.gone()
-                    } else {
-                        iyzico_bonus_point_total_amount_textview.show()
-                        iyzico_bonus_point_total_amount_textview.apply {
-
-                            val content =
-                                "${context.getString(R.string.iyzico_total_point)}: ${iyziCoCardItem.bonusPointAmount.toPrice()} "
-                            text = content
 
 
-                            val firstIndex = content.indexOfFirst { it == ':' }
+                    if (iyziCoCardItem.useBalance) {
 
-                            spannableExtension(
-                                firstIndex,
-                                content.length - 1,
-                                R.color.iyzico_dark_grey,
-                                clickSpan = {}
-                            )
-                        }
-                    }
+                        val mix = iyziCoCardItem.balance + iyziCoCardItem.bonusPointAmount
 
+                        if (mix > iyziCoCardItem.paidPrice) {
+                            val newPointAmount = iyziCoCardItem.paidPrice - iyziCoCardItem.balance
 
-                    iyziCoCardItem.apply {
-
-                        val mix = balance + bonusPointAmount
-                        if (!iyziCoCardItem.useBalance) {
-                            iyzico_bonus_point_amount_textview.text =
-                                iyziCoCardItem.bonusPointAmount.toPrice()
-                        } else {
-                            if (mix > paidPrice) {
-                                val newPointAmount = paidPrice - balance
-
-                                if (newPointAmount > bonusPointAmount) {
-                                    iyzico_bonus_point_amount_textview.text =
-                                        iyziCoCardItem.bonusPointAmount.toPrice()
-                                } else {
-                                    iyzico_bonus_point_amount_textview.text =
-                                        newPointAmount.toPrice()
-                                }
-                            } else {
+                            if (newPointAmount > iyziCoCardItem.bonusPointAmount) {
                                 iyzico_bonus_point_amount_textview.text =
                                     iyziCoCardItem.bonusPointAmount.toPrice()
+                            } else {
+                                iyzico_bonus_point_amount_textview.text =
+                                    newPointAmount.toPrice()
                             }
+                            iyzico_bonus_point_total_amount_textview.apply {
+                                show()
+                                val content =
+                                    "${context.getString(R.string.iyzico_total_point)}: ${iyziCoCardItem.bonusPointAmount.toPrice()} "
+                                text = content
+
+
+                                val firstIndex = content.indexOfFirst { it == ':' }
+
+                                spannableExtension(
+                                    firstIndex,
+                                    content.length - 1,
+                                    R.color.iyzico_dark_grey,
+                                    clickSpan = {}
+                                )
+                            }
+                        } else {
+                            iyzico_bonus_point_amount_textview.text =
+                                iyziCoCardItem.bonusPointAmount.toPrice()
+                        }
+
+                    } else {
+                        if (iyziCoCardItem.bonusPointAmount > iyziCoCardItem.paidPrice) {
+
+                            iyzico_bonus_point_total_amount_textview.apply {
+                                show()
+                                val content =
+                                    "${context.getString(R.string.iyzico_total_point)}: ${iyziCoCardItem.bonusPointAmount.toPrice()} "
+                                text = content
+
+
+                                val firstIndex = content.indexOfFirst { it == ':' }
+
+                                spannableExtension(
+                                    firstIndex,
+                                    content.length - 1,
+                                    R.color.iyzico_dark_grey,
+                                    clickSpan = {}
+                                )
+                            }
+
+                            iyzico_bonus_point_amount_textview.text =
+                                iyziCoCardItem.paidPrice.toPrice()
+
+                        } else {
+                            iyzico_bonus_point_amount_textview.text =
+                                iyziCoCardItem.bonusPointAmount.toPrice()
                         }
                     }
                 }
-                //
 
 
                 if (iyziCoCardItem.isIyziCoCard) {
@@ -136,11 +158,45 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
                         )
                         textSize = 15f
                     }
+
+                    if (iyziCoCardItem.passiveIyziCoCard) {
+                        passiveCell()
+                    }
+
+                    iyzico_card_information_text.setVisible(iyziCoCardItem.showBalanceInfoMessage)
+
                 }
             }
-
 /*
 */
+        }
+
+        private fun passiveCell() {
+            with(itemView) {
+                isEnabled = false
+                iyzico_cell_card_bank_imageView.setImageResource(R.drawable.passive_mastercard_color)
+                iyzico_cell_card_bank_name_textView.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.iyzico_dark_grey
+                    )
+                )
+                iyzico_cell_card_item_card_name_textview.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.iyzico_dark_grey
+                    )
+                )
+                dottextview.setTextColor(ContextCompat.getColor(context, R.color.iyzico_dark_grey))
+                iyzico_cell_card_item_card_number_textview.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.iyzico_dark_grey
+                    )
+                )
+
+                alpha = 0.7f
+            }
         }
 
         private fun prepareCheckBoxForPoint(iyziCoCardItem: IyziCoCardItem) {

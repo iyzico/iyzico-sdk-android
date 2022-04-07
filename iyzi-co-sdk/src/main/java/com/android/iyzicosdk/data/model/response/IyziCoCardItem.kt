@@ -26,5 +26,7 @@ internal data class IyziCoCardItem(
     var isIyziCoCard: Boolean = false,
     var useBalance: Boolean = false,
     var balance: Double = 0.0,
-    var paidPrice: Double = 0.0
+    var paidPrice: Double = 0.0,
+    var passiveIyziCoCard:Boolean=false,
+    var showBalanceInfoMessage:Boolean=false
 )

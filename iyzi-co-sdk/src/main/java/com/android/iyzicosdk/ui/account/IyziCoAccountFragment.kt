@@ -822,7 +822,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                         val doubleCampaign = plusInstallmentResponseList.take(2)
                         text =
                             "${doubleCampaign[0].cardBankDtoList.first().cardBankName} veya ${doubleCampaign[1].cardBankDtoList.first().cardBankName} " +
-                                    "${getString(R.string.iyzico_plus_installment_info_text)} +${doubleCampaign[0].plusInstallment} +${doubleCampaign[1].plusInstallment}  Taksit"
+                                    "${getString(R.string.iyzico_plus_installment_info_text)} +${doubleCampaign[0].plusInstallment} ve +${doubleCampaign[1].plusInstallment}  Taksit"
                     }
                 }
 
@@ -864,18 +864,9 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
     fun setFirstCard() {
         unSelectedCreditCard()
         unSelectedNewCardButton()
-        cardAdapter.items.getOrNull(0)?.let {
-            it.isSelected = true
-            cardAdapter.notifyDataSetChanged()
-            iyziCoPaymentType = IyziCoPaymentType.CARD
-            setToMixPayment()
-
-            getInstallments(it.binNumber, IyziCoInstallmentType.NORMAL, true)
-            showInstallmentContainer()
-            selectedCard = it
 
 
-        } ?: run {
+        if (cardAdapter.items.isEmpty()) {
             showNewCardContainer()
             root.iyzico_fragment_account_new_card_double_border.focus()
             root.iyzico_fragment_account_new_card_double_border.clearBorderFocus()
@@ -884,9 +875,46 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
 
             iyziCoPaymentType = IyziCoPaymentType.NEW_CARD
             setToMixPayment()
+        } else {
 
+            cardAdapter.items.first().let {
+                if (it.isIyziCoCard) {
+                    if (balance.toDouble() >= paidPrice().toDouble()) {
+                        setFirstCard(it)
+                    } else {
+                        val findIndex = cardAdapter.items.indexOfFirst { !it.isIyziCoCard }
+
+                        val iyziCoCardItems = cardAdapter.items.filter { it.isIyziCoCard }
+
+                        if (iyziCoCardItems.isNotEmpty()) {
+                            iyziCoCardItems.forEach {
+                                it.passiveIyziCoCard = true
+                            }
+                            iyziCoCardItems.last().showBalanceInfoMessage = true
+                        }
+                        cardAdapter.items.getOrNull(findIndex)?.let {
+                            setFirstCard(it)
+                        }
+
+                    }
+                } else {
+                    setFirstCard(it)
+                }
+            }
         }
+
         checkVisibilityButton()
+    }
+
+    private fun setFirstCard(item: IyziCoCardItem) {
+        item.isSelected = true
+        cardAdapter.notifyDataSetChanged()
+        iyziCoPaymentType = IyziCoPaymentType.CARD
+        setToMixPayment()
+
+        getInstallments(item.binNumber, IyziCoInstallmentType.NORMAL, true)
+        showInstallmentContainer()
+        selectedCard = item
     }
 
     private fun showNewCardContainer() {
@@ -1084,7 +1112,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                                 p0.toString().cardtobinNumber(),
                                 IyziCoInstallmentType.NEW_CARD
                             )
-                            if (useBalance == false) {
+                            if (!useBalance) {
                                 root.iyzico_fragment_Account_my_installment_options_layout.show()
                                 root.iyzico_add_card_card_number.iyzico_card_no_edit_text.requestFocus()
                                 root.iyzico_fragment_Account_my_installment_information_layout.gone()
