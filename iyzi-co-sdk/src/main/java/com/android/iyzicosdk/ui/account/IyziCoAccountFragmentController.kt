@@ -357,7 +357,7 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                         }
 
 
-                        val cards = tempCards.sortedByDescending { it.isIyziCoCard }
+                        val cards = tempCards.sortedByDescending { it.isIyziCoCard.toString() }
 
                         baseFragment.setCardAdapter(cards)
 
@@ -372,7 +372,7 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
 
 
                         val plusInstallmentList =
-                            it.iyziCoCheckoutDetail.plusInstallmentResponseList?.sortedBy { it.startDate }
+                            it.iyziCoCheckoutDetail.plusInstallmentResponseList?.sortedByDescending { it.startDate }
                         baseFragment.setPlusInstallment(plusInstallmentList ?: emptyList())
                     }
                 }
@@ -666,21 +666,23 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
             ), IyziCoLoginChannelType.THIRD_PARTY_APP.type
         )
 
-        iyziCoRepository.pwiInquireWithNewCard(request, object : IyziCoServiceCallback<IyziCoInquireResponse> {
-            override fun onSuccess(data: IyziCoInquireResponse?) {
-                baseFragment.hideLoadingAnimation()
-                if (data?.status.isSuccess()) {
-                    uiCallback.onSuccess(data)
-                } else {
-                    uiCallback.onError(101, "")
+        iyziCoRepository.pwiInquireWithNewCard(
+            request,
+            object : IyziCoServiceCallback<IyziCoInquireResponse> {
+                override fun onSuccess(data: IyziCoInquireResponse?) {
+                    baseFragment.hideLoadingAnimation()
+                    if (data?.status.isSuccess()) {
+                        uiCallback.onSuccess(data)
+                    } else {
+                        uiCallback.onError(101, "")
+                    }
                 }
-            }
 
-            override fun onError(code: Int, message: String) {
-                baseFragment.hideLoadingAnimation()
-                uiCallback.onError(code, message)
-            }
-        })
+                override fun onError(code: Int, message: String) {
+                    baseFragment.hideLoadingAnimation()
+                    uiCallback.onError(code, message)
+                }
+            })
     }
 
     fun IyziCoMemberCard.toCardItem() = IyziCoCardItem(
