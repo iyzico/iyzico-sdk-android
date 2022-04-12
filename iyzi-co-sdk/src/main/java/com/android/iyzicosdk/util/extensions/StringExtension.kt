@@ -7,15 +7,14 @@ import com.android.iyzicosdk.util.enums.Currency
 import com.android.iyzicosdk.util.enums.IyziCoCardTypes
 import com.android.iyzicosdk.util.enums.Languages
 import com.android.iyzicosdk.util.enums.PaymentGroup
-import javax.crypto.Mac
-import javax.crypto.spec.SecretKeySpec
 import org.apache.commons.codec.binary.Hex
 import java.io.UnsupportedEncodingException
-import java.lang.Exception
 import java.security.InvalidKeyException
 import java.security.NoSuchAlgorithmException
 import java.util.regex.Matcher
 import java.util.regex.Pattern
+import javax.crypto.Mac
+import javax.crypto.spec.SecretKeySpec
 
 internal val DateStringPattern = "yyyy-MM-dd HH:mm:ss"
 
@@ -176,23 +175,22 @@ internal fun String.convertForDouble(): Double {
 
 //başına tl ikonu ekler
 internal fun String.addTlIcon(): String {
-    /* return try {
-         if (this.substring(this.length - 2).contains(".")) {
-             "₺" + this.replace(".", ",") + "0"
-         } else {
-             "₺" + this.replace(".", ",")
-         }
-     } catch (e: Exception) {
-         e.printStackTrace()
-         "₺$this,00"
-     }*/
+    /*  return try {
+          if (this.substring(this.length - 2).contains(".")) {
+              "₺" + this.replace(".", ",") + "0"
+          } else {
+              "₺" + this.replace(".", ",")
+          }
+      } catch (e: Exception) {
+          e.printStackTrace()
+          "₺$this"
+      }*/
     return try {
         this.toDouble().toPrice()
     } catch (e: Exception) {
         e.printStackTrace()
-        "₺$this,00"
+        "₺$this"
     }
-
 }
 
 //Stringi encode etmek için kullanıldı

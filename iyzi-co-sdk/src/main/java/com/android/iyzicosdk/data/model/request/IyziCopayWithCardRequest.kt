@@ -19,5 +19,7 @@ internal data class IyziCopayWithCardRequest(
     @SerializedName("paymentCard")
     val paymentCard: IyziCoPaymentCard,
     @SerializedName("paymentChannel")
-    val paymentChannel: String
+    val paymentChannel: String,
+    @SerializedName("reward")
+    val rewardRequest: RewardRequest?
 )

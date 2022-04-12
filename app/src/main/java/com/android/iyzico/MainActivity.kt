@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
         //canli             "https://consumerapigw.iyzipay.com/",
         Iyzico.client().initialize(
             "127.0.0.1",
-            "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9",
-            "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR",
-            "https://consumerapigw.iyzipay.com/",
+            CLIEND_ID,
+            CLIEND_SECRET_KEY,
+            URL,
             Languages.TURKISH, MERCHANT_SECRET_KEY, MERCHANT_API_KEY
         )
         /*  "127.0.0.1",
@@ -70,8 +70,8 @@ class MainActivity : AppCompatActivity() {
             Iyzico.client().startPayWithIyzico(
                 this,
                 "Lidyana.com",
-                15.00,
-                15.00,
+                30.00,
+                30.00,
                 Currency.TRY,
                 arrayOf(1, 2, 3, 6, 9),
                 "B67832",//zorunlu
@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
                         "BI101",
                         BasketItemType.PHYSICAL,
                         "Binocular",
-                        "15.00",
+                        "30.00",
                         null, null
                     )
                 ),

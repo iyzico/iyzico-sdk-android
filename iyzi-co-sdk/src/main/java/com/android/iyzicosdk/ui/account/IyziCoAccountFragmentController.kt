@@ -1,21 +1,14 @@
 package com.android.iyzicosdk.ui.account
 
-import android.util.Log
 import com.android.iyzicosdk.callback.IyziCoServiceCallback
 import com.android.iyzicosdk.data.UIResponseCallBack
 import com.android.iyzicosdk.data.model.request.*
 import com.android.iyzicosdk.data.model.response.*
-import com.android.iyzicosdk.data.model.response.IyziCoRetrieverMemberBalanceResponse
 import com.android.iyzicosdk.data.repository.IyziCoRepository
 import com.android.iyzicosdk.ui.info.IyziCoInfoFragment
 import com.android.iyzicosdk.util.config.IyziCoConfig
 import com.android.iyzicosdk.util.constants.IyziCoResourcesConstans
 import com.android.iyzicosdk.util.enums.*
-import com.android.iyzicosdk.util.enums.IyziCoInfoScreenType
-import com.android.iyzicosdk.util.enums.IyziCoInstallmentType
-import com.android.iyzicosdk.util.enums.IyziCoLoginChannelType
-import com.android.iyzicosdk.util.enums.IyziCoPaymentType
-import com.android.iyzicosdk.util.enums.IyziCoSDKType
 import com.android.iyzicosdk.util.extensions.clearSpace
 import com.android.iyzicosdk.util.extensions.convertAmount
 import com.android.iyzicosdk.util.extensions.intToBoolean
@@ -513,8 +506,11 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
         installment: Int,
         memberToken: String,
         paidPrice: String,
-        isUsedbalance: Boolean
+        isUsedbalance: Boolean,
+        rewardPoint: Double
     ) {
+
+        val rewardRequest = if (rewardPoint > 0.0) RewardRequest(rewardPoint, 1) else null
 
         if (iyziCoPaymentType == IyziCoPaymentType.BALANCE) {
             pwiPayWithBalance(loginChannelType)
@@ -554,7 +550,8 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                                 year,
                                 registerCard,
                                 registerConsumer
-                            ), loginChannelType.type
+                            ), loginChannelType.type,
+                            rewardRequest
                         )
                     )
                 }
@@ -564,7 +561,8 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                             true, gsmNumber, installment, memberId, memberToken, paidPrice,
                             IyziCoPaymentCard(
                                 cardToken = cardToken
-                            ), loginChannelType.type
+                            ), loginChannelType.type,
+                            rewardRequest
                         )
                     )
                 }
@@ -592,7 +590,8 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                                 registerCard,
                                 registerConsumer
                             ),
-                            loginChannelType.type
+                            loginChannelType.type,
+                            rewardRequest
                         )
                     )
                 }
@@ -602,7 +601,8 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                             true, gsmNumber, installment, memberId, memberToken, paidPrice,
                             IyziCoPaymentCard(
                                 cardToken = cardToken
-                            ), loginChannelType.type
+                            ), loginChannelType.type,
+                            rewardRequest
                         )
                     )
                 }
@@ -694,7 +694,9 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
         cardAssociationLogoUrl = this.cardAssociationLogoUrl ?: "",
         cardAssociation = this.cardAssociation ?: "",
         binNumber = this.binNumber ?: "",
-        isIyziCoCard = this.cardBankName.equals(IyziCoConfig.IYZICO, ignoreCase = false)
+        isIyziCoCard = this.cardBankName.equals(IyziCoConfig.IYZICO, ignoreCase = false),
+        isIyzicoVirtualCard = this.iyzicoVirtualCard,
+        threeDSVerified = this.threeDSVerified
     )
 
 

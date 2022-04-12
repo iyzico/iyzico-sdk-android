@@ -1,24 +1,14 @@
 package com.android.iyzicosdk.ui.adapter
 
 import android.content.Context
-import android.graphics.drawable.PictureDrawable
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.android.iyzicosdk.R
 import com.android.iyzicosdk.data.model.response.IyziCoCardItem
-import com.android.iyzicosdk.util.IyziCoImageLoaderUtility.Companion.imageLoaderWithCacheFit
 import com.android.iyzicosdk.util.IyziCoImageLoaderUtility.Companion.setImageForSvg
-import com.android.iyzicosdk.util.SvgSoftwareLayerSetter
 import com.android.iyzicosdk.util.enums.IyziCoCardsType
 import com.android.iyzicosdk.util.extensions.*
-import com.android.iyzicosdk.util.extensions.changeBackground
-import com.android.iyzicosdk.util.extensions.gone
-import com.android.iyzicosdk.util.extensions.setOnSafeClickListener
-import com.android.iyzicosdk.util.extensions.show
-
 import kotlinx.android.synthetic.main.iyzico_cell_card_item.view.*
-import kotlinx.android.synthetic.main.iyzico_cell_card_item.view.iyzico_double_border_square_check_imageview
-import kotlinx.android.synthetic.main.iyzico_double_border.view.*
 
 
 internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCardItem>() {
@@ -44,14 +34,23 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
                 itemView.iyzico_bonus_point_container.gone()
             }
             itemView.iyzico_cell_card_item_card_name_textview.apply {
-                when (iyziCoCardItem.cardType) {
-                    IyziCoCardsType.CREDIT_CARD.toString() -> {
-                        this.text = IyziCoCardsType.CREDIT_CARD.type
+                if (!iyziCoCardItem.isIyziCoCard) {
+                    when (iyziCoCardItem.cardType) {
+                        IyziCoCardsType.CREDIT_CARD.toString() -> {
+                            this.text = IyziCoCardsType.CREDIT_CARD.type
+                        }
+                        IyziCoCardsType.DEBIT_CARD.toString() -> {
+                            this.text = IyziCoCardsType.DEBIT_CARD.type
+                        }
                     }
-                    IyziCoCardsType.DEBIT_CARD.toString() -> {
-                        this.text = IyziCoCardsType.DEBIT_CARD.type
+                } else {
+                    text = if (iyziCoCardItem.isIyzicoVirtualCard) {
+                        context.getString(R.string.iyzico_virtul_card)
+                    } else {
+                        context.getString(R.string.iyzico_card)
                     }
                 }
+
             }
             itemView.iyzico_cell_card_bank_name_textView.text = iyziCoCardItem.cardBankName
             itemView.iyzico_cell_card_item_card_number_textview.text = iyziCoCardItem.lastFourDigits
@@ -92,9 +91,13 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
                             if (newPointAmount > iyziCoCardItem.bonusPointAmount) {
                                 iyzico_bonus_point_amount_textview.text =
                                     iyziCoCardItem.bonusPointAmount.toPrice()
+
+                                iyziCoCardItem.useRewardPoint = iyziCoCardItem.bonusPointAmount
                             } else {
                                 iyzico_bonus_point_amount_textview.text =
                                     newPointAmount.toPrice()
+
+                                iyziCoCardItem.useRewardPoint = newPointAmount
                             }
                             iyzico_bonus_point_total_amount_textview.apply {
                                 show()
@@ -115,6 +118,8 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
                         } else {
                             iyzico_bonus_point_amount_textview.text =
                                 iyziCoCardItem.bonusPointAmount.toPrice()
+
+                            iyziCoCardItem.useRewardPoint = iyziCoCardItem.bonusPointAmount
                         }
 
                     } else {
@@ -140,11 +145,17 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
                             iyzico_bonus_point_amount_textview.text =
                                 iyziCoCardItem.paidPrice.toPrice()
 
+                            iyziCoCardItem.useRewardPoint = iyziCoCardItem.paidPrice
+
                         } else {
                             iyzico_bonus_point_amount_textview.text =
                                 iyziCoCardItem.bonusPointAmount.toPrice()
+
+                            iyziCoCardItem.useRewardPoint = iyziCoCardItem.bonusPointAmount
                         }
                     }
+
+
                 }
 
 

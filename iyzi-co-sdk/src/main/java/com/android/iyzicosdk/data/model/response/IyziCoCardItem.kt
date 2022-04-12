@@ -24,9 +24,12 @@ internal data class IyziCoCardItem(
     var bonusTotalAmount: Double? = 0.0,
     var bonusPointAmount: Double = 0.0,
     var isIyziCoCard: Boolean = false,
+    var isIyzicoVirtualCard: Boolean = false,
+    var threeDSVerified: Boolean = false,
     var useBalance: Boolean = false,
     var balance: Double = 0.0,
     var paidPrice: Double = 0.0,
-    var passiveIyziCoCard:Boolean=false,
-    var showBalanceInfoMessage:Boolean=false
+    var passiveIyziCoCard: Boolean = false,
+    var showBalanceInfoMessage: Boolean = false,
+    var useRewardPoint: Double = 0.0
 )

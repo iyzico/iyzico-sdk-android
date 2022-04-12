@@ -1,12 +1,10 @@
 package com.android.iyzicosdk.ui.account
 
-import IyziCoSupportFragment
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.WindowManager
@@ -14,15 +12,8 @@ import androidx.annotation.Keep
 import com.android.iyzicosdk.R
 import com.android.iyzicosdk.core.IyziCoBaseFragment
 import com.android.iyzicosdk.data.UIResponseCallBack
-import com.android.iyzicosdk.data.model.request.IyziCoBankTransferInitiaalize
-import com.android.iyzicosdk.data.model.request.IyziCoPaymentCard
-import com.android.iyzicosdk.data.model.request.IyziCopayWithCardRequest
 import com.android.iyzicosdk.data.model.response.*
 import com.android.iyzicosdk.ui.adapter.*
-import com.android.iyzicosdk.ui.adapter.IyziCoBankAdapter
-import com.android.iyzicosdk.ui.adapter.IyziCoBankClickListener
-import com.android.iyzicosdk.ui.adapter.IyziCoCardAdapter
-import com.android.iyzicosdk.ui.adapter.IyziCoInstallmentAdapter
 import com.android.iyzicosdk.ui.components.edit_text.IyziCoCustomEditText
 import com.android.iyzicosdk.ui.info.IyziCoInfoFragment
 import com.android.iyzicosdk.ui.remittance_information.IyziCoRemittanceInformationBottomSheet
@@ -31,11 +22,6 @@ import com.android.iyzicosdk.util.constants.BundleConstans
 import com.android.iyzicosdk.util.constants.BundleConstans.CAN_TRANSFER_AMOUNT
 import com.android.iyzicosdk.util.constants.IyziCoResourcesConstans
 import com.android.iyzicosdk.util.enums.*
-import com.android.iyzicosdk.util.enums.IyziCoCurrentType
-import com.android.iyzicosdk.util.enums.IyziCoBottomSheetType
-import com.android.iyzicosdk.util.enums.IyziCoInfoScreenType
-import com.android.iyzicosdk.util.enums.IyziCoPaymentType
-import com.android.iyzicosdk.util.enums.IyziCoSDKType
 import com.android.iyzicosdk.util.extensions.*
 import com.android.iyzicosdk.util.extensions.vertical
 import kotlinx.android.synthetic.main.iyzico_add_card_layout.view.*
@@ -74,6 +60,8 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
     private var force3ds = false
     private var isAmex = false
     private var rotatingStart = false
+    private var isUseRewardWithNewCard = false
+    private var newCardRewardPoint: Double? = 0.0
 
     override fun initUI(
         inflater: LayoutInflater,
@@ -83,6 +71,8 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         super.initUI(inflater, container, savedInstanceState)
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
         controller.initUi()
+
+
     }
 
     fun setWebView(html: String) {
@@ -102,7 +92,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         })
     }
 
-    fun getBanks() {
+    private fun getBanks() {
         controller.getBanks(object : UIResponseCallBack<IyziCoBanksResponse>(this) {
 
         })
@@ -136,15 +126,13 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         if ((balance.toDouble() - oldBalance.convertForDouble()) > 0.0) {
             rotatingStart = true
             with(root) {
-                iyzico_my_current_balance_card_textview.setText(
+                iyzico_my_current_balance_card_textview.text =
                     (balance.toDouble() - oldBalance.convertForDouble()).toString()
                         .addTlIcon() + " " + getString(R.string.iyzico_topup_balance_loaded)
-                )
                 iyzico_my_current_balance_green_info_cardview.show()
                 iyzico_my_current_balance_normal_info_textview.gone()
-                iyzico_fragment_account_current_balance_textView.setText(
+                iyzico_fragment_account_current_balance_textView.text =
                     balance.setWalletPrice().addTlIcon()
-                )
                 checkVisibilityButton()
 
             }
@@ -156,7 +144,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
 
     }
 
-    fun fadeout() {
+    private fun fadeout() {
         Handler().postDelayed(Runnable {
             root.iyzico_my_current_balance_green_info_cardview.animationFadeOut {
                 root.iyzico_my_current_balance_green_info_cardview.gone()
@@ -190,14 +178,12 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                     }
                     root.iyzico_add_card_spend_price.show()
                     if (this > IyziCoResourcesConstans.IyziCoProductPrice.toDouble()) {
-                        root.iyzico_my_cards_amount_to_withdrawn_credit_card.setText(
+                        root.iyzico_my_cards_amount_to_withdrawn_credit_card.text =
                             BundleConstans.ZERO_MONEY.withDrawnCreditCard(getString(R.string.iyzico_transcation_will_delivery_from_card))
-                        )
                     } else {
-                        root.iyzico_my_cards_amount_to_withdrawn_credit_card.setText(
+                        root.iyzico_my_cards_amount_to_withdrawn_credit_card.text =
                             ((IyziCoResourcesConstans.IyziCoProductPrice.toDouble() - balance.toDouble())).toString()
                                 .withDrawnCreditCard(getString(R.string.iyzico_transcation_will_delivery_from_card))
-                        )
                     }
                 }
             }
@@ -294,6 +280,10 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                     detectAllItemsAreValid()
 
                 if (it.length == 3) {
+
+                    newCardRewardPoint = 0.0
+                    isUseRewardWithNewCard = false
+
                     val name = root.iyzico_add_card_name.text
                     val number = root.iyzico_add_card_card_number.text.replace(" ", "")
                     val cvv = root.iyzico_add_card_cvc_number.text
@@ -317,6 +307,11 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                                 root.iyzico_new_card_point_container.show()
                                 root.iyzico_new_card_bonus_point_amount_textview.text =
                                     response?.amount?.toPrice()
+
+                                newCardRewardPoint = response?.amount ?: 0.0
+                                rewardUseNewCard()
+
+
                             }
 
                             override fun onError(errorCode: Int, errorMessage: String) {
@@ -330,6 +325,21 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
             iyzico_add_card_date.textListener {
                 if (it.isNotEmpty())
                     detectAllItemsAreValid()
+            }
+        }
+    }
+
+    private fun rewardUseNewCard() {
+        with(root) {
+            iyzico_double_border_square_check_new_card_imageview.setOnSafeClickListener {
+                isUseRewardWithNewCard = !isUseRewardWithNewCard
+                if (isUseRewardWithNewCard) {
+                    iyzico_double_border_square_check_new_card_imageview.background = null
+                    iyzico_double_border_square_check_new_card_imageview.setImageResource(R.mipmap.iyzico_ic_square_check_button)
+                } else {
+                    iyzico_double_border_square_check_new_card_imageview.setImageResource(R.mipmap.iyzico_ic_square_check_clear_button)
+                    iyzico_double_border_square_check_new_card_imageview.changeBackground(R.drawable.iyzico_empty_radio_button_unchecked)
+                }
             }
         }
     }
@@ -390,6 +400,8 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         setToMixPayment()
         root.iyzico_fragment_account_continue_button.clickListener {
 
+            val selectedCard = cardAdapter.items.find { it.isSelected }
+
             if (isNewCard() && allItemIsValid()) {
                 var input = root.iyzico_add_card_date.text.split("/")
                 controller.setPayment(
@@ -409,7 +421,8 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                     installmentNumber,
                     memberToken,
                     paidPrice(),
-                    false
+                    false,
+                    if (isUseRewardWithNewCard) newCardRewardPoint ?: 0.0 else 0.0
                 )
             } else if (!isNewCard() && root.iyzico_fragment_account_continue_button.buttonEnabled) {
                 controller.setPayment(
@@ -428,7 +441,8 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                     installmentNumber,
                     memberToken,
                     paidPrice(),
-                    false
+                    false,
+                    if (selectedCard != null && selectedCard.bonusPointSelected) selectedCard.useRewardPoint else 0.0
                 )
             }
         }
@@ -568,17 +582,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                 )
                 setToMixPayment()
             } else {
-                useBalance = false
-                if (isNewCard()) {
-                    root.iyzico_fragment_Account_my_installment_options_layout.gone()
-                    root.iyzico_fragment_Account_my_installment_information_layout.show()
-                }
                 unSelectMyBalance()
-                if ((!isNewCard())) {
-                    getInstallments(selectedCard.binNumber, IyziCoInstallmentType.NORMAL)
-                    setToMixPayment()
-                }
-
             }
         }
         root.iyzico_fragment_account_my_account.expandableOpened {
@@ -620,6 +624,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         }
     }
 
+
     fun selectMyBalance() {
         root.iyzico_add_card_spend_price.show()
         if (!allItemIsValid(false) && isNewCard())
@@ -629,6 +634,11 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
     }
 
     private fun unSelectMyBalance() {
+        useBalance = false
+        if (isNewCard()) {
+            root.iyzico_fragment_Account_my_installment_options_layout.gone()
+            root.iyzico_fragment_Account_my_installment_information_layout.show()
+        }
         root.iyzico_add_card_spend_price.gone()
         if (isNewCard() && !allItemIsValid(false)) {
             root.iyzico_fragment_Account_my_installment_options_layout.gone()
@@ -642,6 +652,11 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
             root.iyzico_fragment_Account_my_installment_information_layout.gone()
         }
         root.iyzico_add_card_use_my_balance_button.setNormalBorder()
+
+        if ((!isNewCard())) {
+            getInstallments(selectedCard.binNumber, IyziCoInstallmentType.NORMAL)
+            setToMixPayment()
+        }
     }
 
     fun checkMyAccount() {
@@ -727,10 +742,10 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
     fun setCardAdapter(list: List<IyziCoCardItem>) {
         root.iyzico_fragment_account_reyclerview.vertical(cardAdapter)
         cardAdapter.items = list
-        if (!cardAdapter.items.isNullOrEmpty()) {
-            selectedCardId = cardAdapter.items[0].cardToken
+        /*   if (!cardAdapter.items.isNullOrEmpty()) {
+               selectedCardId = cardAdapter.items[0].cardToken
 
-        }
+           }*/
 
         cardAdapter.onItemClick { clickItem ->
             unSelectedMyAccountPaymentType()
@@ -746,6 +761,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                 if (clickItem != entity) {
                     entity.isSelected = false
                     entity.bonusAvailable = false
+                    entity.bonusPointSelected = false
                 } else {
                     selectedCard = clickItem
                     entity.isSelected = true
@@ -763,10 +779,19 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
             cardAdapter.notifyDataSetChanged()
             checkVisibilityButton()
 
+            cardThreeDSVerified(clickItem)
 
         }
     }
 
+    private fun cardThreeDSVerified(item: IyziCoCardItem) {
+        if (item.threeDSVerified) {
+            setBalance()
+        } else {
+            hideUseBalance()
+            unSelectMyBalance()
+        }
+    }
 
     fun getInquireService() {
         cardAdapter.items.find {
@@ -902,6 +927,8 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                 } else {
                     setFirstCard(it)
                 }
+
+
             }
         }
 
@@ -913,10 +940,11 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         cardAdapter.notifyDataSetChanged()
         iyziCoPaymentType = IyziCoPaymentType.CARD
         setToMixPayment()
-
+        selectedCardId = item.cardToken
         getInstallments(item.binNumber, IyziCoInstallmentType.NORMAL, true)
         showInstallmentContainer()
         selectedCard = item
+        cardThreeDSVerified(item)
     }
 
     private fun showNewCardContainer() {

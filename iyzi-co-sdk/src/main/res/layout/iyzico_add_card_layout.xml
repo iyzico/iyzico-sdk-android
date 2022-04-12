@@ -133,7 +133,7 @@
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iyzico_double_border_square_check_imageview"
+                android:id="@+id/iyzico_double_border_square_check_new_card_imageview"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center_vertical"
