@@ -83,6 +83,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         /*  navigate(
               IyziCoSupportFragment.newInstance(IyziCoSupportScreenType.THREED_PAYMENT, html), false
           )*/
+
     }
 
     //kredi kartlarını listeleyen servistir

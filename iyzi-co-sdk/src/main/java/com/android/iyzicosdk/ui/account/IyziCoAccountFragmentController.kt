@@ -182,10 +182,15 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                     if (data?.status == "failure") {
                         baseFragment.showSDKError(data.errorMessage ?: "")
                     } else {
-                        baseFragment.navigate(
-                            IyziCoInfoFragment.newInstance(IyziCoInfoScreenType.TRANSFER),
-                            false
-                        )
+
+                        if (data != null && !data.threeDSHtmlContent.isNullOrEmpty()) {
+                            baseFragment.setWebView(data.threeDSHtmlContent ?: "")
+                        } else {
+                            baseFragment.navigate(
+                                IyziCoInfoFragment.newInstance(IyziCoInfoScreenType.TRANSFER),
+                                false
+                            )
+                        }
                     }
                 }
 
@@ -351,6 +356,7 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
 
 
                         val cards = tempCards.sortedByDescending { it.isIyziCoCard.toString() }
+                            .sortedByDescending { it.isIyzicoVirtualCard.toString() }
 
                         baseFragment.setCardAdapter(cards)
 
@@ -694,7 +700,7 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
         cardAssociationLogoUrl = this.cardAssociationLogoUrl ?: "",
         cardAssociation = this.cardAssociation ?: "",
         binNumber = this.binNumber ?: "",
-        isIyziCoCard = this.cardBankName.equals(IyziCoConfig.IYZICO, ignoreCase = false),
+        isIyziCoCard = this.iyzicoCard, /*this.cardBankName.equals(IyziCoConfig.IYZICO, ignoreCase = false)*/
         isIyzicoVirtualCard = this.iyzicoVirtualCard,
         threeDSVerified = this.threeDSVerified
     )
