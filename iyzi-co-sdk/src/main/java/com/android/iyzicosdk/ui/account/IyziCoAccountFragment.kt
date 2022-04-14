@@ -305,7 +305,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                             UIResponseCallBack<IyziCoInquireResponse>(this@IyziCoAccountFragment) {
                             override fun onSuccess(response: IyziCoInquireResponse?) {
                                 super.onSuccess(response)
-                                
+
                                 response?.let {
                                     root.iyzico_new_card_point_container.show()
 

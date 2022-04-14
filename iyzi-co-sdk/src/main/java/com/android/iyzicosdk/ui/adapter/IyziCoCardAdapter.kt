@@ -88,7 +88,7 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
                         if (mix > iyziCoCardItem.paidPrice) {
                             val newPointAmount = iyziCoCardItem.paidPrice - iyziCoCardItem.balance
 
-                            if (newPointAmount > iyziCoCardItem.bonusPointAmount) {
+                            if (newPointAmount >= iyziCoCardItem.bonusPointAmount) {
                                 iyzico_bonus_point_amount_textview.text =
                                     iyziCoCardItem.bonusPointAmount.toPrice()
 
@@ -97,24 +97,24 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
                                 iyzico_bonus_point_amount_textview.text =
                                     newPointAmount.toPrice()
 
+                                iyzico_bonus_point_total_amount_textview.apply {
+                                    show()
+                                    val content =
+                                        "${context.getString(R.string.iyzico_total_point)}: ${iyziCoCardItem.bonusPointAmount.toPrice()} "
+                                    text = content
+
+                                    val firstIndex = content.indexOfFirst { it == ':' }
+
+                                    spannableExtension(
+                                        firstIndex,
+                                        content.length,
+                                        R.color.iyzico_dark_grey,
+                                        clickSpan = {}
+                                    )
+                                }
                                 iyziCoCardItem.useRewardPoint = newPointAmount
                             }
-                            iyzico_bonus_point_total_amount_textview.apply {
-                                show()
-                                val content =
-                                    "${context.getString(R.string.iyzico_total_point)}: ${iyziCoCardItem.bonusPointAmount.toPrice()} "
-                                text = content
 
-
-                                val firstIndex = content.indexOfFirst { it == ':' }
-
-                                spannableExtension(
-                                    firstIndex,
-                                    content.length,
-                                    R.color.iyzico_dark_grey,
-                                    clickSpan = {}
-                                )
-                            }
                         } else {
                             iyzico_bonus_point_amount_textview.text =
                                 iyziCoCardItem.bonusPointAmount.toPrice()
