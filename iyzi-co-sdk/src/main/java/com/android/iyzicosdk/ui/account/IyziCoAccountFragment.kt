@@ -305,11 +305,43 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                             UIResponseCallBack<IyziCoInquireResponse>(this@IyziCoAccountFragment) {
                             override fun onSuccess(response: IyziCoInquireResponse?) {
                                 super.onSuccess(response)
-                                root.iyzico_new_card_point_container.show()
-                                root.iyzico_new_card_bonus_point_amount_textview.text =
-                                    response?.amount?.toPrice()
+                                
+                                response?.let {
+                                    root.iyzico_new_card_point_container.show()
 
-                                newCardRewardPoint = response?.amount ?: 0.0
+                                    if (it.amount > paidPrice().toDouble()) {
+
+                                        iyzico_bonus_new_card_point_total_amount_textview.apply {
+                                            show()
+                                            val content =
+                                                "${context.getString(R.string.iyzico_total_point)}: ${it.amount.toPrice()} "
+                                            text = content
+
+
+                                            val firstIndex = content.indexOfFirst { it == ':' }
+
+                                            spannableExtension(
+                                                firstIndex,
+                                                content.length - 1,
+                                                R.color.iyzico_dark_grey,
+                                                clickSpan = {}
+                                            )
+                                        }
+
+                                        iyzico_new_card_bonus_point_amount_textview.text =
+                                            paidPrice().toDouble().toPrice()
+
+                                        newCardRewardPoint = paidPrice().toDouble()
+                                    } else {
+                                        root.iyzico_new_card_bonus_point_amount_textview.text =
+                                            it.amount.toPrice()
+
+                                        newCardRewardPoint = it.amount
+                                    }
+
+                                }
+
+
                                 rewardUseNewCard()
 
 
@@ -585,6 +617,10 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
             } else {
                 unSelectMyBalance()
             }
+
+            cardAdapter.items.find { it.isSelected }?.useBalance = useBalance
+
+            cardAdapter.notifyDataSetChanged()
         }
         root.iyzico_fragment_account_my_account.expandableOpened {
             hideKeyboard()
@@ -692,6 +728,9 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
     private fun unSelectedCreditCard() {
         cardAdapter.items.forEach { entity ->
             entity.isSelected = false
+            entity.bonusAvailable = false
+            entity.bonusPointSelected = false
+            entity.useRewardPoint = 0.0
         }
         cardAdapter.notifyDataSetChanged()
     }
@@ -763,6 +802,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                     entity.isSelected = false
                     entity.bonusAvailable = false
                     entity.bonusPointSelected = false
+                    entity.useRewardPoint = 0.0
                 } else {
                     selectedCard = clickItem
                     entity.isSelected = true
