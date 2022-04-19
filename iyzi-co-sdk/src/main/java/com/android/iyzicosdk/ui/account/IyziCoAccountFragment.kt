@@ -280,79 +280,6 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                 if (it.isNotEmpty())
                     detectAllItemsAreValid()
 
-                if (it.length == 3) {
-
-                    newCardRewardPoint = 0.0
-                    isUseRewardWithNewCard = false
-
-                    val name = root.iyzico_add_card_name.text
-                    val number = root.iyzico_add_card_card_number.text.replace(" ", "")
-                    val cvv = root.iyzico_add_card_cvc_number.text
-                    val month = root.iyzico_add_card_date.text.take(2)
-                    val year = root.iyzico_add_card_date.text.takeLast(2)
-
-                    controller.pwiInquireWithNewCard(
-                        "",
-                        IyziCoCurrentType.TRY.type,
-                        IyziCoConfig.LANGUAGE.type,
-                        paidPrice().toDouble(),
-                        name,
-                        number,
-                        cvv,
-                        month,
-                        year,
-                        object :
-                            UIResponseCallBack<IyziCoInquireResponse>(this@IyziCoAccountFragment) {
-                            override fun onSuccess(response: IyziCoInquireResponse?) {
-                                super.onSuccess(response)
-
-                                response?.let {
-                                    root.iyzico_new_card_point_container.show()
-
-                                    if (it.amount > paidPrice().toDouble()) {
-
-                                        iyzico_bonus_new_card_point_total_amount_textview.apply {
-                                            show()
-                                            val content =
-                                                "${context.getString(R.string.iyzico_total_point)}: ${it.amount.toPrice()} "
-                                            text = content
-
-
-                                            val firstIndex = content.indexOfFirst { it == ':' }
-
-                                            spannableExtension(
-                                                firstIndex,
-                                                content.length - 1,
-                                                R.color.iyzico_dark_grey,
-                                                clickSpan = {}
-                                            )
-                                        }
-
-                                        iyzico_new_card_bonus_point_amount_textview.text =
-                                            paidPrice().toDouble().toPrice()
-
-                                        newCardRewardPoint = paidPrice().toDouble()
-                                    } else {
-                                        root.iyzico_new_card_bonus_point_amount_textview.text =
-                                            it.amount.toPrice()
-
-                                        newCardRewardPoint = it.amount
-                                    }
-
-                                }
-
-
-                                rewardUseNewCard()
-
-
-                            }
-
-                            override fun onError(errorCode: Int, errorMessage: String) {
-                                root.iyzico_new_card_point_container.gone()
-                            }
-                        }
-                    )
-                }
 
             }
             iyzico_add_card_date.textListener {
@@ -380,10 +307,89 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
     private fun detectAllItemsAreValid() {
         if (allItemIsValid(false)) {
             showInstallmentContainer()
+
+            checkPoint()
+
         } else {
             if (root.iyzico_add_card_card_number.text.length < 7)
                 showInstallmentInfo()
         }
+    }
+
+    private fun checkPoint() {
+
+      with(root) {
+          newCardRewardPoint = 0.0
+          isUseRewardWithNewCard = false
+
+          val name = root.iyzico_add_card_name.text
+          val number = root.iyzico_add_card_card_number.text.replace(" ", "")
+          val cvv = root.iyzico_add_card_cvc_number.text
+          val month = root.iyzico_add_card_date.text.take(2)
+          val year = root.iyzico_add_card_date.text.takeLast(2)
+
+          controller.pwiInquireWithNewCard(
+              "",
+              IyziCoCurrentType.TRY.type,
+              IyziCoConfig.LANGUAGE.type,
+              paidPrice().toDouble(),
+              name,
+              number,
+              cvv,
+              month,
+              year,
+              object :
+                  UIResponseCallBack<IyziCoInquireResponse>(this@IyziCoAccountFragment) {
+                  override fun onSuccess(response: IyziCoInquireResponse?) {
+                      super.onSuccess(response)
+
+                      response?.let {
+                          root.iyzico_new_card_point_container.show()
+
+                          if (it.amount > paidPrice().toDouble()) {
+
+                              iyzico_bonus_new_card_point_total_amount_textview.apply {
+                                  show()
+                                  val content =
+                                      "${context.getString(R.string.iyzico_total_point)}: ${it.amount.toPrice()} "
+                                  text = content
+
+
+                                  val firstIndex = content.indexOfFirst { it == ':' }
+
+                                  spannableExtension(
+                                      firstIndex,
+                                      content.length - 1,
+                                      R.color.iyzico_dark_grey,
+                                      clickSpan = {}
+                                  )
+                              }
+
+                              iyzico_new_card_bonus_point_amount_textview.text =
+                                  paidPrice().toDouble().toPrice()
+
+                              newCardRewardPoint = paidPrice().toDouble()
+                          } else {
+                              root.iyzico_new_card_bonus_point_amount_textview.text =
+                                  it.amount.toPrice()
+
+                              newCardRewardPoint = it.amount
+                          }
+
+                      }
+
+
+                      rewardUseNewCard()
+
+
+                  }
+
+                  override fun onError(errorCode: Int, errorMessage: String) {
+                      root.iyzico_new_card_point_container.gone()
+                  }
+              }
+          )
+      }
     }
 
     private fun allItemIsValid(withWarning: Boolean = true): Boolean {

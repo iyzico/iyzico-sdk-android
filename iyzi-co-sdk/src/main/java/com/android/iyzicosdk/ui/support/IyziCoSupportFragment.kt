@@ -77,7 +77,7 @@ internal class IyziCoSupportFragment : IyziCoBaseFragment() {
         }
     }
 
-    fun setWebView(myurl: String) {
+    private fun setWebView(myurl: String) {
         root.iyzico_contracts_webview_layout.let {
             it.setWebViewClient(WebViewClient())
             it.getSettings().setJavaScriptEnabled(true)

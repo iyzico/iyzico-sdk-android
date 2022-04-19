@@ -43,6 +43,10 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
                             this.text = IyziCoCardsType.DEBIT_CARD.type
                         }
                     }
+
+                    if (iyziCoCardItem.isIyzicoVirtualCard) {
+                        text = context.getString(R.string.iyzico_virtul_card)
+                    }
                 } else {
                     text = if (iyziCoCardItem.isIyzicoVirtualCard) {
                         context.getString(R.string.iyzico_virtul_card)
