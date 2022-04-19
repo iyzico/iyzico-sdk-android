@@ -63,5 +63,7 @@ internal data class IyziCoCheckoutDetail(
     @SerializedName("token")
     val token: String,
     @SerializedName("ucsEnabled")
-    val ucsEnabled: Boolean
+    val ucsEnabled: Boolean,
+    @SerializedName("plusInstallmentResponseList")
+    val plusInstallmentResponseList: List<IyziCoPlusInstallmentResponse>? = null
 )

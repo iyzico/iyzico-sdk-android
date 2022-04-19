@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/iyzico_secondary_margin"
-        android:layout_marginTop="@dimen/iyzico_primary_margin"
+        android:layout_marginTop="@dimen/iyzico_secondary_margin"
         android:layout_marginEnd="@dimen/iyzico_secondary_margin"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -23,24 +23,26 @@
 
         <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
             android:id="@+id/iyzico_fragment_member_login_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/markprobold"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:text="@string/iyzico_fragment_login_title"
             android:textColor="@color/iyzico_primary_text_color"
-            android:textSize="24sp"
+            android:textSize="20sp"
+            app:lineHeight="28sp"
             android:textStyle="bold"
             app:fontFamily="@font/markprobold" />
 
         <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
             android:text="@string/iyzico_fragment_login_second_title"
             android:textColor="@color/iyzico_primary_text_color"
             android:textSize="14sp"
+            android:lineHeight="28sp"
             android:textStyle="normal"
             app:fontFamily="@font/markpro" />
 

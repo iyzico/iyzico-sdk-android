@@ -17,5 +17,11 @@ internal data class IyziCoMemberCard(
     @SerializedName("cardType")
     val cardType: String,
     @SerializedName("lastFourDigits")
-    val lastFourDigits: String
+    val lastFourDigits: String,
+    @SerializedName("iyzicoVirtualCard")
+    val iyzicoVirtualCard: Boolean,
+    @SerializedName("iyzicoCard")
+    val iyzicoCard: Boolean,
+    @SerializedName("threeDSVerified")
+    val threeDSVerified: Boolean
 )

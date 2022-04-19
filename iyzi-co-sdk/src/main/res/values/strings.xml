@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="iyzico_input_car_name">"Kart Sahibi"</string>
+    <string name="iyzico_input_car_name">Kart Üzerindeki İsim</string>
 
     <!-- tamam -->
     <string name="iyzico_input_car_name_example">"Kart sahibinin ismini yaz."</string>
@@ -12,10 +12,10 @@
     <string name="iyzico_input_card_number_example">"Kart numarasını yaz."</string>
 
     <!-- tamam -->
-    <string name="iyzico_input_card_cvv">"CVV"</string>
+    <string name="iyzico_input_card_cvv">CVC</string>
 
     <!-- tamam -->
-    <string name="iyzico_input_card_date">"Skt."</string>
+    <string name="iyzico_input_card_date">Ay / Yıl</string>
 
     <!-- tamam -->
     <string name="iyzico_input_card_date_example">"AA/YY"</string>
@@ -40,13 +40,13 @@ Email -->
     <string name="iyzico_fragment_email_term">"Ödeme işlemine devam ederek KVKK Aydınlatma Metni’ni okuduğumu ve anladığımı beyan ediyorum.​"</string>
 
     <!-- tamam -->
-    <string name="iyzico_fragment_login_title">"iyzico Güvencesiyle Kolayca Öde!"</string>
+    <string name="iyzico_fragment_login_title">iyzico Güvencesiyle Kolayca Öde!</string>
 
     <!-- tamam -->
-    <string name="iyzico_fragment_login_second_title">"iyzico ile öde; alışverişlerini kartınla veya bakiyenle kolayca yapabildiğin ücretsiz ve güvenli bir ödeme yöntemidir."</string>
+    <string name="iyzico_fragment_login_second_title">E-posta adresinle hesabına giriş yapabilir ya da kaydolabilir, ödemeni kolayca tamamlayabilirsin.</string>
 
     <!-- tamam -->
-    <string name="iyzico_fragment_login_change_acount">"Farklı Bir E-posta ile Devam Et"</string>
+    <string name="iyzico_fragment_login_change_acount">Farklı bir E-posta ile Devam Et</string>
 
     <!-- tamam -->
     <string name="iyzico_custom_popup_close_page_button_text">"İşlemi İptal Et"</string>
@@ -66,6 +66,10 @@ Email -->
     <!-- tamm
 SMS -->
     <string name="iyzico_fragment_sms_control">"Mesajlarını kontrol et! 💬"</string>
+
+    <string name="iyzico_fragment_sms_title">Cep Telefonu Numaranı Doğrula</string>
+
+    <string name="iyzico_fragment_sms_description">İşlemi senin yaptığını doğrulayabilmemiz için cep telefonuna gelen kodu girmelisin.</string>
 
     <!-- tamam -->
     <string name="iyzico_fragment_sms_verificate_phone">"Onay Kodunu Gir"</string>
@@ -94,12 +98,13 @@ Common -->
 
     <!-- tamam
 Acccount -->
-    <string name="iyzico_account_fragment_wallet_description">"iyzico hesabında bulunan bakiyenle ödemeni tek tıkla ve anında iade ayrıcalığıyla yapabilirsin."</string>
+    <string name="iyzico_account_fragment_wallet_description">iyizco hesabında bulunan bakiyenle, ödemeni tek tıkla ve anında iade ayrıcalığıyla yapabilirsin.</string>
     <string name="iyzico_my_current_balance">"Güncel Bakiyem"</string>
 
     <!-- tamam -->
     <string name="iyzico_pay_with_new_card">"Yeni kart ile öde"</string>
-    <string name="iyzico_use_my_balance">"Bakiye Kullan"</string>
+    <string name="iyzico_use_my_point">Kart Puanımı Kullan</string>
+    <string name="iyzico_use_my_balance">Bakiyemi Kullan</string>
 
     <!-- tamam -->
     <string name="iyzico_my_credit_cards">"Kartlarım"</string>
@@ -116,6 +121,7 @@ Acccount -->
 
     <!-- PayWithIyziCo -->
     <string name="iyzico_sum_price">"Toplam Tutar"</string>
+    <string name="iyzico_total_point">Toplam Puan</string>
 
     <!-- tamam
 Settlement -->
@@ -169,6 +175,7 @@ information -->
 
     <!-- tamam -->
     <string name="iyzico_saving_card_datas">"Kart bilgilerin iyzico tarafından saklanır."</string>
+    <string name="iyzico_not_enough_balance">Bakiyen yetersiz olduğu için iyzico Kart’ın ile ödeme yapılamıyor.</string>
 
     <!-- tamam -->
     <string name="iyzico_protected_payment_methots">"Korumalı Ödeme Yöntemleri"</string>
@@ -223,13 +230,13 @@ TransferScreen -->
     <string name="iyzico_can_transfer_all">"Aktarılabilir Bakiyem"</string>
 
     <!-- tamam -->
-    <string name="iyzico_explanation">"Referans Numarası (Açıklama)"</string>
+    <string name="iyzico_explanation">Referans Kodu (Açıklama)</string>
 
     <!-- tamam -->
     <string name="iyzico_amount_to_install">"Yüklenecek Tutar"</string>
 
     <!-- tamam -->
-    <string name="iyzico_bottom_sheet_remittence_phone_number_warning">"Havale/EFT işlemi esnasında mobil bankacılık uygulamasındaki açıklama alanına yukarıdaki referans kodunu girin."</string>
+    <string name="iyzico_bottom_sheet_remittence_phone_number_warning">EFT/Havale işlemi esnasında mobil bankacılık uygulamasındaki açıklama alanına aşağıdaki referans kodunu girin.</string>
 
     <!-- tamam -->
     <string name="iyzico_continue_as">"olarak devam et"</string>
@@ -272,8 +279,8 @@ Amounts -->
     <string name="iyzico_mail">"destek@iyzico.com"</string>
     <string name="iyzico_get_support_title">"İletişim"</string>
     <string name="iyzico_error_callback">"Hatalı İşlem"</string>
-    <string name="iyzico_topup_balance_loaded">"Bakiyene yüklendi."</string>
-    <string name="iyzico_account_fragment_button">"iyzico ile Öde"</string>
+    <string name="iyzico_topup_balance_loaded">Bakiyenize yüklenmiştir.</string>
+    <string name="iyzico_account_fragment_button">Devam Et</string>
 
     <!-- sayfa kapanma durumunda çıkacak textler" -->
     <string name="iyzico_close_widget_pop_up_top_up">"Sayfayı kapatırsan satın alma işlemi iptal edilecek."</string>
@@ -291,7 +298,7 @@ Amounts -->
     <string name="iyzico_please_check_card_datas">"Lütfen kart bilgilerinizi kontrol ediniz."</string>
     <string name="iyzico_success_top_up_waiting_title">"Hesaba yükleme talebin alındı."</string>
     <string name="iyzico_success_cashout_waiting_title">"Hesaba aktarma talebin alındı."</string>
-    <string name="iyzico_transcation_will_delivery_from_card">"KARTINDAN XXX ÇEKİLECEK."</string>
+    <string name="iyzico_transcation_will_delivery_from_card">"Kartından XXX çekilecektir."</string>
     <string name="iyzico_fragment_login_settlement_title">"Bakiyeni iyzico hesabına aktar, hemen kullanmaya başla!"</string>
     <string name="iyzico_fragment_login_refund_title">"İadeni iyzico hesabına aktar, hemen kullanmaya başla!"</string>
     <string name="iyzico_one_installment_one_shot">"Tek Çekim"</string>
@@ -300,7 +307,10 @@ Amounts -->
     <string name="iyzico_communication_permission">"İletişim İzni"</string>
     <string name="iyzico_secondary_login_error_text">"Ödemeye devam edebilmek için kullanıcı sözleşmesini okuyup, onaylamalısınız."</string>
     <string name="iyzico_installment_chose">"Taksit Seçenekleri"</string>
-    <string name="iyzico_payment_options_shows_after_you_filled_a">"Taksit seçenekleri kart numaranı girdikten sonra görünecek."</string>
+    <string name="iyzico_payment_options_shows_after_you_filled_a">Taksit seçenekleri kart numaranızı girdikten sonra görünecektir.</string>
     <string name="iyzico_payment_options_shows_after_you_filled_area"></string>
     <string name="iyzico_KVKK_open_consent_text">"KVKK Açık Rıza Metni"</string>
+    <string name="iyzico_plus_installment_info_text">"kartınla yapacağın taksitli alışverişlerde vade farksız"</string>
+    <string name="iyzico_virtul_card">Sanal Kart</string>
+    <string name="iyzico_card">Kart</string>
 </resources>

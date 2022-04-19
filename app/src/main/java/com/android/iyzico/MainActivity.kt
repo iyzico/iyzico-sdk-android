@@ -12,11 +12,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
 
-    val URL = "https://consumerapigw.iyzipay.com/"
-    val CLIEND_ID = "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9"
-    val CLIEND_SECRET_KEY = "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR"
-    val MERCHANT_API_KEY = "XsHBosIHsiXOBjtvXXm7a1IRkHv5fRiE"
-    val MERCHANT_SECRET_KEY = "ObYSZByTulnkp6mYx1oRv29TDQRouBM7"
+    val URL = "https://sandbox-consumerapigw.iyzipay.com/"
+    val CLIEND_ID = "qumpara"
+    val CLIEND_SECRET_KEY = "qumparaSecret"
+    val MERCHANT_API_KEY = "sandbox-BBjF3qdtrFBVC5VC8bOTqZJw1rpLz1dK"
+    val MERCHANT_SECRET_KEY = "sandbox-ZvLTaQaWZtTMIhvxoqhfDG4IJA9bKNBV"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,10 +26,10 @@ class MainActivity : AppCompatActivity() {
         //canli             "https://consumerapigw.iyzipay.com/",
         Iyzico.client().initialize(
             "127.0.0.1",
-            "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9",
-            "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR",
-            "https://consumerapigw.iyzipay.com/",
-            Languages.TURKISH, null, null
+            CLIEND_ID,
+            CLIEND_SECRET_KEY,
+            URL,
+            Languages.TURKISH, MERCHANT_SECRET_KEY, MERCHANT_API_KEY
         )
         /*  "127.0.0.1",
           "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9",
@@ -70,8 +70,8 @@ class MainActivity : AppCompatActivity() {
             Iyzico.client().startPayWithIyzico(
                 this,
                 "Lidyana.com",
-                50.19,
-                50.19,
+                60.00,
+                60.00,
                 Currency.TRY,
                 arrayOf(1, 2, 3, 6, 9),
                 "B67832",//zorunlu
@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
                         "BI101",
                         BasketItemType.PHYSICAL,
                         "Binocular",
-                        "50.19",
+                        "60.00",
                         null, null
                     )
                 ),

@@ -44,6 +44,8 @@ internal class IyziCoActivity : AppCompatActivity() {
     private var progressDialogPositiveText = ""
 
 
+
+
     var finisTime = 0
     var isTimerContinue: Boolean = false
 
@@ -139,7 +141,7 @@ internal class IyziCoActivity : AppCompatActivity() {
         timer = fixedRateTimer("timer", false, 0, 1000) {
             runOnUiThread {
                 finisTime -= 1000
-                iyzico_payw_timer_TextView.text = "Kalan Süre: ${
+                iyzico_payw_timer_TextView.text = "${
                     finisTime.toLong().toTimer {
                         timer.cancel()
                         openInformationDialog(

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/iyzico_fragment_account_new_card_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:visibility="visible"
     android:layout_marginStart="14dp"
     android:layout_marginEnd="14dp"
-    android:visibility="visible">
+    android:orientation="vertical"
+    android:visibility="visible"
+    tools:visibility="visible">
 
 
     <LinearLayout
@@ -38,25 +39,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical"
                     android:layout_marginStart="20dp"
+                    android:gravity="center_vertical"
+                    app:tint="@color/iyzico_light_black"
                     android:src="@drawable/iyzico_ic_plus" />
 
                 <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:gravity="start"
-                    android:padding="-20dp"
                     android:layout_marginStart="24dp"
                     android:fontFamily="@font/markprobold"
+                    android:gravity="start"
+                    android:padding="-20dp"
                     android:text="@string/iyzico_pay_with_new_card"
-                    android:textColor="@color/iyzico_dark_blue"
+                    android:textColor="@color/iyzico_primary_text_color"
                     android:textSize="16sp" />
 
             </LinearLayout>
         </com.android.iyzicosdk.ui.components.IyziCoDoubleBorder>
-
 
         <LinearLayout
             android:id="@+id/iyzico_add_card_layout_linear_layout"
@@ -118,34 +119,108 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="9dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="16dp"
-                android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="4dp"
-                    android:src="@drawable/iyzico_ic_info" />
-
-                <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/iyzico_saving_card_datas"
-                    tools:text="temp text temp text tesdfsd sds sdf fsd s dsf sd sdfsd sd sd "
-                    android:textColor="@color/iyzico_dark_grey"
-                    android:textSize="14sp"
-                    android:textStyle="normal"
-                    app:fontFamily="@font/markpro" />
-            </LinearLayout>
         </LinearLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone"
+            android:id="@+id/iyzico_new_card_point_container"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iyzico_double_border_square_check_new_card_imageview"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/iyzico_empty_radio_button_unchecked"
+                android:src="@mipmap/iyzico_ic_square_check_clear_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintCircleRadius="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+                android:id="@+id/iyzico_bonus_new_card_point_total_amount_textview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/markpro"
+                android:textColor="@color/iyzico_dark_grey"
+                android:textSize="12sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iyzico_double_border_square_check_new_card_imageview"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Toplam Puan:" />
+
+            <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+                android:id="@+id/iyzico_new_card_bonus_point_amount_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/markpromedium"
+                android:gravity="end"
+                android:textColor="@color/iyzico_primary_text_color"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/iyzico_double_border_square_check_new_card_imageview"
+                app:layout_constraintStart_toEndOf="@+id/iyzico_double_border_square_check_new_card_imageview"
+                app:layout_constraintTop_toBottomOf="@+id/iyzico_bonus_new_card_point_total_amount_textview"
+                tools:text="₺44,70" />
+
+            <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="6dp"
+                android:fontFamily="@font/markpro"
+                android:gravity="center_vertical"
+                android:text="@string/iyzico_use_my_point"
+                android:textColor="@color/iyzico_primary_text_color"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/iyzico_new_card_bonus_point_amount_textview"
+                app:layout_constraintTop_toTopOf="@+id/iyzico_new_card_bonus_point_amount_textview" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
     </LinearLayout>
-</FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/iyzico_new_card_information_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/iyzico_ic_info" />
+
+        <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/iyzico_saving_card_datas"
+            android:textColor="@color/iyzico_dark_grey"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            app:fontFamily="@font/markpro" />
+    </LinearLayout>
+</LinearLayout>

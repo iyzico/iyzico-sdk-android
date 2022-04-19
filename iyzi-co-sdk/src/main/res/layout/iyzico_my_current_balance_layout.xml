@@ -57,10 +57,10 @@
             android:id="@+id/iyzico_my_current_balance_normal_info_textview"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="40dp"
             android:text="@string/iyzico_account_fragment_wallet_description"
             android:textColor="@color/iyzico_primary_text_color"
             android:textSize="14sp"
+            android:lineHeight="20sp"
             android:textStyle="normal"
             app:fontFamily="@font/markpro" />
 

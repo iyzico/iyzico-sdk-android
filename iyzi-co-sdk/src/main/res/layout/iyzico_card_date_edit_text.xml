@@ -11,7 +11,7 @@
         android:id="@+id/iyzico_card_date_edit_text"
         style="@style/IyzicoCustomSingleLineEditText"
         android:digits="1234567890/"
-        android:hint="@string/iyzico_input_card_date_example"
+        android:hint="@string/iyzico_input_card_date"
         android:inputType="date"
         android:maxLength="5" />
 

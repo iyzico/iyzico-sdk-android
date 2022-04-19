@@ -77,7 +77,7 @@ internal class IyziCoSupportFragment : IyziCoBaseFragment() {
         }
     }
 
-    fun setWebView(myurl: String) {
+    private fun setWebView(myurl: String) {
         root.iyzico_contracts_webview_layout.let {
             it.setWebViewClient(WebViewClient())
             it.getSettings().setJavaScriptEnabled(true)
@@ -132,23 +132,27 @@ internal class IyziCoSupportFragment : IyziCoBaseFragment() {
 
         val mWebViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView, url: String) {
-                if (url.contains("callback3ds/success")) {
+                when {
+                    url.contains("callback3ds/success") -> {
 
-                    navigate(
-                        IyziCoInfoFragment.newInstance(IyziCoInfoScreenType.TRANSFER),
-                        false
-                    )
+                        navigate(
+                            IyziCoInfoFragment.newInstance(IyziCoInfoScreenType.TRANSFER),
+                            false
+                        )
 
-                } else if (url.contains("callback3ds/failure")) {
+                    }
+                    url.contains("callback3ds/failure") -> {
 
-                    navigate(
-                        IyziCoInfoFragment.newInstance(IyziCoInfoScreenType.ERROR),
-                        false
-                    )
+                        navigate(
+                            IyziCoInfoFragment.newInstance(IyziCoInfoScreenType.ERROR),
+                            false
+                        )
 
-                } else {
-                    ""
-                    //bu durumda ne yapmalıyız
+                    }
+                    else -> {
+                        ""
+                        //bu durumda ne yapmalıyız
+                    }
                 }
             }
         }

@@ -36,24 +36,24 @@
                 <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:fontFamily="@font/markpro"
                     android:lineSpacingExtra="9sp"
                     android:text="@string/iyzico_amount_to_install"
                     android:textColor="@color/iyzico_primary_text_color"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:fontFamily="@font/markpro" />
 
                 <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
                     android:id="@+id/iyzico_fragment_acount_transfer_amount_textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:fontFamily="@font/markpro"
                     android:gravity="end"
                     android:lineSpacingExtra="9sp"
-                    tools:text= "₺113,40"
                     android:textColor="@color/iyzico_primary_text_color"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:fontFamily="@font/markpro"
+                    tools:text="₺113,40" />
 
             </LinearLayout>
 
@@ -69,13 +69,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                app:fontFamily="@font/markpro"
                 android:lineSpacingExtra="9sp"
                 android:paddingStart="16dp"
                 android:text="@string/iyzico_protected_payment_methots"
                 android:textColor="@color/iyzico_primary_text_color"
                 android:textSize="16sp"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                app:fontFamily="@font/markpro" />
 
             <View
                 android:layout_width="match_parent"
@@ -87,6 +87,7 @@
             <include layout="@layout/iyzico_my_cards_layout" />
 
             <include layout="@layout/iyzico_fragment_remittance_eft" />
+
             <androidx.legacy.widget.Space
                 android:layout_width="match_parent"
                 android:layout_height="110dp" />
@@ -96,21 +97,20 @@
 
 
     </androidx.core.widget.NestedScrollView>
+
     <com.android.iyzicosdk.ui.components.buttons.IyziCoCustomButton
         android:id="@+id/iyzico_fragment_account_continue_button"
         android:layout_width="match_parent"
         android:layout_height="@dimen/iyzico_button_height"
+        android:layout_gravity="bottom"
         android:layout_marginStart="@dimen/iyzico_secondary_margin"
         android:layout_marginEnd="@dimen/iyzico_secondary_margin"
         android:layout_marginBottom="20dp"
-        android:layout_gravity="bottom"
         android:text="@string/iyzico_account_fragment_button"
         android:visibility="visible"
         app:iyzico_buttonType="BLUE_FILL"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iyzicoNestedScrollView"
-         />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

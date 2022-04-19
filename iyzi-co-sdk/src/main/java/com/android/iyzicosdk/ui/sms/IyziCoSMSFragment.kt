@@ -15,6 +15,7 @@ import com.android.iyzicosdk.ui.account.IyziCoAccountFragment
 import com.android.iyzicosdk.ui.settlement.IyziCoSettlementFragment
 import IyziCoSupportFragment
 import android.os.Handler
+import android.view.Gravity
 import androidx.annotation.Keep
 import com.android.iyzicosdk.ui.email.IyziCoLoginFragment
 import com.android.iyzicosdk.ui.secondary_login.IyziCoSecondaryLoginFragment
@@ -129,6 +130,13 @@ internal class IyziCoSMSFragment : IyziCoBaseFragment() {
 
     override fun initUIPayWithIyziCo() {
         super.initUIPayWithIyziCo()
+        with(root) {
+            iyzico_fragment_sms_title.show()
+            iyzico_fragment_sms_description.show()
+            iyzico_fragment_sms_textView1.gone()
+            iyzico_fragment_sms_textView2.gone()
+            iyzico_fragment_sms_linerLayout1.gravity = Gravity.CENTER
+        }
         complateLogin {
             clearStack()
             navigate(IyziCoAccountFragment.newInstance(), false)
