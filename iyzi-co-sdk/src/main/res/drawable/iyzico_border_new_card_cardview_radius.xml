@@ -14,7 +14,7 @@
     </solid>
 
     <corners
-        android:radius="@dimen/iyzico_input_corner_radius"   >
+        android:radius="6dp"   >
     </corners>
 
 </shape>

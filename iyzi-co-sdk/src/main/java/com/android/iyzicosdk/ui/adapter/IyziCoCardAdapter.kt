@@ -3,6 +3,7 @@ package com.android.iyzicosdk.ui.adapter
 import android.content.Context
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.updatePadding
 import com.android.iyzicosdk.R
 import com.android.iyzicosdk.data.model.response.IyziCoCardItem
 import com.android.iyzicosdk.util.IyziCoImageLoaderUtility.Companion.setImageForSvg
@@ -24,14 +25,21 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
         IyziCoBaseViewHolder<IyziCoCardItem>(parent, R.layout.iyzico_cell_card_item) {
         var context = context
         override fun bind(iyziCoCardItem: IyziCoCardItem) {
+            val scale = context.resources.displayMetrics.density;
+            val padding_12dp = (12 * scale + 0.5f).toInt()
 
             if (iyziCoCardItem.isSelected) {
                 itemView.iyzico_cell_card_item_selected_button.setImageResource(R.drawable.iyzico_ic_check_button)
                 itemView.iyzico_bonus_point_container.setVisible(iyziCoCardItem.bonusAvailable)
+                if (iyziCoCardItem.bonusAvailable) {
+                    itemView.clrootView.setPadding(0, padding_12dp,0, 0)
+                }
+
 
             } else {
                 itemView.iyzico_cell_card_item_selected_button.setImageResource(R.drawable.iyzico_ic_empty_radio)
                 itemView.iyzico_bonus_point_container.gone()
+                itemView.clrootView.setPadding(0, padding_12dp, 0, padding_12dp)
             }
             itemView.iyzico_cell_card_item_card_name_textview.apply {
                 if (!iyziCoCardItem.isIyziCoCard) {

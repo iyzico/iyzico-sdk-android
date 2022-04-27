@@ -9,6 +9,6 @@
         android:width="1dp"
         android:color="@color/iyzico_secondary_white" >
     </stroke>
-    <corners android:radius="11dp" />
+    <corners android:radius="6dp" />
 
 </shape>

@@ -27,6 +27,7 @@
             android:layout_marginHorizontal="16dp"
             android:visibility="gone"
             android:layout_marginTop="16dp"
+            app:cardElevation="0dp"
             app:cardBackgroundColor="@color/iyzico_green_romance"
             app:cardCornerRadius="6dp">
 
@@ -136,16 +137,15 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="24dp">
 
 
             <com.android.iyzicosdk.ui.components.IyziCoDoubleBorder
                 android:id="@+id/iyzico_add_card_use_my_balance_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="14dp"
                 android:orientation="vertical"
                 app:layout_constraintTop_toTopOf="parent">
 
