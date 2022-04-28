@@ -25,6 +25,7 @@ import com.android.iyzicosdk.util.enums.IyziCoPopupType
 import com.android.iyzicosdk.util.enums.ResultCode
 import com.android.iyzicosdk.util.extensions.*
 import kotlinx.android.synthetic.main.iyzico_activity_iyzico.*
+import kotlinx.android.synthetic.main.iyzico_fragment_sms.view.*
 import kotlinx.android.synthetic.main.iyzico_payw_sticky.*
 import kotlinx.android.synthetic.main.iyzico_wallet_sticky.*
 import java.util.*
@@ -141,6 +142,7 @@ internal class IyziCoActivity : AppCompatActivity() {
         timer = fixedRateTimer("timer", false, 0, 1000) {
             runOnUiThread {
                 finisTime -= 1000
+                setTimerTextColor(finisTime)
                 iyzico_payw_timer_TextView.text = "${
                     finisTime.toLong().toTimer {
                         timer.cancel()
@@ -154,11 +156,10 @@ internal class IyziCoActivity : AppCompatActivity() {
                                 removeTimer()
                                 // Set empty for when open flow at timeout for create again true header
                                 IyziCoConfig.IYZI_CO_AUTHORIZATION_KEY = ""
+                                showCloseButton()
                                 openFragment(
-
-                                    IyziCoLoginFragment.newInstance(
-                                        IyziCoLoginScreenType.TRY_AGAIN
-                                    ), false
+                    
+                                    IyziCoMemberLoginFragment.newInstance(), false
                                 )
                             },
                             {
@@ -176,6 +177,18 @@ internal class IyziCoActivity : AppCompatActivity() {
                 }"
             }
         }
+    }
+
+    fun setTimerTextColor(time: Int) {
+        if (time < 1000 * 60 * 2) {
+            iyzico_payw_timer_image.setColorFilter(resources.getColor(R.color.iyzico_timer_color))
+            iyzico_payw_timer_TextView.setTextColor(resources.getColor(R.color.iyzico_timer_color))
+        }
+        else {
+            iyzico_payw_timer_TextView.setTextColor(resources.getColor(R.color.iyzico_secondary_grey))
+            iyzico_payw_timer_image.setColorFilter(resources.getColor(R.color.iyzico_secondary_grey))
+        }
+
     }
 
     /**

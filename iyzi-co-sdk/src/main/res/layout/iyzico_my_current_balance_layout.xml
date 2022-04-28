@@ -60,7 +60,7 @@
             android:text="@string/iyzico_account_fragment_wallet_description"
             android:textColor="@color/iyzico_primary_text_color"
             android:textSize="14sp"
-            android:lineHeight="20sp"
+            android:lineSpacingExtra="6sp"
             android:textStyle="normal"
             app:fontFamily="@font/markpro" />
 

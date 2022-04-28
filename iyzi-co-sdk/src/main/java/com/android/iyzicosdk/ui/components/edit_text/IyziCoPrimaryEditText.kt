@@ -47,6 +47,7 @@ internal class IyziCoPrimaryEditText @JvmOverloads constructor(
     private var beforeTextFlag = true
     private var isUpper = false
     private var nameEdittextFlag = true
+    private var type: String = ""
     private var _imageOnClick: (view: View) -> Unit = { _ -> }
 
 
@@ -61,13 +62,25 @@ internal class IyziCoPrimaryEditText @JvmOverloads constructor(
             hintText = getString(R.styleable.IyziCoPrimaryEditText_iyzico_hintText) ?: ""
             size = getString(R.styleable.IyziCoPrimaryEditText_iyzico_border_size_from_edit_text)
                 ?: "normal"
+            type = (TypeofUse.values()[this.getInt(R.styleable.IyziCoPrimaryEditText_iyzico_type_of_use,0)]).toString()
             //digits = getString(R.styleable.IyziCoPrimaryEditText_android_digits) ?: ""
+            when(type){
+                TypeofUse.GENERAL_MODE.type -> {
+                    root.iyzico_primary_edittext_root_view.changeTitleProgrammatically(
+                        headText,
+                        hintText,
+                        size
+                    )
+                }
+                TypeofUse.CARD_NAME.type -> {
+                    root.iyzico_primary_edittext_root_view.changeTitleProgrammaticallyforCardName(
+                        headText,
+                        hintText,
+                        size
+                    )
+                }
+            }
 
-            root.iyzico_primary_edittext_root_view.changeTitleProgrammatically(
-                headText,
-                hintText,
-                size
-            )
 
             val typedCount = this.indexCount
 
@@ -200,16 +213,14 @@ internal class IyziCoPrimaryEditText @JvmOverloads constructor(
                     } else if (!nameEdittextFlag)
                         nameEdittextFlag = true
 
-                }
-                else if (it.length() == 1 && nameEdittextFlag) {
+                } else if (it.length() == 1 && nameEdittextFlag) {
                     nameEdittextFlag = false
                     temp = it.text[0].toString().toUpperCase()
                     it.setText(temp)
                     it.setSelection(it.length())
 
-                }
-                else{
-                    nameEdittextFlag=true
+                } else {
+                    nameEdittextFlag = true
                 }
             }
         }
@@ -350,5 +361,10 @@ internal class IyziCoPrimaryEditText @JvmOverloads constructor(
 
     fun goneImageView() {
         root.iyziCo_secondary_lagin_change_mail.gone()
+    }
+
+    enum class TypeofUse(var type: String) {
+        GENERAL_MODE("GENERAL_MODE"),
+        CARD_NAME("CARD_NAME")
     }
 }

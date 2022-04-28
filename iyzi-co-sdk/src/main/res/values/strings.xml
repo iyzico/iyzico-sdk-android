@@ -313,4 +313,5 @@ Amounts -->
     <string name="iyzico_plus_installment_info_text">"kartınla yapacağın taksitli alışverişlerde vade farksız"</string>
     <string name="iyzico_virtul_card">Sanal Kart</string>
     <string name="iyzico_card">Kart</string>
+    <string name="iyzico_complate_the_payment">Ödemeyi Tamamla</string>
 </resources>

@@ -38,6 +38,7 @@
                 android:layout_margin="8dp"
                 android:fontFamily="@font/markpro"
                 android:gravity="center"
+                android:lineSpacingExtra="6sp"
                 tools:text="Akbank kartınla yapacağın taksitli alışverişlerde vade farksız +3 Taksit!"
                 android:textColor="@color/iyzico_secondary_dark_green"
                 android:textSize="14sp" />

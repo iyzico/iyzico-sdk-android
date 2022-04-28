@@ -308,6 +308,13 @@ internal class IyziCoCustomBorder : LinearLayout {
         setHeight(size)
     }
 
+    fun changeTitleProgrammaticallyforCardName(title: String, hint: String, size: String = "normal"){
+        borderText = title
+        root.component_iyzico_border_title_text.text = title
+        editText.hint = hint
+        setHeight(size)
+    }
+
     private fun setHeight(size: String = "normal") {
         if (size == "small") {
             root.component_iyzico_border_root.layoutParams.height = 59.dp

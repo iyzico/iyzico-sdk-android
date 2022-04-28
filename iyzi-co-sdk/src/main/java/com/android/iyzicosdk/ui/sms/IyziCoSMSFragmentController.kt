@@ -64,8 +64,9 @@ internal class IyziCoSMSFragmentController constructor(private var baseFragment:
         iyziCoRepository.resendSms(
             IyziCoLoginResendRequest(
                 channelType,
-                referenceCode,
-                memberUserId
+                memberUserId,
+                referenceCode
+
             ), object : IyziCoServiceCallback<IyziCoLoginResponse> {
                 override fun onSuccess(data: IyziCoLoginResponse?) {
                     data?.let {

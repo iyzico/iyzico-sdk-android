@@ -25,7 +25,7 @@
             android:textColor="@color/iyzico_primary_text_color"
             android:visibility="gone"
             android:textSize="20sp"
-            app:lineHeight="28sp"
+            android:lineSpacingExtra="8sp"
             android:textStyle="bold"
             app:fontFamily="@font/markprobold" />
 
@@ -39,7 +39,7 @@
             android:textColor="@color/iyzico_primary_text_color"
             android:visibility="gone"
             android:textSize="14sp"
-            android:lineHeight="28sp"
+            android:lineSpacingExtra="6sp"
             android:textStyle="normal"
             app:fontFamily="@font/markpro" />
 
@@ -85,7 +85,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/markpromedium"
-                android:lineHeight="22sp"
                 android:textColor="@color/iyzico_secondary_grey"
                 android:textSize="13sp"
                 tools:text="+90(5 • • ) • • •  • •  67" />
@@ -96,7 +95,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:fontFamily="@font/markprobold"
-                android:lineHeight="24sp"
                 android:lineSpacingExtra="12sp"
                 android:text="@string/iyzico_change"
                 android:textColor="@color/iyzico_secondary_dark_blue"
@@ -172,8 +170,7 @@
                     android:drawableLeft="@drawable/iyzico_ic_sms_refresh"
                     android:drawablePadding="6.3dp"
                     android:fontFamily="@font/markprobold"
-                    android:lineHeight="22sp"
-                    android:lineSpacingExtra="8sp"
+                    android:lineSpacingExtra="4sp"
                     android:text="@string/iyzico_send_again"
                     android:textColor="@color/iyzico_secondary_dark_blue"
                     android:textSize="14sp"

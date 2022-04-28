@@ -98,7 +98,8 @@ internal fun TextView.spannableExtension(
                 this@spannableExtension.context,
                 color
             )
-            ds.typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
+            val plain = context.resources.getFont(R.font.markprobold)
+            ds.typeface = Typeface.create(plain, Typeface.BOLD)
             ds.isUnderlineText = false
         }
     }

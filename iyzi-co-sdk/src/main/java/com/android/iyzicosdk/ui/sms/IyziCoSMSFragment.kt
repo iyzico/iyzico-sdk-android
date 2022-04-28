@@ -202,7 +202,7 @@ internal class IyziCoSMSFragment : IyziCoBaseFragment() {
         var finishTime = 1 * 1000 * 60 * 5
         timer = fixedRateTimer("timer", false, 0, 1000) {
             activity?.runOnUiThread {
-                finishTime = finishTime - 1000
+                finishTime -= 1000
                 setclock(finishTime)
                 root.iyzico_fragment_sms_clock_textview.text = finishTime.toLong().toTimer {
                     timer.cancel()

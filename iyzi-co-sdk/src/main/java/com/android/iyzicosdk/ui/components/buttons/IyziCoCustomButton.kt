@@ -91,6 +91,7 @@ internal class IyziCoCustomButton : LinearLayout {
 
     }
 
+
     private fun keyboardHandler() {
         (context as? Activity)?.let {
             KeyboardUtils.addKeyboardToggleListener(it,
@@ -144,6 +145,11 @@ internal class IyziCoCustomButton : LinearLayout {
     }
 
     val buttonGetEnabled: Boolean get() = buttonEnabled
+
+
+    fun setButtonText(text:String){
+        textView.text = text
+    }
 
     fun buttonEnabled() {
         buttonEnabled = true

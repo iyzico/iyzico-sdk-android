@@ -40,5 +40,6 @@
     <color name="iyzico_light_green">#8ce99a</color>
     <color name="iyzico_cursor_blue">#1971c2</color>
     <color name="iyzico_transparant_dark">#cc212529</color>
+    <color name="iyzico_timer_color">#FA7355</color>
 
 </resources>

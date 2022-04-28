@@ -60,6 +60,7 @@ internal class IyziCoMemberLoginFragment : IyziCoBaseFragment() {
                 root.iyzico_fragment_login_change_acount_textView.show()
             }
         }
+
     }
 
     override fun reCreatePayWithIyziCo() {

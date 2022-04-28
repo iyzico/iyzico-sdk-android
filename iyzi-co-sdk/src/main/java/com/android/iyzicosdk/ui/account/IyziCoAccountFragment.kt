@@ -437,6 +437,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         if (root.iyzico_add_card_use_my_balance_button.isClicked)
             root.iyzico_add_card_use_my_balance_button.setNormalBorder()
         setToMixPayment()
+        root.iyzico_fragment_account_continue_button.setButtonText(getString(R.string.iyzico_complate_the_payment))
         root.iyzico_fragment_account_continue_button.clickListener {
 
             val selectedCard = cardAdapter.items.find { it.isSelected }
@@ -794,7 +795,8 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
            }*/
 
         cardAdapter.onItemClick { clickItem ->
-            unSelectedMyAccountPaymentType()
+            if (!clickItem.isSelected){
+                unSelectedMyAccountPaymentType()
             hideNewCardContainer()
             hideKeyboard()
 
@@ -827,6 +829,8 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
             checkVisibilityButton()
 
             cardThreeDSVerified(clickItem)
+            }
+
 
         }
     }

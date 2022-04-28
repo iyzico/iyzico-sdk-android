@@ -85,7 +85,7 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
 
                 if (iyziCoCardItem.bonusAvailable && iyziCoCardItem.isSelected) {
 
-                    iyzico_double_border_square_check_imageview.setOnSafeClickListener {
+                    iyzico_bonus_point_container.setOnSafeClickListener {
                         iyziCoCardItem.bonusPointSelected = !iyziCoCardItem.bonusPointSelected
                         prepareCheckBoxForPoint(iyziCoCardItem)
                     }

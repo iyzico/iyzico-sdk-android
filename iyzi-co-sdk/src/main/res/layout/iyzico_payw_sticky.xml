@@ -30,6 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/iyzico_payw_sticky_brand_textView">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iyzico_payw_timer_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

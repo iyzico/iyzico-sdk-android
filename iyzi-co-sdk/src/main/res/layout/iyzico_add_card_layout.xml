@@ -82,9 +82,11 @@
                 android:layout_height="wrap_content"
                 android:imeOptions="actionDone"
                 android:inputType="textCapWords"
+                app:iyzico_type_of_use="CARD_NAME"
                 app:iyzico_border_size_from_edit_text="small"
                 app:iyzico_headText="@string/iyzico_input_car_name"
                 app:iyzico_hintText="@string/iyzico_input_car_name_example" />
+
 
             <com.android.iyzicosdk.ui.components.credit_card.IyziCoCardNoEditText
                 android:id="@+id/iyzico_add_card_card_number"
