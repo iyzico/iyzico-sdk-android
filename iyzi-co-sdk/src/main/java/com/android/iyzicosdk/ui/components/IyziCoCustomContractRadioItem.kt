@@ -101,7 +101,7 @@ internal class IyziCoCustomContractRadioItem @JvmOverloads constructor(
 
     private fun checkToRadio() {
         root.iyzico_contract_radio_imageview.background = null
-        root.iyzico_contract_radio_imageview.setImageResource(R.mipmap.iyzico_ic_square_check_button)
+        root.iyzico_contract_radio_imageview.setImageResource(R.drawable.iyzico_check_box_background)
     }
 
     private fun unCheckToRadio() {

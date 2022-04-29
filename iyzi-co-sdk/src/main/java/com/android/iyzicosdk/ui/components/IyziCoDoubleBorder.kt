@@ -70,7 +70,7 @@ internal class IyziCoDoubleBorder : LinearLayout {
         }
         root.iyzico_double_border_container.changeBackground(R.drawable.iyzico_border_corner_radius)
         root.iyzico_double_border_check_imageView.setImageResource(R.drawable.iyzico_ic_check_button)
-        root.iyzico_double_border_square_check_imageview.setImageResource(R.mipmap.iyzico_ic_square_check_button)
+        root.iyzico_double_border_square_check_imageview.setImageResource(R.drawable.iyzico_check_box_background)
     }
 
     fun unFocus() {

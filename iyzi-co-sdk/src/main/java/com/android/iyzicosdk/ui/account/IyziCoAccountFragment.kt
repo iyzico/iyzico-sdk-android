@@ -295,7 +295,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                 isUseRewardWithNewCard = !isUseRewardWithNewCard
                 if (isUseRewardWithNewCard) {
                     iyzico_double_border_square_check_new_card_imageview.background = null
-                    iyzico_double_border_square_check_new_card_imageview.setImageResource(R.mipmap.iyzico_ic_square_check_button)
+                    iyzico_double_border_square_check_new_card_imageview.setImageResource(R.drawable.iyzico_check_box_background)
                 } else {
                     iyzico_double_border_square_check_new_card_imageview.setImageResource(R.mipmap.iyzico_ic_square_check_clear_button)
                     iyzico_double_border_square_check_new_card_imageview.changeBackground(R.drawable.iyzico_empty_radio_button_unchecked)

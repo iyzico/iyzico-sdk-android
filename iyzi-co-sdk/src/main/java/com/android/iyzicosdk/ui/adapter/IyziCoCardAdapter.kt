@@ -226,7 +226,7 @@ internal class IyziCoCardAdapter(context: Context) : IyziCoBaseAdapter<IyziCoCar
             with(itemView) {
                 if (iyziCoCardItem.bonusPointSelected) {
                     iyzico_double_border_square_check_imageview.background = null
-                    iyzico_double_border_square_check_imageview.setImageResource(R.mipmap.iyzico_ic_square_check_button)
+                    iyzico_double_border_square_check_imageview.setImageResource(R.drawable.iyzico_check_box_background)
                 } else {
                     iyzico_double_border_square_check_imageview.setImageResource(R.mipmap.iyzico_ic_square_check_clear_button)
                     iyzico_double_border_square_check_imageview.changeBackground(R.drawable.iyzico_empty_radio_button_unchecked)
