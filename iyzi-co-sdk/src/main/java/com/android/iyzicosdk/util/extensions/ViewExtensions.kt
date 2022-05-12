@@ -23,6 +23,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import com.android.iyzicosdk.R
 import com.android.iyzicosdk.ui.components.edit_text.IyziCoPhoneEditText
 import com.android.iyzicosdk.ui.components.edit_text.IyziCoPriceEditText
@@ -98,7 +99,7 @@ internal fun TextView.spannableExtension(
                 this@spannableExtension.context,
                 color
             )
-            val plain = context.resources.getFont(R.font.markprobold)
+            val plain = ResourcesCompat.getFont(this@spannableExtension.context,R.font.markprobold)
             ds.typeface = Typeface.create(plain, Typeface.BOLD)
             ds.isUnderlineText = false
         }
