@@ -424,7 +424,8 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
         expireYear: String? = null,
         registerCard: Int? = null,
         registerConsumer: Boolean? = null,
-        memberToken: String? = null
+        memberToken: String? = null,
+        rewardRequest: RewardRequest? = null
     ) {
 
         baseFragment.showLoadingAnimation()
@@ -440,8 +441,9 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                     expireMonth,
                     expireYear,
                     registerCard,
-                    registerConsumer
-                ), paymentChannelType.type, memberToken
+                    registerConsumer,
+                    if(cardToken.isNullOrEmpty()) null else IyziCoConfig.IYZI_CO_AUTHORIZATION_KEY
+                ), paymentChannelType.type, memberToken, rewardRequest
             ), object : IyziCoServiceCallback<IyziCoPWIResponse> {
                 override fun onSuccess(data: IyziCoPWIResponse?) {
                     data?.let {
@@ -532,14 +534,16 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                 mounth,
                 year,
                 registerCard,
-                registerConsumer
+                registerConsumer,
+                rewardRequest = rewardRequest
             )
         } else if (iyziCoPaymentType == IyziCoPaymentType.CARD_WITH_BALANCE) {
             payWithMixpayment(
                 balance,
                 loginChannelType,
                 memberToken = memberToken,
-                cardToken = cardToken
+                cardToken = cardToken,
+                rewardRequest = rewardRequest
             )
         } else if (!force3Ds) {
             when (iyziCoPaymentType) {
@@ -566,7 +570,8 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                         IyziCopayWithCardRequest(
                             true, gsmNumber, installment, memberId, memberToken, paidPrice,
                             IyziCoPaymentCard(
-                                cardToken = cardToken
+                                cardToken = cardToken,
+                                consumerToken = IyziCoConfig.IYZI_CO_AUTHORIZATION_KEY
                             ), loginChannelType.type,
                             rewardRequest
                         )
@@ -606,7 +611,8 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                         IyziCopayWithCardRequest(
                             true, gsmNumber, installment, memberId, memberToken, paidPrice,
                             IyziCoPaymentCard(
-                                cardToken = cardToken
+                                cardToken = cardToken,
+                                consumerToken = IyziCoConfig.IYZI_CO_AUTHORIZATION_KEY
                             ), loginChannelType.type,
                             rewardRequest
                         )

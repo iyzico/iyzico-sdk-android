@@ -20,5 +20,7 @@ internal data class IyziCoPaymentCard(
     @SerializedName("registerCard")
     var registerCard: Int? = null,
     @SerializedName("registerConsumerCard")
-    var registerConsumerCard: Boolean? = null
+    var registerConsumerCard: Boolean? = null,
+    @SerializedName("consumerToken")
+    var consumerToken: String? = null
 )

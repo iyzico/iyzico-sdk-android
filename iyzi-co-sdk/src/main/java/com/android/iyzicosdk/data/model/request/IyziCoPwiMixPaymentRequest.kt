@@ -11,5 +11,7 @@ internal data class IyziCoPwiMixPaymentRequest(
     @SerializedName("paymentChannel")
     val paymentChannel: String,
     @SerializedName("memberToken")
-    val memberToken: String?
+    val memberToken: String?,
+    @SerializedName("reward")
+    val rewardRequest: RewardRequest?=null
 )

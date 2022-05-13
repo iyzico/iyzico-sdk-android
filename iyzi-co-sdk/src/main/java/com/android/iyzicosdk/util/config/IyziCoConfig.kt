@@ -17,6 +17,7 @@ internal object IyziCoConfig {
      */
     var IYZI_CO_AUTHORIZATION_KEY: String? = ""
 
+
     /**
      * IYZICO CLIENT_ID
      */
