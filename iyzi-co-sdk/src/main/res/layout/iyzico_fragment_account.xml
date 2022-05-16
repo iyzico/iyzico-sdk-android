@@ -88,10 +88,10 @@
 
             <include layout="@layout/iyzico_fragment_remittance_eft" />
 
-            <androidx.legacy.widget.Space
+            <View
+                android:id="@+id/space1"
                 android:layout_width="match_parent"
                 android:layout_height="110dp" />
-
 
         </LinearLayout>
 

@@ -318,78 +318,78 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
 
     private fun checkPoint() {
 
-      with(root) {
-          newCardRewardPoint = 0.0
-          isUseRewardWithNewCard = false
+        with(root) {
+            newCardRewardPoint = 0.0
+            isUseRewardWithNewCard = false
 
-          val name = root.iyzico_add_card_name.text
-          val number = root.iyzico_add_card_card_number.text.replace(" ", "")
-          val cvv = root.iyzico_add_card_cvc_number.text
-          val month = root.iyzico_add_card_date.text.take(2)
-          val year = root.iyzico_add_card_date.text.takeLast(2)
+            val name = root.iyzico_add_card_name.text
+            val number = root.iyzico_add_card_card_number.text.replace(" ", "")
+            val cvv = root.iyzico_add_card_cvc_number.text
+            val month = root.iyzico_add_card_date.text.take(2)
+            val year = root.iyzico_add_card_date.text.takeLast(2)
 
-          controller.pwiInquireWithNewCard(
-              "",
-              IyziCoCurrentType.TRY.type,
-              IyziCoConfig.LANGUAGE.type,
-              paidPrice().toDouble(),
-              name,
-              number,
-              cvv,
-              month,
-              year,
-              object :
-                  UIResponseCallBack<IyziCoInquireResponse>(this@IyziCoAccountFragment) {
-                  override fun onSuccess(response: IyziCoInquireResponse?) {
-                      super.onSuccess(response)
+            controller.pwiInquireWithNewCard(
+                "",
+                IyziCoCurrentType.TRY.type,
+                IyziCoConfig.LANGUAGE.type,
+                paidPrice().toDouble(),
+                name,
+                number,
+                cvv,
+                month,
+                year,
+                object :
+                    UIResponseCallBack<IyziCoInquireResponse>(this@IyziCoAccountFragment) {
+                    override fun onSuccess(response: IyziCoInquireResponse?) {
+                        super.onSuccess(response)
 
-                      response?.let {
-                          root.iyzico_new_card_point_container.show()
+                        response?.let {
+                            root.iyzico_new_card_point_container.show()
 
-                          if (it.amount > paidPrice().toDouble()) {
+                            if (it.amount > paidPrice().toDouble()) {
 
-                              iyzico_bonus_new_card_point_total_amount_textview.apply {
-                                  show()
-                                  val content =
-                                      "${context.getString(R.string.iyzico_total_point)}: ${it.amount.toPrice()} "
-                                  text = content
-
-
-                                  val firstIndex = content.indexOfFirst { it == ':' }
-
-                                  spannableExtension(
-                                      firstIndex,
-                                      content.length - 1,
-                                      R.color.iyzico_dark_grey,
-                                      clickSpan = {}
-                                  )
-                              }
-
-                              iyzico_new_card_bonus_point_amount_textview.text =
-                                  paidPrice().toDouble().toPrice()
-
-                              newCardRewardPoint = paidPrice().toDouble()
-                          } else {
-                              root.iyzico_new_card_bonus_point_amount_textview.text =
-                                  it.amount.toPrice()
-
-                              newCardRewardPoint = it.amount
-                          }
-
-                      }
+                                iyzico_bonus_new_card_point_total_amount_textview.apply {
+                                    show()
+                                    val content =
+                                        "${context.getString(R.string.iyzico_total_point)}: ${it.amount.toPrice()} "
+                                    text = content
 
 
-                      rewardUseNewCard()
+                                    val firstIndex = content.indexOfFirst { it == ':' }
+
+                                    spannableExtension(
+                                        firstIndex,
+                                        content.length - 1,
+                                        R.color.iyzico_dark_grey,
+                                        clickSpan = {}
+                                    )
+                                }
+
+                                iyzico_new_card_bonus_point_amount_textview.text =
+                                    paidPrice().toDouble().toPrice()
+
+                                newCardRewardPoint = paidPrice().toDouble()
+                            } else {
+                                root.iyzico_new_card_bonus_point_amount_textview.text =
+                                    it.amount.toPrice()
+
+                                newCardRewardPoint = it.amount
+                            }
+
+                        }
 
 
-                  }
+                        rewardUseNewCard()
 
-                  override fun onError(errorCode: Int, errorMessage: String) {
-                      root.iyzico_new_card_point_container.gone()
-                  }
-              }
-          )
-      }
+
+                    }
+
+                    override fun onError(errorCode: Int, errorMessage: String) {
+                        root.iyzico_new_card_point_container.gone()
+                    }
+                }
+            )
+        }
     }
 
     private fun allItemIsValid(withWarning: Boolean = true): Boolean {
@@ -795,40 +795,40 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
            }*/
 
         cardAdapter.onItemClick { clickItem ->
-            if (!clickItem.isSelected){
+            if (!clickItem.isSelected) {
                 unSelectedMyAccountPaymentType()
-            hideNewCardContainer()
-            hideKeyboard()
+                hideNewCardContainer()
+                hideKeyboard()
 
-            getInstallments(clickItem.binNumber, IyziCoInstallmentType.NORMAL, true)
-            showInstallmentContainer()
+                getInstallments(clickItem.binNumber, IyziCoInstallmentType.NORMAL, true)
+                showInstallmentContainer()
 
-            root.iyzico_fragment_Account_my_installment_options_layout.gone()
+                root.iyzico_fragment_Account_my_installment_options_layout.gone()
 
-            cardAdapter.items.forEach { entity ->
-                if (clickItem != entity) {
-                    entity.isSelected = false
-                    entity.bonusAvailable = false
-                    entity.bonusPointSelected = false
-                    entity.useRewardPoint = 0.0
-                } else {
-                    selectedCard = clickItem
-                    entity.isSelected = true
-                    selectedCardId = entity.cardToken
-
-                    iyziCoPaymentType = if (entity.isSelected) {
-                        IyziCoPaymentType.CARD
+                cardAdapter.items.forEach { entity ->
+                    if (clickItem != entity) {
+                        entity.isSelected = false
+                        entity.bonusAvailable = false
+                        entity.bonusPointSelected = false
+                        entity.useRewardPoint = 0.0
                     } else {
-                        IyziCoPaymentType.NULL
+                        selectedCard = clickItem
+                        entity.isSelected = true
+                        selectedCardId = entity.cardToken
+
+                        iyziCoPaymentType = if (entity.isSelected) {
+                            IyziCoPaymentType.CARD
+                        } else {
+                            IyziCoPaymentType.NULL
+                        }
                     }
+                    setToMixPayment()
+
                 }
-                setToMixPayment()
+                cardAdapter.notifyDataSetChanged()
+                checkVisibilityButton()
 
-            }
-            cardAdapter.notifyDataSetChanged()
-            checkVisibilityButton()
-
-            cardThreeDSVerified(clickItem)
+                cardThreeDSVerified(clickItem)
             }
 
 
@@ -1229,11 +1229,19 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         }
     }
 
-    companion object {
-        fun newInstance() = IyziCoAccountFragment()
+    fun setVisibleEFTTab(isVisible: Boolean) {
+        root.iyzico_fragment_account_eft_expandable.setVisible(isVisible)
+        root.space1.gone()
+        root.iyzico_fragment_Account_my_Cards_container.setPadding(0, 15.dp, 0, 110.dp)
     }
+
 
     override fun clickInstallment(itemCount: Int, item: IyziCoInstallmentDetail) {
 
+    }
+
+
+    companion object {
+        fun newInstance() = IyziCoAccountFragment()
     }
 }

@@ -349,7 +349,6 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                         gsmNumber.clearSpace()
                         memberId = data.memberId
 
-
                         val tempCards = it.iyziCoMemberCards.map {
                             it.toCardItem()
                         }
@@ -360,6 +359,8 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
 
                         baseFragment.setCardAdapter(cards)
 
+
+                        baseFragment.setVisibleEFTTab(false)
 
 
                         baseFragment.setForce3Ds(data.iyziCoCheckoutDetail.force3Ds)
@@ -442,7 +443,7 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                     expireYear,
                     registerCard,
                     registerConsumer,
-                    if(cardToken.isNullOrEmpty()) null else IyziCoConfig.IYZI_CO_AUTHORIZATION_KEY
+                    if (cardToken.isNullOrEmpty()) null else IyziCoConfig.IYZI_CO_AUTHORIZATION_KEY
                 ), paymentChannelType.type, memberToken, rewardRequest
             ), object : IyziCoServiceCallback<IyziCoPWIResponse> {
                 override fun onSuccess(data: IyziCoPWIResponse?) {
