@@ -19,9 +19,11 @@ import androidx.core.view.get
 import com.android.iyzicosdk.R
 import com.android.iyzicosdk.util.KeyboardUtils
 import com.android.iyzicosdk.util.SavedState
+import com.android.iyzicosdk.util.extensions.*
 import com.android.iyzicosdk.util.extensions.autoFocus
 import com.android.iyzicosdk.util.extensions.dp
 import com.android.iyzicosdk.util.extensions.limitLength
+import com.android.iyzicosdk.util.extensions.px
 import kotlinx.android.synthetic.main.iyzico_sms_pin.view.*
 
 internal class IyziCoSmsPin @JvmOverloads constructor(
@@ -46,15 +48,21 @@ internal class IyziCoSmsPin @JvmOverloads constructor(
     private var detect = false
 
     init {
+        val screenWidth = getScreenWidth - 72.px
 
+        val singleItemWidth = screenWidth / pinCount
+        val singleItemHeight = (singleItemWidth * 1.1).toInt()
         repeat(pinCount) { index ->
-            val params: ViewGroup.LayoutParams = if (index == pinCount - 1) {
-                LayoutParams(50.dp, LayoutParams.WRAP_CONTENT)
-            } else {
-                LayoutParams(55.dp, LayoutParams.WRAP_CONTENT)
-            }
+
+            val params: ViewGroup.LayoutParams =
+                LayoutParams(0, singleItemHeight, 1.0f)
 
             val singlePinEditText = IyziCoSinglePinEditText(context)
+
+            if (index == pinCount - 1) {
+                singlePinEditText.removeMargin()
+            }
+
             singlePinEditText.layoutParams = params
             singlePinEditText.id = index
             singlePinEditText.getEditText()

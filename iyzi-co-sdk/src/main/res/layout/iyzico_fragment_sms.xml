@@ -6,13 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_marginStart="@dimen/iyzico_primary_margin"
-        android:layout_marginEnd="@dimen/iyzico_primary_margin"
         android:layout_marginTop="@dimen/iyzico_secondary_margin"
+        android:layout_marginEnd="@dimen/iyzico_primary_margin"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="parent">
 
         <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
@@ -21,12 +22,12 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/markprobold"
             android:gravity="center"
+            android:lineSpacingExtra="8sp"
             android:text="@string/iyzico_fragment_sms_title"
             android:textColor="@color/iyzico_primary_text_color"
-            android:visibility="gone"
             android:textSize="20sp"
-            android:lineSpacingExtra="8sp"
             android:textStyle="bold"
+            android:visibility="gone"
             app:fontFamily="@font/markprobold" />
 
         <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
@@ -35,12 +36,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center"
+            android:lineSpacingExtra="6sp"
             android:text="@string/iyzico_fragment_sms_description"
             android:textColor="@color/iyzico_primary_text_color"
-            android:visibility="gone"
             android:textSize="14sp"
-            android:lineSpacingExtra="6sp"
             android:textStyle="normal"
+            android:visibility="gone"
             app:fontFamily="@font/markpro" />
 
         <com.android.iyzicosdk.ui.components.IyziCoCustomTextView
@@ -48,10 +49,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:lineHeight="@dimen/iyzico_secondary_line_height_size"
-            android:visibility="visible"
             android:text="@string/iyzico_fragment_sms_control"
             android:textColor="@color/iyzico_primary_text_color"
             android:textSize="@dimen/iyzico_secondary_text_size"
+            android:visibility="visible"
             app:fontFamily="@font/markpro"
             tools:text="@string/iyzico_fragment_sms_control" />
 
@@ -61,11 +62,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/markprobold"
-            android:visibility="visible"
             android:lineHeight="@dimen/iyzico_primary_line_height_size"
             android:text="@string/iyzico_fragment_sms_verificate_phone"
             android:textColor="@color/iyzico_primary_text_color"
             android:textSize="@dimen/iyzico_primary_textsize"
+            android:visibility="visible"
             tools:text="@string/iyzico_fragment_sms_verificate_phone" />
 
 
@@ -121,7 +122,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="11.7dp"
-            android:layout_marginEnd="8dp"
             app:iyzico_headText="@string/iyzico_fragment_email_email"
             app:iyzico_hintText="@string/iyzico_fragment_email_write_email" />
 

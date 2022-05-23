@@ -18,3 +18,7 @@ internal val Int.dp: Int
 internal fun Int.intToBoolean(): Boolean {
     return this == 1
 }
+
+
+val getScreenWidth get() = Resources.getSystem().displayMetrics.widthPixels
+val getScreenHeight get() = Resources.getSystem().displayMetrics.heightPixels

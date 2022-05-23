@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.LinearLayout
 import com.android.iyzicosdk.R
 import com.android.iyzicosdk.util.SavedState
+import com.android.iyzicosdk.util.extensions.setMargins
 import kotlinx.android.synthetic.main.iyzico_single_pin_edit_text.view.*
 
 internal class IyziCoSinglePinEditText @JvmOverloads constructor(
@@ -29,6 +30,10 @@ internal class IyziCoSinglePinEditText @JvmOverloads constructor(
 
 
     fun getEditText(): IyziCoCustomEditText = root.iyzico_pin_edit_text
+
+    fun removeMargin() {
+        root.iyzico_pin_edittext_root_view.setMargins(rightMarginDp = 0)
+    }
 
     @Suppress("UNCHECKED_CAST")
     public override fun onSaveInstanceState(): Parcelable? {

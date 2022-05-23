@@ -897,9 +897,14 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                     }
                     2 -> {
                         val doubleCampaign = plusInstallmentResponseList.take(2)
+
+
+                        val installmentText =
+                            if (doubleCampaign[0].plusInstallment == doubleCampaign[1].plusInstallment) "+${doubleCampaign[0].plusInstallment} Taksit"
+                            else "+${doubleCampaign[0].plusInstallment} ve +${doubleCampaign[1].plusInstallment}  Taksit"
                         text =
                             "${doubleCampaign[0].cardBankDtoList.first().cardBankName} veya ${doubleCampaign[1].cardBankDtoList.first().cardBankName} " +
-                                    "${getString(R.string.iyzico_plus_installment_info_text)} +${doubleCampaign[0].plusInstallment} ve +${doubleCampaign[1].plusInstallment}  Taksit"
+                                    "${getString(R.string.iyzico_plus_installment_info_text)} $installmentText"
                     }
                 }
 
@@ -1233,6 +1238,15 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         root.iyzico_fragment_account_eft_expandable.setVisible(isVisible)
         root.space1.gone()
         root.iyzico_fragment_Account_my_Cards_container.setPadding(0, 15.dp, 0, 110.dp)
+    }
+
+
+    fun fundNotEnabled() {
+        with(root) {
+            iyzico_fragment_account_my_account.gone()
+            myCardsAutoFocus()
+            hideUseBalance()
+        }
     }
 
 

@@ -360,11 +360,17 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                         baseFragment.setCardAdapter(cards)
 
 
-                        baseFragment.setVisibleEFTTab(false)
+                        baseFragment.setVisibleEFTTab(data.iyziCoCheckoutDetail.bankTransferEnabled)
 
 
                         baseFragment.setForce3Ds(data.iyziCoCheckoutDetail.force3Ds)
-                        baseFragment.getRetriverBalance()
+
+                        if (data.iyziCoCheckoutDetail.fundEnabled) {
+                            baseFragment.getRetriverBalance()
+                        } else {
+                            baseFragment.fundNotEnabled()
+                        }
+
                         baseFragment.setBankAdapter(
                             data.iyziCoCheckoutDetail.bankTransferAccounts,
                             "123456789"
