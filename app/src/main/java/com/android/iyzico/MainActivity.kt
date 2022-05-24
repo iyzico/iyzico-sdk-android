@@ -167,5 +167,9 @@ class MainActivity : AppCompatActivity() {
         override fun error(code: ResultCode, message: String) {
             Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
         }
+
+        override fun balanceComplete(message: String, amount: String) {
+            Toast.makeText(this@MainActivity, amount, Toast.LENGTH_SHORT).show()
+        }
     }
 }

@@ -7,4 +7,5 @@ import com.android.iyzicosdk.util.enums.ResultCode
 interface IyzicoCallback {
     fun message(message: String)
     fun error(code: ResultCode, message: String)
+    fun balanceComplete(message: String, amount: String)
 }

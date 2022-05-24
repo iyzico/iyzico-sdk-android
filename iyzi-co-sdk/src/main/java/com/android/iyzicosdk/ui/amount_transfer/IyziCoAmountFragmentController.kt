@@ -2,6 +2,7 @@ package com.android.iyzicosdk.ui.amount_transfer
 
 import IyziCoAmountTransferFragment
 import com.android.iyzicosdk.callback.IyziCoServiceCallback
+import com.android.iyzicosdk.core.Iyzico
 import com.android.iyzicosdk.data.UIResponseCallBack
 import com.android.iyzicosdk.data.model.request.IyziCoAmountCompleteRequest
 import com.android.iyzicosdk.data.model.response.IyziCoAmountResponse
@@ -63,6 +64,11 @@ internal class IyziCoAmountFragmentController constructor(private var baseFragme
                         data?.let {
                             uiCallBack.onSuccess(it)
                             baseFragment.showIyziCoBalance(it?.balanceAmount?.convertAmount())
+                            baseFragment.getIyziCoActivity()
+                                ?.setCompleteAmount(
+                                    it.depositStatus,
+                                    it.balanceAmount.convertAmount()
+                                )
                             if (it.depositStatus == IyziCoDepositStatus.WAITING_FOR_PROVISION.toString()) {
                                 baseFragment.navigate(
                                     IyziCoInfoFragment.newInstance(

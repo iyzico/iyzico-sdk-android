@@ -11,6 +11,7 @@ import android.view.WindowManager
 import androidx.annotation.Keep
 import com.android.iyzicosdk.R
 import com.android.iyzicosdk.core.IyziCoBaseFragment
+import com.android.iyzicosdk.core.Iyzico
 import com.android.iyzicosdk.data.UIResponseCallBack
 import com.android.iyzicosdk.data.model.response.*
 import com.android.iyzicosdk.ui.adapter.*
@@ -70,6 +71,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
     ) {
         super.initUI(inflater, container, savedInstanceState)
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
+
         controller.initUi()
 
 

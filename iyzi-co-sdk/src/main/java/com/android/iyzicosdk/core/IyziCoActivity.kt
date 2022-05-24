@@ -45,6 +45,10 @@ internal class IyziCoActivity : AppCompatActivity() {
     private var progressDialogPositiveText = ""
 
 
+    private var completeAmount: String? = ""
+    private var completeStatus: String? = ""
+
+
     var finisTime = 0
     var isTimerContinue: Boolean = false
 
@@ -397,6 +401,11 @@ internal class IyziCoActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
+        if (!completeAmount.isNullOrEmpty()) {
+            callback?.balanceComplete(completeStatus ?: "", completeAmount!!)
+        }
+        completeAmount = ""
+        completeStatus = ""
         Iyzico.iyzicoCallback = null
         callback = null
         IyziCoConfig.IYZI_CO_AUTHORIZATION_KEY = ""
@@ -452,6 +461,12 @@ internal class IyziCoActivity : AppCompatActivity() {
                 it.dismiss()
             }
         }
+    }
+
+
+    fun setCompleteAmount(message: String, amount: String) {
+        completeAmount = amount
+        completeStatus = message
     }
 
 

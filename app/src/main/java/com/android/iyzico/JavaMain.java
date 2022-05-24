@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -95,6 +96,13 @@ public class JavaMain extends AppCompatActivity {
                     @Override
                     public void error(ResultCode resultCode, String s) {
                         Toast.makeText(JavaMain.this, s,
+                                Toast.LENGTH_LONG).show();
+                    }
+
+
+                    @Override
+                    public void balanceComplete(@NonNull String message, @NonNull String amount) {
+                        Toast.makeText(JavaMain.this, amount,
                                 Toast.LENGTH_LONG).show();
                     }
                 }
