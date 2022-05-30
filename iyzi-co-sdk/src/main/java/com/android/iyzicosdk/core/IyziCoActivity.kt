@@ -45,8 +45,6 @@ internal class IyziCoActivity : AppCompatActivity() {
     private var progressDialogPositiveText = ""
 
 
-
-
     var finisTime = 0
     var isTimerContinue: Boolean = false
 
@@ -213,7 +211,7 @@ internal class IyziCoActivity : AppCompatActivity() {
     }
 
     internal fun showStickLayout() {
-        if (currentFragment !is IyziCoMemberLoginFragment && currentFragment !is IyziCoSupportFragment) {
+        if (currentFragment !is IyziCoSupportFragment) {
             iyzico_payw_sticky_layout.show()
             if (!isTimerContinue)
                 startTimer()

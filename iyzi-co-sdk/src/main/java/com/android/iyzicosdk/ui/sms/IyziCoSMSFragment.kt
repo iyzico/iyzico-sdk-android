@@ -213,7 +213,7 @@ internal class IyziCoSMSFragment : IyziCoBaseFragment() {
         }
     }
 
-    fun setclock(time: Int) {
+    private fun setclock(time: Int) {
         if (time == (1000 * 60 * 5 - 10 * 1000)) {
             root.iyzico_fragment_sms_try_again_textView.show()
         }
@@ -222,7 +222,7 @@ internal class IyziCoSMSFragment : IyziCoBaseFragment() {
         }
     }
 
-    fun complateLogin(
+    private fun complateLogin(
         continueButtonCallback: () -> Unit
     ) {
         root.iyzico_fragment_sms_sms_editText.getFullCode {
