@@ -98,6 +98,7 @@ internal class IyziCoActivity : AppCompatActivity() {
         }
 
         clickInit()
+        
 
     }
 
