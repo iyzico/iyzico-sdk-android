@@ -36,7 +36,7 @@ internal class IyziCoMemberLoginFragment : IyziCoBaseFragment() {
     ) {
         super.initUI(inflater, container, savedInstanceState)
         hideKeyboard()
-        removeTimer()
+        // removeTimer()
         root.iyzico_login_continue_acount_mail_textView.text = IyziCoResourcesConstans.IyziCoEmail
         when (IyziCoConfig.IYZI_CO_SDK_TYPE) {
             IyziCoSDKType.CASH_OUT -> {
@@ -65,7 +65,7 @@ internal class IyziCoMemberLoginFragment : IyziCoBaseFragment() {
 
     override fun reCreatePayWithIyziCo() {
         super.reCreatePayWithIyziCo()
-        removeTimer()
+        //removeTimer()
         hideKeyboard()
     }
 
@@ -91,7 +91,7 @@ internal class IyziCoMemberLoginFragment : IyziCoBaseFragment() {
                     super.onSuccess(response)
                     response?.let {
                         it.gsmNumber?.let {
-                            IyziCoResourcesConstans.IyziPhoneNumber = it.substring(3,it.length)
+                            IyziCoResourcesConstans.IyziPhoneNumber = it.substring(3, it.length)
                         }
                         goOtp(
                             it.referenceCode,

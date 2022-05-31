@@ -183,9 +183,9 @@ internal class IyziCoLoginFragment : IyziCoBaseFragment() {
 
         }
     }
-    fun openMemberLogin(){
+    private fun openMemberLogin(){
         firstTime = false
-        removeTimer()
+      //  removeTimer()
         navigate(IyziCoMemberLoginFragment.newInstance(), false)
     }
 
