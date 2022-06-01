@@ -67,7 +67,7 @@ internal class IyziCoAmountFragmentController constructor(private var baseFragme
                             baseFragment.getIyziCoActivity()
                                 ?.setCompleteAmount(
                                     it.depositStatus,
-                                    it.balanceAmount.convertAmount()
+                                    amount
                                 )
                             if (it.depositStatus == IyziCoDepositStatus.WAITING_FOR_PROVISION.toString()) {
                                 baseFragment.navigate(
