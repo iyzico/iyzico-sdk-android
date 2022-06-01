@@ -15,6 +15,7 @@ import com.android.iyzicosdk.util.constants.IyziCoUrlConstants
 import com.android.iyzicosdk.util.enums.IyziCoInfoScreenType
 import com.android.iyzicosdk.util.enums.IyziCoSupportScreenType
 import com.android.iyzicosdk.util.extensions.gone
+import com.android.iyzicosdk.util.extensions.isHtml
 import com.android.iyzicosdk.util.extensions.show
 import kotlinx.android.synthetic.main.iyzico_activity_iyzico.*
 import kotlinx.android.synthetic.main.iyzico_fragment_support_.view.*
@@ -78,6 +79,7 @@ internal class IyziCoSupportFragment : IyziCoBaseFragment() {
     }
 
     private fun setWebView(myurl: String) {
+
         root.iyzico_contracts_webview_layout.let {
             it.setWebViewClient(WebViewClient())
             it.getSettings().setJavaScriptEnabled(true)
@@ -101,63 +103,68 @@ internal class IyziCoSupportFragment : IyziCoBaseFragment() {
     }
 
     private fun threeDPayment() {
-        root.iyzico_contracts_webview_layout_close_button.setImageResource(R.drawable.iyzico_ic_close)
 
-        val settings: WebSettings = root.iyzico_contracts_webview_layout.getSettings()
-        settings.defaultTextEncodingName = "utf-8"
-        settings.javaScriptEnabled = true
-        root.iyzico_contracts_webview_layout.addJavascriptInterface(
-            MyWebViewJavascriptInterface(
-                requireContext(),
-                root.iyzico_contracts_webview_layout
-            ), "Android"
-        ) // Buraya dikkat
+        if (html.isHtml()) {
+            root.iyzico_contracts_webview_layout_close_button.setImageResource(R.drawable.iyzico_ic_close)
 
-
-        root.iyzico_contracts_webview_layout.loadDataWithBaseURL(
-            null,
-            html,
-            "text/html",
-            "utf-8",
-            null
-        ) // elimizde bulunan bir html dökümanı webview e basıyoruz. URL de verebilirsin istersen
+            val settings: WebSettings = root.iyzico_contracts_webview_layout.getSettings()
+            settings.defaultTextEncodingName = "utf-8"
+            settings.javaScriptEnabled = true
+            root.iyzico_contracts_webview_layout.addJavascriptInterface(
+                MyWebViewJavascriptInterface(
+                    requireContext(),
+                    root.iyzico_contracts_webview_layout
+                ), "Android"
+            ) // Buraya dikkat
 
 
-        root.iyzico_contracts_webview_layout.addJavascriptInterface(
-            MyWebViewJavascriptInterface(
-                requireContext(),
-                root.iyzico_contracts_webview_layout
-            ), "Android"
-        )
+            root.iyzico_contracts_webview_layout.loadDataWithBaseURL(
+                null,
+                html,
+                "text/html",
+                "utf-8",
+                null
+            ) // elimizde bulunan bir html dökümanı webview e basıyoruz. URL de verebilirsin istersen
 
-        val mWebViewClient = object : WebViewClient() {
-            override fun onPageFinished(view: WebView, url: String) {
-                when {
-                    url.contains("callback3ds/success") -> {
 
-                        navigate(
-                            IyziCoInfoFragment.newInstance(IyziCoInfoScreenType.TRANSFER),
-                            false
-                        )
+            root.iyzico_contracts_webview_layout.addJavascriptInterface(
+                MyWebViewJavascriptInterface(
+                    requireContext(),
+                    root.iyzico_contracts_webview_layout
+                ), "Android"
+            )
 
-                    }
-                    url.contains("callback3ds/failure") -> {
+            val mWebViewClient = object : WebViewClient() {
+                override fun onPageFinished(view: WebView, url: String) {
+                    when {
+                        url.contains("callback3ds/success") -> {
 
-                        navigate(
-                            IyziCoInfoFragment.newInstance(IyziCoInfoScreenType.ERROR),
-                            false
-                        )
+                            navigate(
+                                IyziCoInfoFragment.newInstance(IyziCoInfoScreenType.TRANSFER),
+                                false
+                            )
 
-                    }
-                    else -> {
-                        ""
-                        //bu durumda ne yapmalıyız
+                        }
+                        url.contains("callback3ds/failure") -> {
+
+                            navigate(
+                                IyziCoInfoFragment.newInstance(IyziCoInfoScreenType.ERROR),
+                                false
+                            )
+
+                        }
+                        else -> {
+                            ""
+                            //bu durumda ne yapmalıyız
+                        }
                     }
                 }
             }
-        }
 
-        root.iyzico_contracts_webview_layout.webViewClient = mWebViewClient
+            root.iyzico_contracts_webview_layout.webViewClient = mWebViewClient
+        } else {
+            setWebView(html)
+        }
     }
 
     internal class MyWebViewJavascriptInterface(

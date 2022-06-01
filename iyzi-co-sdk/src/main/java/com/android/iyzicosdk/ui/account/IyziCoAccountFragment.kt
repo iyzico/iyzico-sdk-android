@@ -651,7 +651,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
             root.iyzico_fragment_account_my_account.closeOtherItem()
             root.iyzico_fragment_account_eft_expandable.closeOtherItem()
             setFirstCard()
-            setBalance()
+            //setBalance()
             checkVisibilityButton()
 
             if (!it) {
@@ -1003,6 +1003,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         showInstallmentContainer()
         selectedCard = item
         cardThreeDSVerified(item)
+
     }
 
     private fun showNewCardContainer() {

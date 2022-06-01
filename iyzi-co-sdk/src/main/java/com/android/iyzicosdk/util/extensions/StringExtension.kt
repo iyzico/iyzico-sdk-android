@@ -11,6 +11,7 @@ import org.apache.commons.codec.binary.Hex
 import java.io.UnsupportedEncodingException
 import java.security.InvalidKeyException
 import java.security.NoSuchAlgorithmException
+import java.util.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 import javax.crypto.Mac
@@ -304,4 +305,27 @@ internal fun String?.isSuccess(): Boolean {
         return false
     }
     return this != "failure"
+}
+
+
+internal fun String?.isHtml(): Boolean {
+    var isHTML = false
+    val TAG_START =
+        "<\\w+((\\s+\\w+(\\s*=\\s*(?:\".*?\"|'.*?'|[^'\">\\s]+))?)+\\s*|\\s*)>"
+    val TAG_END = "</\\w+>"
+    val TAG_SELF_CLOSING =
+        "<\\w+((\\s+\\w+(\\s*=\\s*(?:\".*?\"|'.*?'|[^'\">\\s]+))?)+\\s*|\\s*)/>"
+    val HTML_ENTITY = "&[a-zA-Z][a-zA-Z0-9]+;"
+
+    val htmlPattern: Pattern = Pattern
+        .compile(
+            "(${TAG_START}.*${TAG_END})|(${TAG_SELF_CLOSING})|(${HTML_ENTITY})",
+            Pattern.DOTALL
+        )
+
+    if (this != null) {
+        isHTML = htmlPattern.matcher(this).find()
+    }
+
+    return isHTML
 }
