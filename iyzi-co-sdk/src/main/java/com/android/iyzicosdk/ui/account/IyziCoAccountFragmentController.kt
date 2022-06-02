@@ -48,14 +48,18 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
         locale: String,
         price: String,
         type: IyziCoInstallmentType,
-        withInquire: Boolean = false
+        withInquire: Boolean = false,
+        firstCard: Boolean = false
     ) {
         if (type == IyziCoInstallmentType.NORMAL) {
             baseFragment.showLoadingAnimation()
         }
         IyziCoResourcesConstans.IyziCOxTokenUse = true
         var myList: List<IyziCoInstallmentPrice>
-        myList = emptyList();
+        myList = emptyList()
+
+        if (firstCard) baseFragment.hideLoadingAnimation()
+
         iyziCoRepository.pwiRetrieveInstallments(
             IyziCoRetriveInstalmentRequest(
                 binNumber,
@@ -77,6 +81,7 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
 
                     if (withInquire) baseFragment.getInquireService()
                     else baseFragment.hideLoadingAnimation()
+
                 }
 
                 override fun onError(code: Int, message: String) {
@@ -380,11 +385,15 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                         val plusInstallmentList =
                             it.iyziCoCheckoutDetail.plusInstallmentResponseList?.sortedByDescending { it.startDate }
                         baseFragment.setPlusInstallment(plusInstallmentList ?: emptyList())
+
+
+                        baseFragment.showRootView(true)
                     }
                 }
 
                 override fun onError(code: Int, message: String) {
                     uiCallback.onError(code, message)
+                    baseFragment.showRootView(true)
                 }
             })
     }
@@ -485,6 +494,7 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
         baseFragment.setNameEdittext()
 
         if (IyziCoConfig.IYZI_CO_SDK_TYPE == IyziCoSDKType.PAY_WITH_IYZI_CO) {
+            baseFragment.showRootView(false)
             baseFragment.pwiRetrive()
         } else {
             baseFragment.getCards()
@@ -639,7 +649,8 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
         uiCallback: UIResponseCallBack<IyziCoInquireResponse>
     ) {
         IyziCoResourcesConstans.IyziCOxTokenUse = true
-        baseFragment.showLoadingAnimation()
+
+
 
         val request = IyziCoInquireRequest(
             conversationId, currency, locale, paidPrice,

@@ -846,7 +846,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         }
     }
 
-    fun getInquireService() {
+    fun getInquireService(firstCard: Boolean = false) {
         cardAdapter.items.find {
             it.isSelected
         }?.let {
@@ -875,7 +875,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                     }
                 }
             )
-        }?:run {
+        } ?: run {
             hideLoadingAnimation()
         }
 
@@ -1001,7 +1001,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         iyziCoPaymentType = IyziCoPaymentType.CARD
         setToMixPayment()
         selectedCardId = item.cardToken
-        getInstallments(item.binNumber, IyziCoInstallmentType.NORMAL, true)
+        getInstallments(item.binNumber, IyziCoInstallmentType.NORMAL, true, true)
         showInstallmentContainer()
         selectedCard = item
         cardThreeDSVerified(item)
@@ -1153,7 +1153,8 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
     fun getInstallments(
         binNumber: String?,
         type: IyziCoInstallmentType,
-        withInquire: Boolean = false
+        withInquire: Boolean = false,
+        firstCard: Boolean = false
     ) {
         if (IyziCoConfig.IYZI_CO_SDK_TYPE == IyziCoSDKType.PAY_WITH_IYZI_CO) {
             controller.getInstallments(
@@ -1161,7 +1162,8 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                 IyziCoConfig.LANGUAGE.type,
                 IyziCoResourcesConstans.IYZICO_PAID_PRICE.toString(),
                 type,
-                withInquire
+                withInquire,
+                firstCard
             )
         }
     }
@@ -1254,6 +1256,9 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         }
     }
 
+    fun showRootView(isVisible: Boolean) {
+        root.root.setVisible(isVisible)
+    }
 
     override fun clickInstallment(itemCount: Int, item: IyziCoInstallmentDetail) {
 
