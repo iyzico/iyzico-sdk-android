@@ -64,13 +64,11 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
             ), object : IyziCoServiceCallback<IyziCoPwiRetrieveInstalmentsResponse> {
                 override fun onSuccess(response: IyziCoPwiRetrieveInstalmentsResponse?) {
                     if (response?.status == "failure") {
-                        baseFragment.hideLoadingAnimation()
                         baseFragment.showSDKError(response?.errorMessage ?: "")
 
                     } else {
                         val data = response?.iyziCoInstallmentDetails!!
                         baseFragment.setForce3Ds(response.iyziCoInstallmentDetails[0].force3ds.intToBoolean())
-                        baseFragment.hideLoadingAnimation()
                         for (detail in data) {
                             myList = myList + detail.iyziCoInstallmentPrices
                         }
@@ -78,12 +76,14 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
                     }
 
                     if (withInquire) baseFragment.getInquireService()
+                    else baseFragment.hideLoadingAnimation()
                 }
 
                 override fun onError(code: Int, message: String) {
                     baseFragment.hideLoadingAnimation()
                     baseFragment.showSDKError(message)
                     if (withInquire) baseFragment.getInquireService()
+                    else baseFragment.hideLoadingAnimation()
                 }
 
             })
@@ -344,7 +344,7 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
             object : IyziCoServiceCallback<IyziCoPWIRetriveResponse> {
                 override fun onSuccess(data: IyziCoPWIRetriveResponse?) {
                     data?.let {
-                        uiCallback.onSuccess(it)
+                        //  uiCallback.onSuccess(it)
                         gsmNumber = "+90" + IyziCoResourcesConstans.IyziPhoneNumber
                         gsmNumber.clearSpace()
                         memberId = data.memberId

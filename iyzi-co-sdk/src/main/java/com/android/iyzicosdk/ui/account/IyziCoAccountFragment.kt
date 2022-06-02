@@ -875,6 +875,8 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                     }
                 }
             )
+        }?:run {
+            hideLoadingAnimation()
         }
 
 
