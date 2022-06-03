@@ -349,7 +349,7 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
             object : IyziCoServiceCallback<IyziCoPWIRetriveResponse> {
                 override fun onSuccess(data: IyziCoPWIRetriveResponse?) {
                     data?.let {
-                        //  uiCallback.onSuccess(it)
+                        uiCallback.onSuccess(it)
                         gsmNumber = "+90" + IyziCoResourcesConstans.IyziPhoneNumber
                         gsmNumber.clearSpace()
                         memberId = data.memberId
@@ -649,7 +649,6 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
         uiCallback: UIResponseCallBack<IyziCoInquireResponse>
     ) {
         IyziCoResourcesConstans.IyziCOxTokenUse = true
-
 
 
         val request = IyziCoInquireRequest(

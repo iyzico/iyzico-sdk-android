@@ -1014,6 +1014,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         root.iyzico_new_card_information_text.show()
         unSelectedPaymentType()
         iyziCoPaymentType = IyziCoPaymentType.NEW_CARD
+        hideUseBalance()
         setToMixPayment()
         root.iyzico_fragment_account_continue_button.buttonEnabled()
         root.iyzico_fragment_account_new_card_double_border.clearBorderFocus()
@@ -1144,7 +1145,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
             IyziCoConfig.LANGUAGE.type,
             object : UIResponseCallBack<IyziCoPWIRetriveResponse>(this) {
                 override fun onSuccess(response: IyziCoPWIRetriveResponse?) {
-                    super.onSuccess(response)
+                    //   super.onSuccess(response)
                     memberToken = response?.memberToken ?: ""
                 }
             })
