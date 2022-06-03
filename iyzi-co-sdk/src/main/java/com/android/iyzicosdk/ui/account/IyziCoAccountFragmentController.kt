@@ -263,7 +263,7 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
             override fun onError(code: Int, message: String) {
                 setMerchantKeys()
                 baseFragment.setZeroBalance()
-                baseFragment.setBalance()
+                //   baseFragment.setBalance()
                 if (isFirstBalanceRequest) {
                     baseFragment.checkMyAccount()
                 }
@@ -495,6 +495,7 @@ internal class IyziCoAccountFragmentController constructor(private var baseFragm
 
         if (IyziCoConfig.IYZI_CO_SDK_TYPE == IyziCoSDKType.PAY_WITH_IYZI_CO) {
             baseFragment.showRootView(false)
+            baseFragment.hideUseBalance()
             baseFragment.pwiRetrive()
         } else {
             baseFragment.getCards()

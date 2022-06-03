@@ -228,12 +228,12 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
         }
     }
 
-    private fun hideUseBalance() {
+    fun hideUseBalance() {
         root.iyzico_fragment_Account_my_installment_information_layout.show()
         root.iyzico_add_card_use_my_balance_button.gone()
         useBalance = false
         setToMixPayment()
-        root.iyzico_add_card_use_my_balance_button.isClicked = false
+        root.iyzico_add_card_spend_price.gone()
     }
 
     fun unfocusListener() {
@@ -1140,6 +1140,7 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
     }
 
     fun pwiRetrive() {
+
         controller.pwiRetrive(
             getIyziCoActivity()?.initialRequestId ?: "",
             IyziCoConfig.LANGUAGE.type,
