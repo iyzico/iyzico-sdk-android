@@ -114,7 +114,7 @@ Acccount -->
 
     <!-- tamam -->
     <string name="iyzico__pay_with_havale_eft">"Havale / EFT ile Ödeme"</string>
-    <string name="iyzico_my_account">"Hesabım"</string>
+    <string name="iyzico_my_ballance">"Bakiyem"</string>
 
     <!-- tamam -->
     <string name="iyzico_my_current_balance_description">"Hesabına iyzico mobil uygulamasından\npara yükleyebilirsin."</string>

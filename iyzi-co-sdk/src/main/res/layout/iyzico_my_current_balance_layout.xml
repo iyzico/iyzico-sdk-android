@@ -8,7 +8,7 @@
     android:background="@color/iyzico_white"
     android:paddingTop="8dp"
     android:src="@drawable/iyzico_ic_wallet"
-    android:text="@string/iyzico_my_account"
+    android:text="@string/iyzico_my_ballance"
     android:visibility="visible">
 
 
