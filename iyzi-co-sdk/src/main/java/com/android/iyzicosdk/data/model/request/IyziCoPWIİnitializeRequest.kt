@@ -29,5 +29,7 @@ internal data class IyziCoPWIİnitializeRequest(
     @SerializedName("price")
     val price: String,
     @SerializedName("shippingAddress")
-    val shippingAddress: IyziCoShippingAddress
+    val shippingAddress: IyziCoShippingAddress,
+    @SerializedName("conversationId")
+    val conversationId:String
 )

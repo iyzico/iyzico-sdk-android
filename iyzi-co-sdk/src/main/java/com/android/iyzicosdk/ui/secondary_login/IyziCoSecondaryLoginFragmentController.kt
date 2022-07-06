@@ -108,7 +108,8 @@ internal class IyziCoSecondaryLoginFragmentController constructor(private var ba
                 IyziCoResourcesConstans.IYZICO_SHIPPING_CITY,
                 IyziCoResourcesConstans.IYZICO_SHIPPING_CONTACT_NAME,
                 IyziCoResourcesConstans.IYZICO_SHIPPING_COUNTRY
-            )
+            ),
+            "sekban-test"
         )
         baseFragmentIyziCo.showLoadingAnimation()
         iyziCoRepository.pwiInitializeService(iyziCoInitializePayWithIyziCoRequest,
