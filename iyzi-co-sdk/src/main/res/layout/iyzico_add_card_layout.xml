@@ -80,6 +80,7 @@
                 android:id="@+id/iyzico_add_card_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:iyzico_done_button="true"
                 android:imeOptions="actionDone"
                 android:inputType="textCapWords"
                 app:iyzico_type_of_use="CARD_NAME"

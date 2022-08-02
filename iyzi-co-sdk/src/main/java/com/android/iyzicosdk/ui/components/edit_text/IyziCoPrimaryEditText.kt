@@ -12,8 +12,10 @@ import android.text.TextWatcher
 import android.text.method.DigitsKeyListener
 import android.util.AttributeSet
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
@@ -48,7 +50,9 @@ internal class IyziCoPrimaryEditText @JvmOverloads constructor(
     private var isUpper = false
     private var nameEdittextFlag = true
     private var type: String = ""
+
     private var _imageOnClick: (view: View) -> Unit = { _ -> }
+    private var _actionDoneListener: (isDone: Boolean) -> Unit = { _ -> }
 
 
     init {
@@ -60,11 +64,16 @@ internal class IyziCoPrimaryEditText @JvmOverloads constructor(
 
             headText = getString(R.styleable.IyziCoPrimaryEditText_iyzico_headText) ?: ""
             hintText = getString(R.styleable.IyziCoPrimaryEditText_iyzico_hintText) ?: ""
+            val doneButton =
+                getBoolean(R.styleable.IyziCoPrimaryEditText_iyzico_done_button, false)
             size = getString(R.styleable.IyziCoPrimaryEditText_iyzico_border_size_from_edit_text)
                 ?: "normal"
-            type = (TypeofUse.values()[this.getInt(R.styleable.IyziCoPrimaryEditText_iyzico_type_of_use,0)]).toString()
+            type = (TypeofUse.values()[this.getInt(
+                R.styleable.IyziCoPrimaryEditText_iyzico_type_of_use,
+                0
+            )]).toString()
             //digits = getString(R.styleable.IyziCoPrimaryEditText_android_digits) ?: ""
-            when(type){
+            when (type) {
                 TypeofUse.GENERAL_MODE.type -> {
                     root.iyzico_primary_edittext_root_view.changeTitleProgrammatically(
                         headText,
@@ -78,6 +87,19 @@ internal class IyziCoPrimaryEditText @JvmOverloads constructor(
                         hintText,
                         size
                     )
+                }
+            }
+
+            if (doneButton) {
+                root.iyzico_primary_edit_text.imeOptions = EditorInfo.IME_ACTION_DONE
+
+                root.iyzico_primary_edit_text.setOnEditorActionListener { v, actionId, event ->
+                    if (actionId == EditorInfo.IME_ACTION_DONE) {
+                      _actionDoneListener(true)
+                        return@setOnEditorActionListener true
+                    }
+
+                    return@setOnEditorActionListener false
                 }
             }
 
@@ -333,6 +355,10 @@ internal class IyziCoPrimaryEditText @JvmOverloads constructor(
 
     fun clickListenerImg(f: (View) -> Unit) {
         _imageOnClick = f
+    }
+
+    fun editTextDoneLister(f: (Boolean) -> Unit) {
+        _actionDoneListener = f
     }
 
     fun setToLower(string: String) {

@@ -11,12 +11,18 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+/*
+    val URL = "https://consumerapigw.iyzipay.com/"
+    val CLIEND_ID = "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9"
+    val CLIEND_SECRET_KEY = "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR"
+    val MERCHANT_API_KEY = "zthGF5PVpiM2C0pQw3wHIR7xK9mlvCst"
+    val MERCHANT_SECRET_KEY = "P4QlxyRoLBaBLNpwtfIHCYla1qv3Zc9B"*/
 
     val URL = "https://sandbox-consumerapigw.iyzipay.com/"
     val CLIEND_ID = "qumpara"
     val CLIEND_SECRET_KEY = "qumparaSecret"
-    val MERCHANT_API_KEY = "sandbox-BBjF3qdtrFBVC5VC8bOTqZJw1rpLz1dK"
-    val MERCHANT_SECRET_KEY = "sandbox-ZvLTaQaWZtTMIhvxoqhfDG4IJA9bKNBV"
+    val MERCHANT_API_KEY = "sandbox-k91XhD8ZAkjzmY17cIOEftL2t3RfwRoQ"
+    val MERCHANT_SECRET_KEY = "sandbox-DXAvRdmmHFszOtjw4TuDEqe1zGWfPJvd"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,7 +89,7 @@ class MainActivity : AppCompatActivity() {
                 "74300864791",//zorunlu
                 "Istanbul",//zorunlu
                 "Turkey",//zorunlu
-                "aktasbatuhann@gmail.com",
+                "sebnem270722@gmail.com",
                 "5616100697",//zorunlu
                 "Merchant Ip",//ıp zorunlu
                 "Merchant Adres",//zorumaskedGsmNumbernlu

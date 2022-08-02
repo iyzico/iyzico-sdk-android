@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/root"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/iyzico_light_grey">
 
@@ -92,26 +92,28 @@
             <View
                 android:id="@+id/space1"
                 android:layout_width="match_parent"
-                android:layout_height="110dp" />
+                android:layout_height="32dp" />
+
+
+            <com.android.iyzicosdk.ui.components.buttons.IyziCoCustomButton
+                android:id="@+id/iyzico_fragment_account_continue_button"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/iyzico_button_height"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="@dimen/iyzico_secondary_margin"
+                android:layout_marginEnd="@dimen/iyzico_secondary_margin"
+                android:layout_marginBottom="20dp"
+                android:text="@string/iyzico_account_fragment_button"
+                android:visibility="visible"
+                app:iyzico_buttonType="BLUE_FILL"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </LinearLayout>
 
 
     </androidx.core.widget.NestedScrollView>
 
-    <com.android.iyzicosdk.ui.components.buttons.IyziCoCustomButton
-        android:id="@+id/iyzico_fragment_account_continue_button"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/iyzico_button_height"
-        android:layout_gravity="bottom"
-        android:layout_marginStart="@dimen/iyzico_secondary_margin"
-        android:layout_marginEnd="@dimen/iyzico_secondary_margin"
-        android:layout_marginBottom="20dp"
-        android:text="@string/iyzico_account_fragment_button"
-        android:visibility="visible"
-        app:iyzico_buttonType="BLUE_FILL"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

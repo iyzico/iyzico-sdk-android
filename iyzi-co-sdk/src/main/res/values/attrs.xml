@@ -15,6 +15,7 @@
     <declare-styleable name="IyziCoPrimaryEditText">
         <attr name="iyzico_headText" format="string" />
         <attr name="iyzico_hintText" format="string" />
+        <attr name="iyzico_done_button" format="boolean" />
         <attr name="android:inputType" format="integer" />
         <attr name="android:digits" format="string" />
         <attr name="iyzico_border_size_from_edit_text" format="string" />

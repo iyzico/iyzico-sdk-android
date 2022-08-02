@@ -1,6 +1,7 @@
 package com.android.iyzicosdk.ui.account
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
@@ -18,6 +19,7 @@ import com.android.iyzicosdk.ui.adapter.*
 import com.android.iyzicosdk.ui.components.edit_text.IyziCoCustomEditText
 import com.android.iyzicosdk.ui.info.IyziCoInfoFragment
 import com.android.iyzicosdk.ui.remittance_information.IyziCoRemittanceInformationBottomSheet
+import com.android.iyzicosdk.util.KeyboardUtils
 import com.android.iyzicosdk.util.config.IyziCoConfig
 import com.android.iyzicosdk.util.constants.BundleConstans
 import com.android.iyzicosdk.util.constants.BundleConstans.CAN_TRANSFER_AMOUNT
@@ -63,6 +65,9 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
     private var rotatingStart = false
     private var isUseRewardWithNewCard = false
     private var newCardRewardPoint: Double? = 0.0
+
+
+    private var efTabVisible = false
 
     override fun initUI(
         inflater: LayoutInflater,
@@ -269,10 +274,17 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
                     iyzico_add_card_cvc_number.errorBorder(getString(R.string.iyzico_wrong))
             }
 
+            KeyboardUtils.addKeyboardToggleListener(requireActivity(),
+                object : KeyboardUtils.SoftKeyboardToggleListener {
+                    override fun onToggleSoftKeyboard(isVisible: Boolean) {
+                        if (!isVisible /*&& it.isNotEmpty()*/ && isAdded && isVisible()) {
+                            detectAllItemsAreValid()
+                        }
+                    }
+                })
 
-            iyzico_add_card_name.textListener {
-                if (it.isNotEmpty())
-                    detectAllItemsAreValid()
+            iyzico_add_card_name.editTextDoneLister {
+                detectAllItemsAreValid()
             }
             iyzico_add_card_card_number.textListener {
                 if (it.isNotEmpty())
@@ -657,7 +669,11 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
             if (!it) {
                 iyziCoPaymentType = IyziCoPaymentType.NULL
                 checkVisibilityButton()
+                root.iyzico_fragment_account_continue_button.setMargins(topMarginDp = 32)
+            } else {
+                root.iyzico_fragment_account_continue_button.setMargins(topMarginDp = 0)
             }
+
         }
         root.iyzico_fragment_account_eft_expandable.expandableOpened {
             hideKeyboard()
@@ -1244,9 +1260,15 @@ internal class IyziCoAccountFragment : IyziCoBaseFragment(), IyziCoBankClickList
     }
 
     fun setVisibleEFTTab(isVisible: Boolean) {
+        efTabVisible = isVisible
+
         root.iyzico_fragment_account_eft_expandable.setVisible(isVisible)
-        root.space1.gone()
-        root.iyzico_fragment_Account_my_Cards_container.setPadding(0, 15.dp, 0, 110.dp)
+        if (!isVisible) {
+            root.space1.gone()
+            root.iyzico_fragment_Account_my_Cards_container.setPadding(0, 15.dp, 0, 32.dp)
+
+
+        }
     }
 
 
